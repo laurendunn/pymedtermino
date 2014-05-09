@@ -61,3 +61,4 @@ Links
 -----
 
 PyMedTermino on BitBucket (development repository): https://bitbucket.org/jibalamy/pymedtermino
+PyMedTermino on PyPI (Python Package Index, stable release): https://pypi.python.org/pypi/PyMedTermino

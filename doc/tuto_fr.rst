@@ -83,6 +83,7 @@ Voici un exemple des possibilités de PyMedTermino :
   ])
 
 PyMedTermino sur BitBucket (dépôt de développement) : https://bitbucket.org/jibalamy/pymedtermino
+PyMedTermino sur PyPI (Python Package Index, version stable): https://pypi.python.org/pypi/PyMedTermino
 
 
 Installation

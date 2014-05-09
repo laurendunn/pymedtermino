@@ -23,6 +23,7 @@ PyMedTermino is available under the GNU LGPL licence, and it has been created by
   93017 Bobigny, France
 
 PyMedTermino on BitBucket (development repository): https://bitbucket.org/jibalamy/pymedtermino
+PyMedTermino on PyPI (Python Package Index, stable release): https://pypi.python.org/pypi/PyMedTermino
 
 Documentation contents:
 
