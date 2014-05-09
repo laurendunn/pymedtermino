@@ -43,6 +43,12 @@ ICD10_DIR = ""
 # Example: CIM10_DIR = "/home/jiba/telechargements/base_med/cim10"
 CIM10_DIR = ""
 
+# Set to False if you don't want to build VCM terminologies.
+# VCM is pre-built in release source distribution, so it has no impact in this case.
+# However, VCM is *not* pre-built in Mercurial sources. 
+
+BUILD_VCM = True
+
 
 
 import os, os.path, sys, glob
@@ -69,6 +75,12 @@ if ("build" in sys.argv) or (("install" in sys.argv) and (not os.path.exists(os.
 if ("build" in sys.argv) or (("install" in sys.argv) and (not os.path.exists(os.path.join(HERE, "icd10.sqlite3")))):
   if ICD10_DIR:
     cmd = sys.executable + ' %s%sscripts%simport_icd10.py "%s" "%s"' % (HERE, os.sep, os.sep, ICD10_DIR, CIM10_DIR)
+    print(cmd)
+    os.system(cmd)
+
+if ("build" in sys.argv) or (("install" in sys.argv) and (not os.path.exists(os.path.join(HERE, "vcm_onto", "vcm_concept_monoaxial.owl")))):
+  if BUILD_VCM:
+    cmd = sys.executable + ' %s%sscripts%build_vcm_onto.py' % (HERE, os.sep, os.sep)
     print(cmd)
     os.system(cmd)
 

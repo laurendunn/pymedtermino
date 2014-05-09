@@ -100,7 +100,7 @@ write_file("./pymedtermino/vcm_onto/vcm_concept_monoaxial.owl", owl, "utf8")
 
 
 
-### Generates vcm_concept_repr.owl
+### Generates vcm_repr.owl
 ### from vcm_concept_monoaxial_2_vcm_lexicon.txt
 
 
