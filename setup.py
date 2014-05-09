@@ -78,6 +78,7 @@ if ("build" in sys.argv) or ("install" in sys.argv):
   def do(s):
     print(s)
     r = os.system(s)
+    return r
   def failed(filename):
     if os.path.exists(filename): os.unlink(filename)
     sys.exit()
