@@ -54,9 +54,7 @@ BUILD_VCM = True
 
 # NB The build_vcm_consistency script requires about one day to run, has plenty of dependency,
 # and is Linux-only. Therefore, it is *not* run when building PyMedTermino!
-#
-# The VCM icon consistency database is pre-built in the source release. It is not present in Mercurial
-# repository, but if you need it, take it from the release!
+# Instead, the VCM icon consistency database is pre-built and compressed in the source release.
 
 
 import os, os.path, sys, glob
@@ -111,6 +109,11 @@ if ("build" in sys.argv) or ("install" in sys.argv):
 #    cmd = sys.executable + ' %s%sscripts%sbuild_vcm_consistency.py' % (HERE, os.sep, os.sep)
 #    if do(cmd) != 0: failed(os.path.join(HERE, "vcm_consistency.sqlite3"))
 
+  if not os.path.exists(os.path.join(HERE, "vcm_consistency.sqlite3")):
+    print("Uncompressing VCM consistency database...")
+    import bz2, shutil
+    comp = bz2.open(os.path.join(HERE, "vcm_consistency.sqlite3.bz2"))
+    shutil.copyfileobj(comp, open(os.path.join(HERE, "vcm_consistency.sqlite3"), "wb"))
 
 import distutils.core, distutils.sysconfig
 if ("upload_doc" in sys.argv) or ("build_sphinx" in sys.argv): import setuptools
