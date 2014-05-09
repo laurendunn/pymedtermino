@@ -52,11 +52,11 @@ CIM10_DIR = ""
 
 BUILD_VCM = True
 
-# The build_vcm_consistency script requires about one day to run, has plenty of dependency,
-# and is Linux-only. If you want VCM icon consistency database, get it in the source release,
-# rather than building it from the Mercurial repository!
-
-BUILD_VCM_CONCISTENCY = False
+# NB The build_vcm_consistency script requires about one day to run, has plenty of dependency,
+# and is Linux-only. Therefore, it is *not* run when building PyMedTermino!
+#
+# The VCM icon consistency database is pre-built in the source release. It is not present in Mercurial
+# repository, but if you need it, take it from the release!
 
 
 import os, os.path, sys, glob
@@ -110,9 +110,9 @@ if ("build" in sys.argv) or ("install" in sys.argv):
     cmd = sys.executable + ' %s%sscripts%sbuild_vcm_repr.py' % (HERE, os.sep, os.sep)
     if do(cmd) != 0: failed(os.path.join(HERE, "vcm_concept.sqlite3"))
     
-  if BUILD_VCM_CONCISTENCY and (not os.path.exists(os.path.join(HERE, "vcm_consistency.sqlite3"))):
-    cmd = sys.executable + ' %s%sscripts%sbuild_vcm_consistency.py' % (HERE, os.sep, os.sep)
-    if do(cmd) != 0: failed(os.path.join(HERE, "vcm_consistency.sqlite3"))
+#  if BUILD_VCM_CONCISTENCY and (not os.path.exists(os.path.join(HERE, "vcm_consistency.sqlite3"))):
+#    cmd = sys.executable + ' %s%sscripts%sbuild_vcm_consistency.py' % (HERE, os.sep, os.sep)
+#    if do(cmd) != 0: failed(os.path.join(HERE, "vcm_consistency.sqlite3"))
 
 
 import distutils.core, distutils.sysconfig
