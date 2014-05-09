@@ -44,10 +44,13 @@ ICD10_DIR = ""
 CIM10_DIR = ""
 
 # Set to False if you don't want to build VCM terminologies.
-# VCM is pre-built in release source distribution, so you don't need to rebuild it in this case.
-# However, VCM is *not* pre-built in Mercurial sources. 
+#
+# VCM is pre-built in release source distribution, so it has no impact it in this case.
+#
+# However, VCM is *not* pre-built in Mercurial sources. You may want to disable it if you build
+# from Mercurial repository and you don't need VCM.
 
-BUILD_VCM = False
+BUILD_VCM = True
 
 
 
@@ -94,7 +97,7 @@ if ("build" in sys.argv) or ("install" in sys.argv):
 
 if ("build" in sys.argv) or (("install" in sys.argv) and (not os.path.exists(os.path.join(HERE, "vcm_onto", "vcm_concept_monoaxial.owl")))):
   if BUILD_VCM:
-    cmd = sys.executable + ' %s%sscripts%build_vcm_onto.py' % (HERE, os.sep, os.sep)
+    cmd = sys.executable + ' %s%sscripts%sbuild_vcm_onto.py' % (HERE, os.sep, os.sep)
     print(cmd)
     os.system(cmd)
 
