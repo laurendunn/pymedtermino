@@ -53,3 +53,4 @@ Here is an example of what you can do with PyMedTermino:
     VCM[u"current--hyper--heart_rhythm"]  # 
   ])
 
+PyMedTermino can also be used without Python, just for converting SNOMED CT and ICD10 XML data into SQL databases.

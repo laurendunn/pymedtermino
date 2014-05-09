@@ -125,60 +125,7 @@ distutils.core.setup(
   version      = "0.2",
   license      = "LGPLv3+",
   description  = "Medical Terminologies for Python: SNOMED CT, ICD10, UMLS and VCM icons",
-  long_description = """PyMedTermino (Medical Terminologies for Python) is a Python module for easy access to the main medical terminologies in Python.
-The following terminologies are available: SNOMED CT, ICD10, UMLS, VCM icons (an iconic terminology developped at Paris 13 University).
-
-The main features of PyMedTermino are:
- * A single API for accessing all terminologies
- * Optimized full-text search
- * Access to label, synonyms and translations
- * Manage concepts and relations between concepts
- * Mappings between terminologies, through UMLS or manual mapping files.
-
-SNOMED CT, ICD10 and UMLS data are not included but they can be downloaded for free for academic research. PyMedTermino includes scripts for exporting SNOMED CT and ICD10 data into SQLite3 SQL databases, and can connect to a UMLS server.
-
-PyMedTermino has been created at the LIMICS reseach lab (Laboratoire d'informatique médicale et d'ingénierie des connaissances en santé, UMR_S 1142), University Paris 13, Sorbonne Paris Cité, by Jean-Baptiste Lamy. PyMedTermino is available under the GNU LGPL licence.
-
-Here is an example of what you can do with PyMedTermino:
-
->>> SNOMEDCT.search("tachycardia*")
-[SNOMEDCT[3424008]  # Tachycardia (finding)
-, SNOMEDCT[4006006]  # Fetal tachycardia affecting management of mother (disorder)
-, SNOMEDCT[6456007]  # Supraventricular tachycardia (disorder)
-...]
-
->>> SNOMEDCT[3424008].parents
-[SNOMEDCT[301113001]  # Finding of heart rate (finding)
-]
-
->>> SNOMEDCT[3424008].children
-[SNOMEDCT[11092001]  # Sinus tachycardia (finding)
-, SNOMEDCT[278086000]  # Baseline tachycardia (finding)
-, SNOMEDCT[162992001]  # On examination - pulse rate tachycardia (finding)
-...]
-
->>> list(SNOMEDCT[3424008].ancestors_no_double())
-[SNOMEDCT[301113001]  # Finding of heart rate (finding)
-, SNOMEDCT[106066004]  # Cardiac rhythm AND/OR rate finding (finding)
-, SNOMEDCT[250171008]  # Clinical history and observation findings (finding)
-, SNOMEDCT[404684003]  # Clinical finding (finding)
-, SNOMEDCT[138875005]  # SNOMED CT Concept (SNOMED RT+CTV3)
-...]
-
->>> SNOMEDCT[3424008].relations
-set(['INVERSE_has_definitional_manifestation', 'finding_site', 'interprets', 'has_interpretation', 'INVERSE_associated_with'])
-
->>> SNOMEDCT[3424008].finding_site
-[SNOMEDCT[24964005]  # Cardiac conducting system structure (body structure)
-]
-
->>> SNOMEDCT[3424008] >> VCM   # Maps the SNOMED CT concept to VCM icon
-Concepts([
-  VCM[u"current--hyper--heart_rhythm"]  # 
-])
-
-PyMedTermino can also be used without Python, just for converting SNOMED CT and ICD10 XML data into SQL databases.
-""",
+  long_description = open(os.path.join(HERE, "README.rst")).read(),
   
   author       = "Lamy Jean-Baptiste (Jiba)",
   author_email = "jibalamy@free.fr",
