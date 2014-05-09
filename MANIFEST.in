@@ -11,7 +11,8 @@ graft vcm_onto
 
 include ./LICENSE.txt
 include ./README.rst
-
+include ./icd10_2_vcm.sqlite3
+include ./icd10_vcm_lexicon_index.sqlite3
 
 global-exclude *.pyc
 global-exclude *.pyo
@@ -19,7 +20,6 @@ global-exclude catalog-v001.xml
 global-exclude __pycache__
 global-exclude test.py
 global-exclude icd10.sqlite3
-global-exclude icd10_2_vcm.sqlite3
 global-exclude icd10_2_vcm_manual.sqlite3
 global-exclude icd10_2_vcm_manual_rouen.sqlite3
 global-exclude snomedct.sqlite3
@@ -30,14 +30,12 @@ global-exclude icpc2_2_vcm.py
 global-exclude icpc2.sqlite3
 global-exclude icpc2_2_vcm.sqlite3
 global-exclude icpc2_vcm_lexicon_index.sqlite3
+global-exclude icpc2_onto/*
+global-exclude import_icpc2.py
+global-exclude build_icpc2_2_vcm.py
+global-exclude build_icpc2_vcm_lexicon_index.py
 
 global-exclude vcm_consistency.sqlite3.bz2
 
-include ./icd10_2_vcm_manual.sqlite3
-include ./icd10_vcm_lexicon_index.sqlite3
 
-exclude ./icpc2_onto/*
-exclude ./scripts/import_icpc2.py
-exclude ./scripts/build_icpc2_2_vcm.py
-exclude ./scripts/build_icpc2_vcm_lexicon_index.py
 
