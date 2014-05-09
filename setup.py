@@ -44,10 +44,10 @@ ICD10_DIR = ""
 CIM10_DIR = ""
 
 # Set to False if you don't want to build VCM terminologies.
-# VCM is pre-built in release source distribution, so it has no impact in this case.
+# VCM is pre-built in release source distribution, so you don't need to rebuild it in this case.
 # However, VCM is *not* pre-built in Mercurial sources. 
 
-BUILD_VCM = True
+BUILD_VCM = False
 
 
 
@@ -66,24 +66,37 @@ while i < len(sys.argv):
 
 if len(sys.argv) <= 1: sys.argv.append("install")
 
-if ("build" in sys.argv) or (("install" in sys.argv) and (not os.path.exists(os.path.join(HERE, "snomedct.sqlite3")))):
-  if SNOMEDCT_DIR:
-    cmd = sys.executable + ' %s%sscripts%simport_snomedct.py "%s" "%s"' % (HERE, os.sep, os.sep, SNOMEDCT_DIR, SNOMEDCT_CORE_FILE)
-    print(cmd)
-    os.system(cmd)
+if ("build" in sys.argv) or ("install" in sys.argv):
+  def do(s):
+    print(s)
+    return os.system(s)
     
-if ("build" in sys.argv) or (("install" in sys.argv) and (not os.path.exists(os.path.join(HERE, "icd10.sqlite3")))):
-  if ICD10_DIR:
+  if SNOMEDCT_DIR and (not os.path.exists(os.path.join(HERE, "snomedct.sqlite3"))):
+    cmd = sys.executable + ' %s%sscripts%simport_snomedct.py "%s" "%s"' % (HERE, os.sep, os.sep, SNOMEDCT_DIR, SNOMEDCT_CORE_FILE)
+    if do(cmd) != 0: os.unlink(os.path.join(HERE, "snomedct.sqlite3"))
+      
+  if ICD10_DIR and (not os.path.exists(os.path.join(HERE, "icd10.sqlite3"))):
     cmd = sys.executable + ' %s%sscripts%simport_icd10.py "%s" "%s"' % (HERE, os.sep, os.sep, ICD10_DIR, CIM10_DIR)
-    print(cmd)
-    os.system(cmd)
+    if do(cmd) != 0: os.unlink(os.path.join(HERE, "icd10.sqlite3"))
+    
+  if BUILD_VCM and (not os.path.exists(os.path.join(HERE, "vcm_onto", "vcm_concept_monoaxial.owl"))):
+    cmd = sys.executable + ' %s%sscripts%build_vcm_onto.py' % (HERE, os.sep, os.sep)
+    if do(cmd) != 0: os.unlink(os.path.join(HERE, "vcm_onto", "vcm_concept_monoaxial.owl"))
+    
+  if BUILD_VCM and (not os.path.exists(os.path.join(HERE, "vcm_concept.sqlite3"))):
+    cmd = sys.executable + ' %s%sscripts%import_vcm.py' % (HERE, os.sep, os.sep)
+    if do(cmd) != 0: os.unlink(os.path.join(HERE, "vcm_concept.sqlite3"))
+    
+  if BUILD_VCM and (not os.path.exists(os.path.join(HERE, "vcm_consistency.sqlite3"))):
+    cmd = sys.executable + ' %s%sscripts%build_vcm_consistency.py' % (HERE, os.sep, os.sep)
+    if do(cmd) != 0: os.unlink(os.path.join(HERE, "vcm_consistency.sqlite3"))
+
 
 if ("build" in sys.argv) or (("install" in sys.argv) and (not os.path.exists(os.path.join(HERE, "vcm_onto", "vcm_concept_monoaxial.owl")))):
   if BUILD_VCM:
     cmd = sys.executable + ' %s%sscripts%build_vcm_onto.py' % (HERE, os.sep, os.sep)
     print(cmd)
     os.system(cmd)
-
 
 import distutils.core, distutils.sysconfig
 if ("upload_doc" in sys.argv) or ("build_sphinx" in sys.argv): import setuptools
