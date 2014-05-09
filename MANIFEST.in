@@ -1,0 +1,40 @@
+global-include *.py
+global-include *.sqlite3
+global-include *.txt
+global-include *.owl
+global-include *.lyx
+global-include *.pdf
+
+graft doc
+graft scripts
+graft test
+graft utils
+graft vcm_onto
+graft LICENSE.txt
+
+
+global-exclude *.pyc
+global-exclude *.pyo
+global-exclude catalog-v001.xml
+
+include icd10_2_vcm_manual.sqlite3
+include icd10_vcm_lexicon_index.sqlite3
+
+exclude __pycache__/*
+exclude test.py
+exclude icd10.sqlite3
+exclude snomedct.sqlite3
+exclude snomedct_2_icd10.sqlite3
+exclude snomedct_2_icd10_reverse.sqlite3
+
+exclude icpc2_onto/*
+exclude scripts/import_icpc2.py
+exclude scripts/build_icpc2_2_vcm.py
+exclude scripts/build_icpc2_vcm_lexicon_index.py
+exclude icd10_2_vcm.sqlite3
+exclude icpc2.py
+exclude icpc2_2_vcm.py
+exclude icpc2.sqlite3
+exclude icpc2_2_vcm.sqlite3
+exclude icpc2_vcm_lexicon_index.sqlite3
+
