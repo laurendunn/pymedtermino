@@ -45,11 +45,6 @@ CIM10_DIR = ""
 
 
 
-
-
-
-# python setup.py build --snomedct /home/jiba/telechargements/base_med/SnomedCT_Release_INT_20130731 --snomedct-core /home/jiba/telechargements/base_med/SNOMEDCT_CORE_SUBSET_201308.txt --icd10 /home/jiba/telechargements/base_med/icd10 --icd10-translation /home/jiba/telechargements/base_med/cim10
-
 import os, os.path, sys, glob
 
 HERE = os.path.dirname(sys.argv[0]) or "."
