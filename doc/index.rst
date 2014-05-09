@@ -12,9 +12,9 @@ SNOMED CT, ICD10 and UMLS data are not included (because they are not freely red
 can be downloaded for free in XML format, for research / academic purpose  (see :doc:`tuto_en` for
 links).
 
-PyMedTermino is available under the GNU LGPL licence, and it has been created by Jean-Baptiste Lamy
+PyMedTermino is available under the GNU LGPL licence, and it has been created by Jean-Baptiste Lamy:
 
-.. figure:: images/email.png
+<jean-baptiste.lamy **@** univ-paris13 **.** fr>
 
 ::
   

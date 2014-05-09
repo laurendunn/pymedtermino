@@ -9,9 +9,7 @@ PyMedTermino has been created at the LIMICS reseach lab,
 University Paris 13, Sorbonne Paris Cité, INSERM UMRS 1142, Paris 6 University, by
 Jean-Baptiste Lamy. PyMedTermino is available under the GNU LGPL licence.
 
-In case of trouble, please contact Jean-Baptiste Lamy :
-
-Jean-Baptiste Lamy - < jean-baptiste.lamy -at- univ-paris13 -dot- fr >
+In case of trouble, please contact Jean-Baptiste Lamy <jean-baptiste.lamy *@* univ-paris13 *.* fr>
 
 ::
 

@@ -36,7 +36,7 @@ server to generate icons dynamically): PyMedTermino only include the terminologi
 
 PyMedTermino has been created by Jean-Baptiste Lamy:
 
-.. figure:: images/email.png
+<jean-baptiste.lamy **@** univ-paris13 **.** fr>
 
 ::
   

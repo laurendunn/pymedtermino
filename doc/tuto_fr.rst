@@ -38,7 +38,7 @@ comprend que la partie “ terminologique ” de VCM.
 
 PyMedTermino a été réalisé par Jean-Baptiste Lamy :
 
-.. figure:: images/email.png
+<jean-baptiste.lamy **@** univ-paris13 **.** fr>
 
 ::
   
