@@ -116,7 +116,8 @@ if ("build" in sys.argv) or ("install" in sys.argv):
     shutil.copyfileobj(comp, open(os.path.join(HERE, "vcm_consistency.sqlite3"), "wb"))
 
 import distutils.core, distutils.sysconfig
-if ("upload_doc" in sys.argv) or ("build_sphinx" in sys.argv): import setuptools
+if ("upload_docs" in sys.argv) or ("build_sphinx" in sys.argv): import setuptools
+
 
 install_dir = distutils.sysconfig.get_python_lib()
 
