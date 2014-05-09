@@ -26,20 +26,7 @@ from pymedtermino.utils.mapping_db import *
 
 HERE              = os.path.dirname(sys.argv[0])
 ONTOLOGY_PATH     = os.path.join(HERE, "..", "vcm_onto")
-SQLITE_FILE1      = os.path.join(HERE, "..", "vcm_concept.sqlite3")
-SQLITE_FILE1b     = os.path.join(HERE, "..", "vcm_concept_monoaxial.sqlite3")
 SQLITE_FILE2      = os.path.join(HERE, "..", "vcm_lexicon.sqlite3")
-#SQLITE_FILE3      = os.path.join(HERE, "..", "vcm_concept_2_vcm_lexicon.sqlite3")
-SQLITE_FILE3      = os.path.join(HERE, "..", "vcm_concept_monoaxial_2_vcm_lexicon.sqlite3")
-SQLITE_FILE4      = os.path.join(HERE, "..", "snomedct_2_vcm_concept.sqlite3")
-
-db = create_db(SQLITE_FILE1)
-OWL_2_SQL       ([os.path.join(ONTOLOGY_PATH, "vcm_concept.owl")], db, annotations = [(u"comment", u"TEXT")])
-close_db(db, SQLITE_FILE1)
-
-db = create_db(SQLITE_FILE1b)
-OWL_2_SQL       ([os.path.join(ONTOLOGY_PATH, "vcm_concept_monoaxial.owl")], db, annotations = [(u"comment", u"TEXT")])
-close_db(db, SQLITE_FILE1b)
 
 db = create_db(SQLITE_FILE2)
 OWL_2_SQL       ([os.path.join(ONTOLOGY_PATH, "vcm_lexique.owl")], db, annotations = [(u"category", u"INTEGER"), (u"text_code", u"TEXT")])
@@ -47,17 +34,6 @@ do_sql(db.cursor(), u"""
 CREATE INDEX Concept_category_text_code_index ON Concept(category, text_code)""")
 close_db(db, SQLITE_FILE2, close = 1, set_readonly = 0)
 
-#db = create_db(SQLITE_FILE3)
-#Txt_2_SQLMapping("./pymedtermino/vcm_onto/vcm_concept_2_vcm_lexicon.txt", db, code1_type = "INTEGER", code2_type = "INTEGER")
-#close_db(db, SQLITE_FILE3)
-
-db = create_db(SQLITE_FILE3)
-Txt_2_SQLMapping(os.path.join(ONTOLOGY_PATH, "vcm_concept_monoaxial_2_vcm_lexicon.txt"), db, code1_type = "INTEGER", code2_type = "INTEGER")
-close_db(db, SQLITE_FILE3)
-
-db2 = create_db(SQLITE_FILE4)
-Txt_2_SQLMapping(os.path.join(ONTOLOGY_PATH, "snomedct_2_vcm_concept_reverse.txt"), db2, code1_type = "INTEGER", code2_type = "INTEGER", reverse = 1)
-close_db(db2, SQLITE_FILE4)
 
 from pymedtermino.vcm import *
 

@@ -52,6 +52,11 @@ CIM10_DIR = ""
 
 BUILD_VCM = True
 
+# The build_vcm_consistency script requires about one day to run, has plenty of dependency,
+# and is Linux-only. If you want VCM icon consistency database, get it in the source release,
+# rather than building it from the Mercurial repository!
+
+BUILD_VCM_CONCISTENCY = False
 
 
 import os, os.path, sys, glob
@@ -72,27 +77,42 @@ if len(sys.argv) <= 1: sys.argv.append("install")
 if ("build" in sys.argv) or ("install" in sys.argv):
   def do(s):
     print(s)
-    return os.system(s)
-    
+    r = os.system(s)
+  def failed(filename):
+    if os.path.exists(filename): os.unlink(filename)
+    sys.exit()
+      
   if SNOMEDCT_DIR and (not os.path.exists(os.path.join(HERE, "snomedct.sqlite3"))):
     cmd = sys.executable + ' %s%sscripts%simport_snomedct.py "%s" "%s"' % (HERE, os.sep, os.sep, SNOMEDCT_DIR, SNOMEDCT_CORE_FILE)
-    if do(cmd) != 0: os.unlink(os.path.join(HERE, "snomedct.sqlite3"))
+    if do(cmd) != 0: failed(os.path.join(HERE, "snomedct.sqlite3"))
       
   if ICD10_DIR and (not os.path.exists(os.path.join(HERE, "icd10.sqlite3"))):
     cmd = sys.executable + ' %s%sscripts%simport_icd10.py "%s" "%s"' % (HERE, os.sep, os.sep, ICD10_DIR, CIM10_DIR)
-    if do(cmd) != 0: os.unlink(os.path.join(HERE, "icd10.sqlite3"))
+    if do(cmd) != 0: failed(os.path.join(HERE, "icd10.sqlite3"))
     
   if BUILD_VCM and (not os.path.exists(os.path.join(HERE, "vcm_onto", "vcm_concept_monoaxial.owl"))):
     cmd = sys.executable + ' %s%sscripts%sbuild_vcm_onto.py' % (HERE, os.sep, os.sep)
-    if do(cmd) != 0: os.unlink(os.path.join(HERE, "vcm_onto", "vcm_concept_monoaxial.owl"))
+    if do(cmd) != 0: failed(os.path.join(HERE, "vcm_onto", "vcm_concept_monoaxial.owl"))
     
   if BUILD_VCM and (not os.path.exists(os.path.join(HERE, "vcm_concept.sqlite3"))):
-    cmd = sys.executable + ' %s%sscripts%simport_vcm.py' % (HERE, os.sep, os.sep)
-    if do(cmd) != 0: os.unlink(os.path.join(HERE, "vcm_concept.sqlite3"))
+    cmd = sys.executable + ' %s%sscripts%simport_vcm_concept.py' % (HERE, os.sep, os.sep)
+    if do(cmd) != 0: failed(os.path.join(HERE, "vcm_concept.sqlite3"))
+    cmd = sys.executable + ' %s%sscripts%simport_vcm_lexicon.py' % (HERE, os.sep, os.sep)
+    if do(cmd) != 0: failed(os.path.join(HERE, "vcm_concept.sqlite3"))
+    cmd = sys.executable + ' %s%sscripts%sbuild_vcm_concept_monoaxial.py' % (HERE, os.sep, os.sep)
+    if do(cmd) != 0: failed(os.path.join(HERE, "vcm_concept.sqlite3"))
+    cmd = sys.executable + ' %s%sscripts%simport_vcm_concept_monoaxial.py' % (HERE, os.sep, os.sep)
+    if do(cmd) != 0: failed(os.path.join(HERE, "vcm_concept.sqlite3"))
+    cmd = sys.executable + ' %s%sscripts%simport_vcm_mappings.py' % (HERE, os.sep, os.sep)
+    if do(cmd) != 0: failed(os.path.join(HERE, "vcm_concept.sqlite3"))
+    cmd = sys.executable + ' %s%sscripts%sbuild_vcm_search_concept.py' % (HERE, os.sep, os.sep)
+    if do(cmd) != 0: failed(os.path.join(HERE, "vcm_concept.sqlite3"))
+    cmd = sys.executable + ' %s%sscripts%sbuild_vcm_repr.py' % (HERE, os.sep, os.sep)
+    if do(cmd) != 0: failed(os.path.join(HERE, "vcm_concept.sqlite3"))
     
-  if BUILD_VCM and (not os.path.exists(os.path.join(HERE, "vcm_consistency.sqlite3"))):
+  if BUILD_VCM_CONCISTENCY and (not os.path.exists(os.path.join(HERE, "vcm_consistency.sqlite3"))):
     cmd = sys.executable + ' %s%sscripts%sbuild_vcm_consistency.py' % (HERE, os.sep, os.sep)
-    if do(cmd) != 0: os.unlink(os.path.join(HERE, "vcm_consistency.sqlite3"))
+    if do(cmd) != 0: failed(os.path.join(HERE, "vcm_consistency.sqlite3"))
 
 
 import distutils.core, distutils.sysconfig

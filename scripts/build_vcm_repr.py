@@ -30,78 +30,10 @@ from pymedtermino.utils.mapping_db import *
 from pymedtermino.utils.owl_file_reasoner import *
 
 
-### Generates vcm_concept_monoaxial.owl
-### from vcm_concept.owl
-
-multiaxial_isas = set()
-
-for line in read_file("./pymedtermino/vcm_onto/vcm_concept_multiaxial_isa.txt", "utf8").split(u"\n"):
-  if u"#" in line: line = line.split(u"#")[0]
-  if not line.strip(): continue
-  isa_type, child_code, parent_code = line.split()
-  if isa_type == "multi":
-    multiaxial_isas.add((int(child_code), int(parent_code)))
-
-
-print("%s multiaxial isa relations" % len(multiaxial_isas))
-
-    
-owl = read_file("./pymedtermino/vcm_onto/vcm_concept.owl", "utf8")
-
-owl = owl.replace(u'''<!ENTITY vcm_concept "http://localhost/~jiba/vcm_onto/vcm_concept.owl#"''',
-                  u'''<!ENTITY vcm_concept_monoaxial "http://localhost/~jiba/vcm_onto/vcm_concept_monoaxial.owl#"''')
-
-owl = owl.replace(u'''xmlns="http://localhost/~jiba/vcm_onto/vcm_concept.owl#"''',
-                  u'''xmlns="http://localhost/~jiba/vcm_onto/vcm_concept_monoaxial.owl#"''')
-
-owl = owl.replace(u'''xml:base="http://localhost/~jiba/vcm_onto/vcm_concept.owl"''',
-                  u'''xml:base="http://localhost/~jiba/vcm_onto/vcm_concept_monoaxial.owl"''')
-
-owl = owl.replace(u'''xmlns:vcm_concept="http://localhost/~jiba/vcm_onto/vcm_concept.owl#"''',
-                  u'''xmlns:vcm_concept_monoaxial="http://localhost/~jiba/vcm_onto/vcm_concept_monoaxial.owl#"''')
-
-owl = owl.replace(u'''<owl:Ontology rdf:about="http://localhost/~jiba/vcm_onto/vcm_concept.owl"''',
-                  u'''<owl:Ontology rdf:about="http://localhost/~jiba/vcm_onto/vcm_concept_monoaxial.owl"''')
-
-owl = owl.replace(u'''<!-- http://localhost/~jiba/vcm_onto/vcm_concept.owl''',
-                  u'''<!-- http://localhost/~jiba/vcm_onto/vcm_concept_monoaxial.owl''')
-
-owl = owl.replace(u'''"http://localhost/~jiba/vcm_onto/vcm_concept.owl#''',
-                  u'''"#''')
-
-owl = owl.replace(u'''"&vcm_concept;''',
-                  u'''"#''')
-
-owl = owl.replace(u'''<rdfs:label xml:lang="fr">Concept_(multiaxial)</rdfs:label>''',
-                  u'''<rdfs:label xml:lang="fr">Concept_(monoaxial)</rdfs:label>''')
-
-owl = owl.replace(u'''<rdfs:label xml:lang="en">Concept_(multiaxial)</rdfs:label>''',
-                  u'''<rdfs:label xml:lang="en">Concept_(monoaxial)</rdfs:label>''')
-
-isa_regexp = re.compile(u'''(<owl:Class\\s+rdf:about="(.*?)".*?)(<rdfs:subClassOf\\s+rdf:resource="(.*?)"/>)''', re.UNICODE | re.DOTALL)
-
-
-
-
-nb = 0
-for child_code, parent_code in multiaxial_isas:
-  owl, n = re.subn(u'''(<owl:Class\\s+rdf:about="#%s".*?)(<rdfs:subClassOf\\s+rdf:resource="#%s"/>)''' % (child_code, parent_code),
-                   u'''\\1''',
-                   owl,
-                   flags = re.UNICODE | re.DOTALL)
-  if n: nb += n
-  else: print("Not found: %s is_a %s" % (child_code, parent_code))
-
-
-print("%s isa relations found" % nb)
-
-
-write_file("./pymedtermino/vcm_onto/vcm_concept_monoaxial.owl", owl, "utf8")
-
-
-
 ### Generates vcm_repr.owl
 ### from vcm_concept_monoaxial_2_vcm_lexicon.txt
+
+HERE = os.path.dirname(sys.argv[0]) or "."
 
 
 # Skeleton
@@ -168,7 +100,7 @@ owl = u"""<?xml version="1.0" ?>
 con_mappings = defaultdict(Concepts)
 lex_mappings = defaultdict(Concepts)
 
-mappings = parse_mapping(read_file("./pymedtermino/vcm_onto/vcm_concept_monoaxial_2_vcm_lexicon.txt", "utf8"))
+mappings = parse_mapping(read_file(os.path.join(HERE, "..", "vcm_onto", "vcm_concept_monoaxial_2_vcm_lexicon.txt"), "utf8"))
 for cons, match_type, lexs in mappings:
   cons = MappingAnd([VCM_CONCEPT_MONOAXIAL[c] for c in cons])
   lexs = MappingAnd([VCM_LEXICON          [c] for c in lexs])
@@ -240,73 +172,6 @@ owl += u"""
 </rdf:RDF>"""
 
 
-write_file("./pymedtermino/vcm_onto/vcm_repr.owl", owl, "utf8")
+write_file(os.path.join(HERE, "..", "vcm_onto", "vcm_repr.owl"), owl, "utf8")
 
 
-
-
-### Generates vcm_search_concept.owl
-
-
-owl = u"""<?xml version="1.0" ?>
-
-<!DOCTYPE rdf:RDF [
-    <!ENTITY owl 'http://www.w3.org/2002/07/owl#' >
-    <!ENTITY xsd 'http://www.w3.org/2001/XMLSchema#' >
-    <!ENTITY owl2xml 'http://www.w3.org/2006/12/owl2-xml#' >
-    <!ENTITY rdfs 'http://www.w3.org/2000/01/rdf-schema#' >
-    <!ENTITY rdf 'http://www.w3.org/1999/02/22-rdf-syntax-ns#' >
-    <!ENTITY vcm_search_concept 'http://localhost/~jiba/vcm_onto/vcm_search_concept.owl#' >
-    <!ENTITY vcm_repr 'http://localhost/~jiba/vcm_onto/vcm_repr.owl#' >
-    <!ENTITY vcm_lexique 'http://localhost/~jiba/vcm_onto/vcm_lexique.owl#' >
-    <!ENTITY vcm_concept_monoaxial 'http://localhost/~jiba/vcm_onto/vcm_concept_monoaxial.owl#' >
-    <!ENTITY vcm_graphique 'http://localhost/~jiba/vcm_onto/vcm_graphique.owl#' >
-]>
-
-
-<rdf:RDF xmlns='http://localhost/~jiba/vcm_onto/vcm_search_concept.owl#'
-     xml:base='http://localhost/~jiba/vcm_onto/vcm_search_concept.owl'
-     xmlns:rdfs='http://www.w3.org/2000/01/rdf-schema#'
-     xmlns:vcm_graphique='http://localhost/~jiba/vcm_onto/vcm_graphique.owl#'
-     xmlns:owl2xml='http://www.w3.org/2006/12/owl2-xml#'
-     xmlns:owl='http://www.w3.org/2002/07/owl#'
-     xmlns:xsd='http://www.w3.org/2001/XMLSchema#'
-     xmlns:rdf='http://www.w3.org/1999/02/22-rdf-syntax-ns#'
-     xmlns:vcm_lexique='http://localhost/~jiba/vcm_onto/vcm_lexique.owl#'
-     xmlns:vcm_concept_monoaxial='http://localhost/~jiba/vcm_onto/vcm_concept_monoaxial.owl#'
-     xmlns:vcm_repr='http://localhost/~jiba/vcm_onto/vcm_repr.owl#'
-     xmlns:vcm_search_concept='http://localhost/~jiba/vcm_onto/vcm_search_concept.owl#'
-     >
-    <owl:Ontology rdf:about=''>
-        <owl:imports rdf:resource='http://localhost/~jiba/vcm_onto/vcm_repr.owl'/>
-    </owl:Ontology>
-
-    <owl:Class rdf:about='&vcm_search_concept;SEARCH'>
-    </owl:Class>
-"""
-  
-for con in VCM_CONCEPT_MONOAXIAL.all_concepts():
-  lexs = (VCM_CONCEPT_MONOAXIAL >> VCM_LEXICON)(con)
-  if not lexs: continue
-  
-  owl += u"""
-    <owl:Class rdf:about='&vcm_search_concept;SEARCH_icon_repr_%s'>
-        <rdfs:subClassOf rdf:resource='&vcm_search_concept;SEARCH'/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource='&vcm_repr;751'/>
-                <owl:someValuesFrom>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource='&vcm_concept_monoaxial;13'/>
-                        <owl:someValuesFrom rdf:resource='&vcm_concept_monoaxial;%s'/>
-                    </owl:Restriction>
-                </owl:someValuesFrom>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-""" % (con.code, con.code)
-    
-owl += u"""
-</rdf:RDF>"""
-
-write_file("./pymedtermino/vcm_onto/vcm_search_concept.owl", owl, "utf8")
