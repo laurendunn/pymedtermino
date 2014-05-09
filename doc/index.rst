@@ -22,6 +22,8 @@ PyMedTermino is available under the GNU LGPL licence, and it has been created by
   74 rue Marcel Cachin
   93017 Bobigny, France
 
+PyMedTermino on BitBucket (development repository): https://bitbucket.org/jibalamy/pymedtermino
+
 Documentation contents:
 
 .. toctree::

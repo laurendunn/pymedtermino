@@ -2,6 +2,7 @@ global-include *.py
 global-include *.sqlite3
 global-include *.txt
 global-include *.owl
+global-include *.rst
 
 graft doc
 graft scripts

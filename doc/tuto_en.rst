@@ -81,6 +81,9 @@ Here is an example of what you can do with PyMedTermino:
     VCM[u"current--hyper--heart_rhythm"]  # 
   ])
 
+PyMedTermino on BitBucket (development repository): https://bitbucket.org/jibalamy/pymedtermino
+
+
 Installation
 ************
 

@@ -21,7 +21,8 @@ In case of trouble, please contact Jean-Baptiste Lamy <jean-baptiste.lamy *@* un
   FRANCE
 
 
-Here is an example of what you can do with PyMedTermino:
+What can I do with PyMedTermino?
+--------------------------------
 
   >>> SNOMEDCT.search("tachycardia*")
   [SNOMEDCT[3424008]  # Tachycardia (finding)
@@ -54,3 +55,9 @@ Here is an example of what you can do with PyMedTermino:
   ])
 
 PyMedTermino can also be used without Python, just for converting SNOMED CT and ICD10 XML data into SQL databases.
+
+
+Links
+-----
+
+PyMedTermino on BitBucket (development repository): https://bitbucket.org/jibalamy/pymedtermino
