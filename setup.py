@@ -91,15 +91,9 @@ if ("build" in sys.argv) or ("install" in sys.argv):
     if do(cmd) != 0: os.unlink(os.path.join(HERE, "vcm_concept.sqlite3"))
     
   if BUILD_VCM and (not os.path.exists(os.path.join(HERE, "vcm_consistency.sqlite3"))):
-    cmd = sys.executable + ' %s%sscripts%build_vcm_consistency.py' % (HERE, os.sep, os.sep)
+    cmd = sys.executable + ' %s%sscripts%sbuild_vcm_consistency.py' % (HERE, os.sep, os.sep)
     if do(cmd) != 0: os.unlink(os.path.join(HERE, "vcm_consistency.sqlite3"))
 
-
-if ("build" in sys.argv) or (("install" in sys.argv) and (not os.path.exists(os.path.join(HERE, "vcm_onto", "vcm_concept_monoaxial.owl")))):
-  if BUILD_VCM:
-    cmd = sys.executable + ' %s%sscripts%sbuild_vcm_onto.py' % (HERE, os.sep, os.sep)
-    print(cmd)
-    os.system(cmd)
 
 import distutils.core, distutils.sysconfig
 if ("upload_doc" in sys.argv) or ("build_sphinx" in sys.argv): import setuptools
