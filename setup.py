@@ -90,10 +90,6 @@ if ("build" in sys.argv) or ("install" in sys.argv):
     cmd = sys.executable + ' %s%sscripts%simport_icd10.py "%s" "%s"' % (HERE, os.sep, os.sep, ICD10_DIR, CIM10_DIR)
     if do(cmd) != 0: failed(os.path.join(HERE, "icd10.sqlite3"))
     
-  if BUILD_VCM and (not os.path.exists(os.path.join(HERE, "vcm_onto", "vcm_concept_monoaxial.owl"))):
-    cmd = sys.executable + ' %s%sscripts%sbuild_vcm_onto.py' % (HERE, os.sep, os.sep)
-    if do(cmd) != 0: failed(os.path.join(HERE, "vcm_onto", "vcm_concept_monoaxial.owl"))
-    
   if BUILD_VCM and (not os.path.exists(os.path.join(HERE, "vcm_concept.sqlite3"))):
     cmd = sys.executable + ' %s%sscripts%simport_vcm_concept.py' % (HERE, os.sep, os.sep)
     if do(cmd) != 0: failed(os.path.join(HERE, "vcm_concept.sqlite3"))
