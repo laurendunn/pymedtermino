@@ -119,8 +119,6 @@ import distutils.core, distutils.sysconfig
 if ("upload_docs" in sys.argv) or ("build_sphinx" in sys.argv): import setuptools
 
 
-install_dir = distutils.sysconfig.get_python_lib()
-
 distutils.core.setup(
   name         = "PyMedTermino",
   version      = "0.2",
@@ -130,7 +128,8 @@ distutils.core.setup(
   
   author       = "Lamy Jean-Baptiste (Jiba)",
   author_email = "jibalamy@free.fr",
-  url          = "http://extranet-limbio.smbh.univ-paris13.fr/html/limbio/claroline/course/index.php?cid=PYMEDTERMINO",
+#  url          = "http://extranet-limbio.smbh.univ-paris13.fr/html/limbio/claroline/course/index.php?cid=PYMEDTERMINO",
+  url          = "https://bitbucket.org/jibalamy/pymedtermino",
   classifiers  = [
     "Development Status :: 5 - Production/Stable",
     "Intended Audience :: Developers",
