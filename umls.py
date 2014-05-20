@@ -55,7 +55,9 @@ This function **must** be called before using UMLS."""
   
   try: import cymysql as sql_module
   except:
-    import MySQLdb as sql_module
+    try: import pymysql as sql_module
+    except:
+      import MySQLdb as sql_module
   db        = sql_module.connect(host = host, user = user, passwd = password, db = db_name)
   db_cursor = db.cursor()
   
