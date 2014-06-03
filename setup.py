@@ -127,7 +127,7 @@ distutils.core.setup(
   long_description = open(os.path.join(HERE, "README.rst")).read(),
   
   author       = "Lamy Jean-Baptiste (Jiba)",
-  author_email = "jibalamy@free.fr",
+  author_email = "<jean-baptiste.lamy *@* univ-paris13 *.* fr>",
 #  url          = "http://extranet-limbio.smbh.univ-paris13.fr/html/limbio/claroline/course/index.php?cid=PYMEDTERMINO",
   url          = "https://bitbucket.org/jibalamy/pymedtermino",
   classifiers  = [
