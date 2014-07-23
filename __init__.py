@@ -84,6 +84,7 @@ DATA_DIR                      = os.path.dirname(__file__) #: the directory where
 REMOVE_SUPPRESSED_CONCEPTS    = True #: if True, concepts tagged as suppressed or depreciated in terminologies are skipped.
 REMOVE_SUPPRESSED_TERMS       = True #: if True, terms (=translations) tagged as suppressed or depreciated in terminologies are skipped.
 REMOVE_SUPPRESSED_RELATIONS   = True #: if True, relations tagged as suppressed or depreciated in terminologies are skipped.
+READ_ONLY_DATABASE            = True
 
 TERMINOLOGIES                 = {}
 MISSING_CONCEPTS              = set()

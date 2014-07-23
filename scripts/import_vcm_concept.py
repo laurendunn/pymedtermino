@@ -26,7 +26,7 @@ from pymedtermino.utils.mapping_db import *
 
 HERE              = os.path.dirname(sys.argv[0])
 ONTOLOGY_PATH     = os.path.join(HERE, "..", "vcm_onto")
-SQLITE_FILE      = os.path.join(HERE, "..", "vcm_concept.sqlite3")
+SQLITE_FILE       = os.path.join(HERE, "..", "vcm_concept.sqlite3")
 
 db = create_db(SQLITE_FILE)
 OWL_2_SQL([os.path.join(ONTOLOGY_PATH, "vcm_concept.owl")], db, annotations = [(u"comment", u"TEXT")])

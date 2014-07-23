@@ -22,6 +22,8 @@ from __future__ import print_function
 import random, time
 
 import pymedtermino
+pymedtermino.READ_ONLY_DATABASE = False
+
 from pymedtermino          import *
 from pymedtermino.vcm      import *
 from pymedtermino.utils.db import *
@@ -222,9 +224,12 @@ def assert_all_disjoint(names):
   
   
 def check_consistency_hermit():
+  import ontopy.owl
+  
   inconsistents = set()
   t = time.time()
-  cl = "hermit.sh -U -N %s" % OWL_FILE
+  #cl = "hermit.sh -U -N %s" % OWL_FILE
+  cl = "java -Xmx2000M -cp %s org.semanticweb.HermiT.cli.CommandLine -U -N %s" % (ontopy.owl._HERMIT_CLASSPATH, OWL_FILE)
   print(cl, file = sys.stderr)
   s = os.popen(cl).read()
   t = time.time() - t
@@ -476,10 +481,6 @@ def picto_mods_consistents_gen():
     picto_mods = set([VCM_LEXICON[picto], VCM_LEXICON[mod1]])
     if mod2 != 0: picto_mods.add(VCM_LEXICON[mod2])
     if mod3 != 0: picto_mods.add(VCM_LEXICON[mod3])
-    
-    if picto_mods == set([VCM_LEXICON[571], VCM_LEXICON[533], VCM_LEXICON[506]]):
-      print(picto, mod1, mod2, mod3)
-      bpzefjop
     yield picto_mods
     
 #list(picto_mods_consistents_gen())
@@ -561,7 +562,7 @@ _NON_INFORMATIVE = set([
   VCM_CONCEPT[446], # Trouble_fonctionnel
   VCM_CONCEPT[437], # Trouble_anatomique
   VCM_CONCEPT[442], # Trouble_anatomique_quantitatif
-  VCM_CONCEPT[447], # Trouble_fonctionnelle_quantitati
+  VCM_CONCEPT[447], # Trouble_fonctionnelle_quantitatif
   VCM_CONCEPT[444], # Trouble_dune_caractéristique_patient
   VCM_CONCEPT[445], # Trouble_dune_caractéristique_patient_quantitatif
   VCM_CONCEPT[487], # Étiologie
@@ -581,7 +582,7 @@ def simplify_concepts(cons):
   cons.remove_complete_families()
   cons.difference_update(_NON_INFORMATIVE)
   return cons
-    
+  
   
 if "--sens" in sys.argv:
   pymedtermino.vcm.db_consistency_cursor.execute(u"DROP TABLE IF EXISTS PictoModsSens;")
@@ -594,6 +595,12 @@ CREATE TABLE PictoModsSens(
   concept INTEGER
 );""")
   
+
+
+  #def picto_mods_consistents_gen():
+  #  yield set([VCM_LEXICON[2, "glande_diabete"], VCM_LEXICON[1, "patho"]])
+    
+    
   combinaisons = picto_mods_consistents_gen()
   
   nb  = 0
@@ -606,8 +613,13 @@ CREATE TABLE PictoModsSens(
       try: picto_mod = next(combinaisons)
       except StopIteration: break
       
-      picto_mod_cons = (VCM_LEXICON >> VCM_CONCEPT)(picto_mod)
-      picto_mod_cons.keep_most_generic()
+      picto_mod_cons = Concepts()
+      for lex in picto_mod:
+        lex_cons = lex >> VCM_CONCEPT
+        lex_cons.keep_most_generic()
+        picto_mod_cons.update(lex_cons)
+      #picto_mod_cons = (VCM_LEXICON >> VCM_CONCEPT)(picto_mod)
+      #picto_mod_cons.keep_most_generic()
       
       name = lexs_2_owl(picto_mod)
       owl_file.names[name] = picto_mod, picto_mod_cons
@@ -629,14 +641,14 @@ CREATE TABLE PictoModsSens(
       for con in picto_mod_cons:
         if ("%s_SEARCH_icon_repr_%s" % (name, con.code)) in inconsistents: continue
         cons.add(con)
-
+        
       cons  = cons.subtract(VCM_CONCEPT[426]) # Temporality
       cons  = cons.subtract(VCM_CONCEPT[214]) # Medical_care
       cons  = cons.subtract(VCM_CONCEPT[ 85]) # Medical_context
       cons  = simplify_concepts(cons)
       for con in cons:
         pymedtermino.vcm.db_consistency_cursor.execute(u"""INSERT INTO PictoModsSens VALUES (?, ?, ?, ?, ?);""", picto_mods + [con.code])
-    
+        
   main_loop(creer_nouveau_fichier, analyser_incoherences)
   print(nb, file = sys.stderr)
 

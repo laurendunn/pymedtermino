@@ -90,6 +90,22 @@ if ("build" in sys.argv) or ("install" in sys.argv):
     if do(cmd) != 0: failed(os.path.join(HERE, "icd10.sqlite3"))
     
   if BUILD_VCM and (not os.path.exists(os.path.join(HERE, "vcm_concept.sqlite3"))):
+    """
+    python ./pymedtermino/scripts/import_vcm_concept.py 
+    python ./pymedtermino/scripts/import_vcm_lexicon.py 
+    python ./pymedtermino/scripts/build_vcm_concept_monoaxial.py 
+    python ./pymedtermino/scripts/import_vcm_concept_monoaxial.py 
+    python ./pymedtermino/scripts/import_vcm_mappings.py 
+    python ./pymedtermino/scripts/build_vcm_search_concept.py 
+    python ./pymedtermino/scripts/build_vcm_repr.py 
+
+    python ./pymedtermino/scripts/build_vcm_consistency.py --pairs
+    python ./pymedtermino/scripts/build_vcm_consistency.py --picto-mods
+    python ./pymedtermino/scripts/build_vcm_consistency.py --icons
+    python ./pymedtermino/scripts/build_vcm_consistency.py --sens
+    python ./pymedtermino/scripts/build_vcm_consistency.py --picto-mods
+    """
+    
     cmd = sys.executable + ' %s%sscripts%simport_vcm_concept.py' % (HERE, os.sep, os.sep)
     if do(cmd) != 0: failed(os.path.join(HERE, "vcm_concept.sqlite3"))
     cmd = sys.executable + ' %s%sscripts%simport_vcm_lexicon.py' % (HERE, os.sep, os.sep)

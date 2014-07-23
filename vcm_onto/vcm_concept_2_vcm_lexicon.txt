@@ -28,7 +28,6 @@
 475 == 604   # Vomissement == Pictogramme_nausee
 190 == 516   # Infection_parasitaire == Modificateur_parasite
 117 == 563   # Fonction_de_régulation_de_la_calcémie == Pictogramme_calcemie
-135 == 616   # Fonction_de_régulation_parathyroïdienne == Pictogramme_thyroide
 429 == 708   # Traitement_hygiéno_diététique == Exposant_alimentation
 64 == 674   # Consommation_de_tabac == Pictogramme_tabac
 78 == 530   # Douleur == Modificateur_douleur
@@ -206,7 +205,6 @@
 380 == 620   # Structure_nerveuse_centrale == Pictogramme_cerveau
 228 == 657   # Région_de_la_tête == Pictogramme_tete
 179 == 507   # Hyperfonctionnement_violent == Modificateur_hyper2
-395 == 616   # Structure_parathyroïdienne == Pictogramme_thyroide
 285 == 595   # Structure_de_la_gencive == Pictogramme_dent_gencive
 205 == 663   # Nourrisson == Pictogramme_nourrisson
 420 == 637   # Structure_visuelle == Pictogramme_oeil
@@ -273,7 +271,6 @@
 206+336 == 619   # Obstruction+Structure_endocrine_génitale == Pictogramme_glande_bouche
 206+341 == 619   # Obstruction+Structure_hypophysaire == Pictogramme_glande_bouche
 206+394 == 619   # Obstruction+Structure_pancréatique == Pictogramme_glande_bouche
-206+395 == 619   # Obstruction+Structure_parathyroïdienne == Pictogramme_glande_bouche
 206+410 == 619   # Obstruction+Structure_surrénale == Pictogramme_glande_bouche
 206+413 == 619   # Obstruction+Structure_thyroïdienne == Pictogramme_glande_bouche
 206+322 == 600   # Obstruction+Structure_des_voies_respiratoires_supérieures == Pictogramme_gorge_nez_bouche

@@ -419,7 +419,7 @@ if __name__ == "__main__":
     
     #t = SNOMEDCT[41553006]
     
-    t = SNOMEDCT[48868008]
+    t = SNOMEDCT[473011001]
     
     #t = SNOMEDCT[87666009]
     

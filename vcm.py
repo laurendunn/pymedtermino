@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # PyMedTermino
-# Copyright (C) 2012-2013 Jean-Baptiste LAMY
+# Copyright (C) 2012-2014 Jean-Baptiste LAMY
 # LIMICS (Laboratoire d'informatique médicale et d'ingénierie des connaissances en santé), UMR_S 1142
 # University Paris 13, Sorbonne paris-Cité, Bobigny, France
 
@@ -602,9 +602,21 @@ class VCMIcon(pymedtermino.MultiaxialConcept, pymedtermino._StringCodeConcept):
     elif attr == "transverse":
       self.transverse = self.modifiers.find(VCM_LEXICON.TRANSVERSE_MODIFIER)
       return self.transverse
-    
-    elif attr == "term": return u"" # XXX Au boulot Pascal !
-    
+      
+    elif attr == "label":
+      db_label_cursor.execute("SELECT term_en, term_fr FROM Label WHERE code=?", (self.code,))
+      r = db_label_cursor.fetchall()
+      if r:
+        self.label = { "en" : r[0][0], "fr" : r[0][1] }
+      else:
+        import pymedtermino.vcm_label as vcm_label
+        self.label = vcm_label.icon_2_label(self).langs
+      return self.label
+
+    elif attr == "term":
+      self.term = self.label.get(pymedtermino.LANGUAGE, "") or self.label["en"]
+      return self.term
+      
     elif attr == "parents":
       self.parents = []
       for lex in self.lexs:
@@ -703,8 +715,10 @@ class VCMIcon(pymedtermino.MultiaxialConcept, pymedtermino._StringCodeConcept):
       self.concepts.update([VCM_CONCEPT[code] for (code,) in picto_mods_concepts])
       if not (VCM_CONCEPT[15] in self.concepts): self.concepts.add(VCM_CONCEPT[450]) # Absence_de_trouble_pathologique, Trouble_pathologique
       return self.concepts
-    
+      
     raise AttributeError(attr)
+    
+  def get_translation(self, lang): return self.label[lang]
     
   def get_english_code(self):
     english_code = self.code.split(u"--")
@@ -798,8 +812,13 @@ VCM = VCM()
 
 db_consistency        = sql_module.connect(os.path.join(pymedtermino.DATA_DIR, "vcm_consistency.sqlite3"))
 db_consistency_cursor = db_consistency.cursor()
-db_consistency_cursor.execute("PRAGMA query_only = TRUE;")
 
+db_label              = sql_module.connect(os.path.join(pymedtermino.DATA_DIR, "vcm_label.sqlite3"))
+db_label_cursor       = db_label.cursor()
+if pymedtermino.READ_ONLY_DATABASE:
+  db_consistency_cursor.execute("PRAGMA query_only = TRUE;")
+  db_label_cursor      .execute("PRAGMA query_only = TRUE;")
+  
 
 class VCM_LEXICON_2_VCMMapping(pymedtermino.Mapping):
   def __init__(self): pymedtermino.Mapping.__init__(self, VCM_LEXICON, VCM)

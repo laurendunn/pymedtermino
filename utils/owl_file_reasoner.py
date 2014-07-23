@@ -20,6 +20,7 @@
 from __future__ import print_function
 
 import sys, os, fcntl, time, subprocess
+import ontopy.owl
 
 from pymedtermino.utils.db import *
 
@@ -107,7 +108,8 @@ class OWLFile(object):
     self.file.close()
     self.on_ended   = on_ended
     self.start_time = time.time()
-    cl = "hermit.sh -U -N %s" % self.name
+    #cl = "hermit.sh -U -N %s" % self.name
+    cl = "java -Xmx2000M -cp %s org.semanticweb.HermiT.cli.CommandLine -U -N %s" % (ontopy.owl._HERMIT_CLASSPATH, self.name)
     print(cl, file = sys.stderr)
     self.popen = subprocess.Popen(cl, shell = 1, stdout = subprocess.PIPE)
     fcntl.fcntl(self.popen.stdout, fcntl.F_SETFL, fcntl.fcntl(self.popen.stdout, fcntl.F_GETFL) | os.O_NONBLOCK)
