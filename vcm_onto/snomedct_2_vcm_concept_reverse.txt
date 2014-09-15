@@ -32,6 +32,7 @@
 450 ~= 131182003  # Trouble_pathologique ~= Visual alteration (finding)
 163 ~= 131182003  # Fonction_visuelle ~= Visual alteration (finding)
 263 ~~ 91159003 61942001 361533001  # Structure_auditive ~~ Structure of auditory system (body structure) Auricular region structure (body structure) Structure of vestibular system (body structure)
+543 == 11881003 # Pavillon_de_loreille == Perichondrium
 403 ~~ 20139000   # Structure_respiratoire ~~ Structure of respiratory system (body structure)
 264 ~~ 955009 91724006   # Structure_bronchique ~~ Bronchial structure (body structure) Tracheobronchial structure (body structure)
 295 ~~ 116006008   # Structure_de_la_plèvre ~~ Pleural sac structure (body structure)

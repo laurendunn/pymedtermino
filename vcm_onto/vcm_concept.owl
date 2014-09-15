@@ -652,12 +652,6 @@
         <rdfs:subClassOf rdf:resource="&vcm_concept;96"/>
         <rdfs:subClassOf rdf:resource="&vcm_concept;99"/>
         <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&vcm_concept;2"/>
-                <owl:someValuesFrom rdf:resource="&vcm_concept;418"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
             <owl:Class>
                 <owl:complementOf>
                     <owl:Restriction>
@@ -671,6 +665,12 @@
                     </owl:Restriction>
                 </owl:complementOf>
             </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&vcm_concept;2"/>
+                <owl:someValuesFrom rdf:resource="&vcm_concept;418"/>
+            </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:comment xml:lang="en">Include &quot;arterial pressure&quot;, &quot;blood pressure&quot;.</rdfs:comment>
         <rdfs:comment xml:lang="fr">Inclut &quot;pression artérielle&quot;, &quot;tension artérielle&quot;.</rdfs:comment>
@@ -1107,6 +1107,12 @@
         <rdfs:subClassOf rdf:resource="&vcm_concept;95"/>
         <rdfs:subClassOf rdf:resource="&vcm_concept;99"/>
         <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&vcm_concept;2"/>
+                <owl:someValuesFrom rdf:resource="&vcm_concept;414"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
             <owl:Class>
                 <owl:complementOf>
                     <owl:Restriction>
@@ -1127,12 +1133,6 @@
                     </owl:Restriction>
                 </owl:complementOf>
             </owl:Class>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&vcm_concept;2"/>
-                <owl:someValuesFrom rdf:resource="&vcm_concept;414"/>
-            </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:comment xml:lang="en">Include &quot;metabolism&quot;.</rdfs:comment>
         <rdfs:comment xml:lang="fr">Inclut &quot;métabolisme&quot;.</rdfs:comment>
@@ -1190,12 +1190,6 @@
         <rdfs:subClassOf rdf:resource="&vcm_concept;96"/>
         <rdfs:subClassOf rdf:resource="&vcm_concept;97"/>
         <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&vcm_concept;2"/>
-                <owl:someValuesFrom rdf:resource="&vcm_concept;381"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
             <owl:Class>
                 <owl:complementOf>
                     <owl:Restriction>
@@ -1209,6 +1203,12 @@
                     </owl:Restriction>
                 </owl:complementOf>
             </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&vcm_concept;2"/>
+                <owl:someValuesFrom rdf:resource="&vcm_concept;381"/>
+            </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
     
@@ -1279,7 +1279,7 @@
                         <owl:complementOf>
                             <owl:Restriction>
                                 <owl:onProperty rdf:resource="&vcm_concept;13"/>
-                                <owl:someValuesFrom rdf:resource="&vcm_concept;98"/>
+                                <owl:someValuesFrom rdf:resource="&vcm_concept;256"/>
                             </owl:Restriction>
                         </owl:complementOf>
                     </owl:Class>
@@ -1294,7 +1294,7 @@
                         <owl:complementOf>
                             <owl:Restriction>
                                 <owl:onProperty rdf:resource="&vcm_concept;13"/>
-                                <owl:someValuesFrom rdf:resource="&vcm_concept;256"/>
+                                <owl:someValuesFrom rdf:resource="&vcm_concept;98"/>
                             </owl:Restriction>
                         </owl:complementOf>
                     </owl:Class>
@@ -1954,12 +1954,6 @@
         <rdfs:subClassOf rdf:resource="&vcm_concept;450"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&vcm_concept;6"/>
-                <owl:someValuesFrom rdf:resource="&vcm_concept;176"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
                 <owl:onProperty rdf:resource="&vcm_concept;5"/>
                 <owl:allValuesFrom>
                     <owl:Class>
@@ -1971,6 +1965,12 @@
                         </owl:complementOf>
                     </owl:Class>
                 </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&vcm_concept;6"/>
+                <owl:someValuesFrom rdf:resource="&vcm_concept;176"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:comment xml:lang="en">Include genetic and congenital malformations; exclude acquired malformations.</rdfs:comment>
@@ -2224,14 +2224,8 @@
                 <owl:allValuesFrom>
                     <owl:Restriction>
                         <owl:onProperty rdf:resource="&vcm_concept;13"/>
-                        <owl:someValuesFrom>
-                            <owl:Class>
-                                <owl:unionOf rdf:parseType="Collection">
-                                    <rdf:Description rdf:about="&vcm_concept;21"/>
-                                    <rdf:Description rdf:about="&vcm_concept;436"/>
-                                </owl:unionOf>
-                            </owl:Class>
-                        </owl:someValuesFrom>
+                        <owl:onClass rdf:resource="&vcm_concept;436"/>
+                        <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
                     </owl:Restriction>
                 </owl:allValuesFrom>
             </owl:Restriction>
@@ -2242,8 +2236,14 @@
                 <owl:allValuesFrom>
                     <owl:Restriction>
                         <owl:onProperty rdf:resource="&vcm_concept;13"/>
-                        <owl:onClass rdf:resource="&vcm_concept;436"/>
-                        <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                        <owl:someValuesFrom>
+                            <owl:Class>
+                                <owl:unionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="&vcm_concept;21"/>
+                                    <rdf:Description rdf:about="&vcm_concept;436"/>
+                                </owl:unionOf>
+                            </owl:Class>
+                        </owl:someValuesFrom>
                     </owl:Restriction>
                 </owl:allValuesFrom>
             </owl:Restriction>
@@ -2739,8 +2739,8 @@
         <rdfs:subClassOf>
             <owl:Class>
                 <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&vcm_concept;252"/>
-                    <rdf:Description rdf:about="&vcm_concept;254"/>
+                    <rdf:Description rdf:about="&vcm_concept;256"/>
+                    <rdf:Description rdf:about="&vcm_concept;258"/>
                 </owl:unionOf>
             </owl:Class>
         </rdfs:subClassOf>
@@ -2757,8 +2757,8 @@
         <rdfs:subClassOf>
             <owl:Class>
                 <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&vcm_concept;257"/>
-                    <rdf:Description rdf:about="&vcm_concept;259"/>
+                    <rdf:Description rdf:about="&vcm_concept;252"/>
+                    <rdf:Description rdf:about="&vcm_concept;254"/>
                 </owl:unionOf>
             </owl:Class>
         </rdfs:subClassOf>
@@ -2773,8 +2773,8 @@
         <rdfs:subClassOf>
             <owl:Class>
                 <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&vcm_concept;256"/>
-                    <rdf:Description rdf:about="&vcm_concept;258"/>
+                    <rdf:Description rdf:about="&vcm_concept;257"/>
+                    <rdf:Description rdf:about="&vcm_concept;259"/>
                 </owl:unionOf>
             </owl:Class>
         </rdfs:subClassOf>
@@ -4589,14 +4589,6 @@
         <rdfs:subClassOf>
             <owl:Class>
                 <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&vcm_concept;41"/>
-                    <rdf:Description rdf:about="&vcm_concept;44"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
                     <rdf:Description rdf:about="&vcm_concept;40"/>
                     <rdf:Description rdf:about="&vcm_concept;42"/>
                     <rdf:Description rdf:about="&vcm_concept;43"/>
@@ -4608,6 +4600,14 @@
                 <owl:unionOf rdf:parseType="Collection">
                     <rdf:Description rdf:about="&vcm_concept;39"/>
                     <rdf:Description rdf:about="&vcm_concept;61"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&vcm_concept;41"/>
+                    <rdf:Description rdf:about="&vcm_concept;44"/>
                 </owl:unionOf>
             </owl:Class>
         </rdfs:subClassOf>
@@ -5446,6 +5446,15 @@
         <rdfs:subClassOf>
             <owl:Class>
                 <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&vcm_concept;437"/>
+                    <rdf:Description rdf:about="&vcm_concept;444"/>
+                    <rdf:Description rdf:about="&vcm_concept;446"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
                     <rdf:Description rdf:about="&vcm_concept;449"/>
                     <rdf:Description rdf:about="&vcm_concept;452"/>
                 </owl:unionOf>
@@ -5456,15 +5465,6 @@
                 <owl:unionOf rdf:parseType="Collection">
                     <rdf:Description rdf:about="&vcm_concept;448"/>
                     <rdf:Description rdf:about="&vcm_concept;450"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&vcm_concept;437"/>
-                    <rdf:Description rdf:about="&vcm_concept;444"/>
-                    <rdf:Description rdf:about="&vcm_concept;446"/>
                 </owl:unionOf>
             </owl:Class>
         </rdfs:subClassOf>
@@ -5904,6 +5904,27 @@
                 <owl:onProperty rdf:resource="&vcm_concept;5"/>
                 <owl:allValuesFrom>
                     <owl:Restriction>
+                        <owl:onProperty rdf:resource="&vcm_concept;13"/>
+                        <owl:onClass>
+                            <owl:Class>
+                                <owl:intersectionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="&vcm_concept;450"/>
+                                    <owl:Class>
+                                        <owl:complementOf rdf:resource="&vcm_concept;443"/>
+                                    </owl:Class>
+                                </owl:intersectionOf>
+                            </owl:Class>
+                        </owl:onClass>
+                        <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                    </owl:Restriction>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&vcm_concept;5"/>
+                <owl:allValuesFrom>
+                    <owl:Restriction>
                         <owl:onProperty rdf:resource="&vcm_concept;11"/>
                         <owl:someValuesFrom rdf:resource="&vcm_concept;94"/>
                     </owl:Restriction>
@@ -5919,27 +5940,6 @@
                         <owl:someValuesFrom rdf:resource="&vcm_concept;94"/>
                     </owl:Restriction>
                 </owl:someValuesFrom>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&vcm_concept;5"/>
-                <owl:allValuesFrom>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="&vcm_concept;13"/>
-                        <owl:onClass>
-                            <owl:Class>
-                                <owl:intersectionOf rdf:parseType="Collection">
-                                    <rdf:Description rdf:about="&vcm_concept;450"/>
-                                    <owl:Class>
-                                        <owl:complementOf rdf:resource="&vcm_concept;443"/>
-                                    </owl:Class>
-                                </owl:intersectionOf>
-                            </owl:Class>
-                        </owl:onClass>
-                        <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
-                    </owl:Restriction>
-                </owl:allValuesFrom>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -6017,17 +6017,6 @@
         <rdfs:subClassOf rdf:resource="&vcm_concept;453"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&vcm_concept;4"/>
-                <owl:someValuesFrom>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="&vcm_concept;11"/>
-                        <owl:someValuesFrom rdf:resource="&vcm_concept;103"/>
-                    </owl:Restriction>
-                </owl:someValuesFrom>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
                 <owl:onProperty rdf:resource="&vcm_concept;5"/>
                 <owl:allValuesFrom>
                     <owl:Restriction>
@@ -6035,6 +6024,17 @@
                         <owl:someValuesFrom rdf:resource="&vcm_concept;103"/>
                     </owl:Restriction>
                 </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&vcm_concept;4"/>
+                <owl:someValuesFrom>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&vcm_concept;11"/>
+                        <owl:someValuesFrom rdf:resource="&vcm_concept;103"/>
+                    </owl:Restriction>
+                </owl:someValuesFrom>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -6049,17 +6049,6 @@
         <rdfs:subClassOf rdf:resource="&vcm_concept;453"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&vcm_concept;5"/>
-                <owl:allValuesFrom>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="&vcm_concept;11"/>
-                        <owl:someValuesFrom rdf:resource="&vcm_concept;145"/>
-                    </owl:Restriction>
-                </owl:allValuesFrom>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
                 <owl:onProperty rdf:resource="&vcm_concept;4"/>
                 <owl:someValuesFrom>
                     <owl:Restriction>
@@ -6067,6 +6056,17 @@
                         <owl:someValuesFrom rdf:resource="&vcm_concept;145"/>
                     </owl:Restriction>
                 </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&vcm_concept;5"/>
+                <owl:allValuesFrom>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&vcm_concept;11"/>
+                        <owl:someValuesFrom rdf:resource="&vcm_concept;145"/>
+                    </owl:Restriction>
+                </owl:allValuesFrom>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -6081,17 +6081,6 @@
         <rdfs:subClassOf rdf:resource="&vcm_concept;453"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&vcm_concept;4"/>
-                <owl:someValuesFrom>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="&vcm_concept;11"/>
-                        <owl:someValuesFrom rdf:resource="&vcm_concept;158"/>
-                    </owl:Restriction>
-                </owl:someValuesFrom>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
                 <owl:onProperty rdf:resource="&vcm_concept;5"/>
                 <owl:allValuesFrom>
                     <owl:Restriction>
@@ -6099,6 +6088,17 @@
                         <owl:someValuesFrom rdf:resource="&vcm_concept;158"/>
                     </owl:Restriction>
                 </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&vcm_concept;4"/>
+                <owl:someValuesFrom>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&vcm_concept;11"/>
+                        <owl:someValuesFrom rdf:resource="&vcm_concept;158"/>
+                    </owl:Restriction>
+                </owl:someValuesFrom>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -6190,28 +6190,13 @@
         <rdfs:subClassOf rdf:resource="&vcm_concept;454"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&vcm_concept;5"/>
-                <owl:allValuesFrom>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="&vcm_concept;13"/>
-                        <owl:allValuesFrom>
-                            <owl:Class>
-                                <owl:complementOf rdf:resource="&vcm_concept;100"/>
-                            </owl:Class>
-                        </owl:allValuesFrom>
-                    </owl:Restriction>
-                </owl:allValuesFrom>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&vcm_concept;5"/>
-                <owl:allValuesFrom>
+                <owl:onProperty rdf:resource="&vcm_concept;4"/>
+                <owl:someValuesFrom>
                     <owl:Restriction>
                         <owl:onProperty rdf:resource="&vcm_concept;12"/>
                         <owl:someValuesFrom rdf:resource="&vcm_concept;335"/>
                     </owl:Restriction>
-                </owl:allValuesFrom>
+                </owl:someValuesFrom>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -6231,13 +6216,28 @@
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&vcm_concept;4"/>
-                <owl:someValuesFrom>
+                <owl:onProperty rdf:resource="&vcm_concept;5"/>
+                <owl:allValuesFrom>
                     <owl:Restriction>
                         <owl:onProperty rdf:resource="&vcm_concept;12"/>
                         <owl:someValuesFrom rdf:resource="&vcm_concept;335"/>
                     </owl:Restriction>
-                </owl:someValuesFrom>
+                </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&vcm_concept;5"/>
+                <owl:allValuesFrom>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&vcm_concept;13"/>
+                        <owl:allValuesFrom>
+                            <owl:Class>
+                                <owl:complementOf rdf:resource="&vcm_concept;100"/>
+                            </owl:Class>
+                        </owl:allValuesFrom>
+                    </owl:Restriction>
+                </owl:allValuesFrom>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -6316,17 +6316,6 @@
         <rdfs:subClassOf rdf:resource="&vcm_concept;454"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&vcm_concept;5"/>
-                <owl:allValuesFrom>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="&vcm_concept;12"/>
-                        <owl:someValuesFrom rdf:resource="&vcm_concept;380"/>
-                    </owl:Restriction>
-                </owl:allValuesFrom>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
                 <owl:onProperty rdf:resource="&vcm_concept;4"/>
                 <owl:someValuesFrom>
                     <owl:Restriction>
@@ -6334,6 +6323,17 @@
                         <owl:someValuesFrom rdf:resource="&vcm_concept;380"/>
                     </owl:Restriction>
                 </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&vcm_concept;5"/>
+                <owl:allValuesFrom>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&vcm_concept;12"/>
+                        <owl:someValuesFrom rdf:resource="&vcm_concept;380"/>
+                    </owl:Restriction>
+                </owl:allValuesFrom>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -6348,17 +6348,6 @@
         <rdfs:subClassOf rdf:resource="&vcm_concept;460"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&vcm_concept;5"/>
-                <owl:allValuesFrom>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="&vcm_concept;12"/>
-                        <owl:someValuesFrom rdf:resource="&vcm_concept;384"/>
-                    </owl:Restriction>
-                </owl:allValuesFrom>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
                 <owl:onProperty rdf:resource="&vcm_concept;4"/>
                 <owl:someValuesFrom>
                     <owl:Restriction>
@@ -6366,6 +6355,17 @@
                         <owl:someValuesFrom rdf:resource="&vcm_concept;384"/>
                     </owl:Restriction>
                 </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&vcm_concept;5"/>
+                <owl:allValuesFrom>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&vcm_concept;12"/>
+                        <owl:someValuesFrom rdf:resource="&vcm_concept;384"/>
+                    </owl:Restriction>
+                </owl:allValuesFrom>
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&vcm_concept;467"/>
@@ -6413,17 +6413,6 @@
         <rdfs:subClassOf rdf:resource="&vcm_concept;460"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&vcm_concept;4"/>
-                <owl:someValuesFrom>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="&vcm_concept;12"/>
-                        <owl:someValuesFrom rdf:resource="&vcm_concept;409"/>
-                    </owl:Restriction>
-                </owl:someValuesFrom>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
                 <owl:onProperty rdf:resource="&vcm_concept;5"/>
                 <owl:allValuesFrom>
                     <owl:Restriction>
@@ -6431,6 +6420,17 @@
                         <owl:someValuesFrom rdf:resource="&vcm_concept;409"/>
                     </owl:Restriction>
                 </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&vcm_concept;4"/>
+                <owl:someValuesFrom>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&vcm_concept;12"/>
+                        <owl:someValuesFrom rdf:resource="&vcm_concept;409"/>
+                    </owl:Restriction>
+                </owl:someValuesFrom>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -6478,17 +6478,6 @@
         <rdfs:subClassOf rdf:resource="&vcm_concept;454"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&vcm_concept;4"/>
-                <owl:someValuesFrom>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="&vcm_concept;12"/>
-                        <owl:someValuesFrom rdf:resource="&vcm_concept;420"/>
-                    </owl:Restriction>
-                </owl:someValuesFrom>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
                 <owl:onProperty rdf:resource="&vcm_concept;5"/>
                 <owl:allValuesFrom>
                     <owl:Restriction>
@@ -6496,6 +6485,17 @@
                         <owl:someValuesFrom rdf:resource="&vcm_concept;420"/>
                     </owl:Restriction>
                 </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&vcm_concept;4"/>
+                <owl:someValuesFrom>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&vcm_concept;12"/>
+                        <owl:someValuesFrom rdf:resource="&vcm_concept;420"/>
+                    </owl:Restriction>
+                </owl:someValuesFrom>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -6646,13 +6646,6 @@
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&vcm_concept;13"/>
-                <owl:onClass rdf:resource="&vcm_concept;202"/>
-                <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&vcm_concept;13"/>
                 <owl:allValuesFrom>
                     <owl:Class>
                         <owl:unionOf rdf:parseType="Collection">
@@ -6662,6 +6655,13 @@
                         </owl:unionOf>
                     </owl:Class>
                 </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&vcm_concept;13"/>
+                <owl:onClass rdf:resource="&vcm_concept;202"/>
+                <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&vcm_concept;485"/>
@@ -6725,11 +6725,12 @@
         </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="&vcm_concept;485"/>
         <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&vcm_concept;13"/>
-                <owl:onClass rdf:resource="&vcm_concept;94"/>
-                <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
-            </owl:Restriction>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&vcm_concept;481"/>
+                    <rdf:Description rdf:about="&vcm_concept;482"/>
+                </owl:unionOf>
+            </owl:Class>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
@@ -6738,12 +6739,11 @@
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&vcm_concept;481"/>
-                    <rdf:Description rdf:about="&vcm_concept;482"/>
-                </owl:unionOf>
-            </owl:Class>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&vcm_concept;13"/>
+                <owl:onClass rdf:resource="&vcm_concept;94"/>
+                <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+            </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
     
@@ -6801,6 +6801,12 @@
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&vcm_concept;12"/>
+                <owl:someValuesFrom rdf:resource="&vcm_concept;256"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
             <owl:Class>
                 <owl:complementOf>
                     <owl:Restriction>
@@ -6809,12 +6815,6 @@
                     </owl:Restriction>
                 </owl:complementOf>
             </owl:Class>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&vcm_concept;12"/>
-                <owl:someValuesFrom rdf:resource="&vcm_concept;256"/>
-            </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
     
@@ -6856,15 +6856,8 @@
         <rdfs:subClassOf rdf:resource="&vcm_concept;485"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&vcm_concept;8"/>
-                <owl:allValuesFrom rdf:resource="&vcm_concept;437"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&vcm_concept;13"/>
-                <owl:onClass rdf:resource="&vcm_concept;258"/>
-                <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onProperty rdf:resource="&vcm_concept;12"/>
+                <owl:someValuesFrom rdf:resource="&vcm_concept;251"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -6876,8 +6869,15 @@
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&vcm_concept;12"/>
-                <owl:someValuesFrom rdf:resource="&vcm_concept;251"/>
+                <owl:onProperty rdf:resource="&vcm_concept;8"/>
+                <owl:allValuesFrom rdf:resource="&vcm_concept;437"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&vcm_concept;13"/>
+                <owl:onClass rdf:resource="&vcm_concept;258"/>
+                <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:maxQualifiedCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -6935,6 +6935,14 @@
             </owl:Class>
         </owl:equivalentClass>
         <rdfs:subClassOf>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&vcm_concept;484"/>
+                    <rdf:Description rdf:about="&vcm_concept;486"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&vcm_concept;13"/>
                 <owl:onClass rdf:resource="&vcm_concept;214"/>
@@ -6960,20 +6968,6 @@
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&vcm_concept;484"/>
-                    <rdf:Description rdf:about="&vcm_concept;486"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&vcm_concept;7"/>
-                <owl:someValuesFrom rdf:resource="&vcm_concept;426"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&vcm_concept;7"/>
                 <owl:onClass rdf:resource="&vcm_concept;426"/>
@@ -6988,6 +6982,12 @@
                     <rdf:Description rdf:about="&vcm_concept;483"/>
                 </owl:unionOf>
             </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&vcm_concept;7"/>
+                <owl:someValuesFrom rdf:resource="&vcm_concept;426"/>
+            </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
     
@@ -7741,6 +7741,17 @@
     
 
 
+    <!-- http://localhost/~jiba/vcm_onto/vcm_concept.owl#543 -->
+
+    <owl:Class rdf:about="&vcm_concept;543">
+        <rdfs:label xml:lang="en">Perichondrium</rdfs:label>
+        <rdfs:label xml:lang="fr">Pavillon_de_loreille</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&vcm_concept;263"/>
+        <rdfs:subClassOf rdf:resource="&vcm_concept;490"/>
+    </owl:Class>
+    
+
+
     <!-- http://localhost/~jiba/vcm_onto/vcm_concept.owl#55 -->
 
     <owl:Class rdf:about="&vcm_concept;55">
@@ -7829,6 +7840,12 @@ Ex : un kyste embryonaire est à la fois un kyste et une malformation congénita
         <rdfs:subClassOf rdf:resource="&vcm_concept;42"/>
         <rdfs:subClassOf rdf:resource="&vcm_concept;61"/>
         <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&vcm_concept;6"/>
+                <owl:someValuesFrom rdf:resource="&vcm_concept;103"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
             <owl:Class>
                 <owl:complementOf>
                     <owl:Restriction>
@@ -7842,12 +7859,6 @@ Ex : un kyste embryonaire est à la fois un kyste et une malformation congénita
                     </owl:Restriction>
                 </owl:complementOf>
             </owl:Class>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&vcm_concept;6"/>
-                <owl:someValuesFrom rdf:resource="&vcm_concept;103"/>
-            </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
@@ -7873,6 +7884,12 @@ Ex : un kyste embryonaire est à la fois un kyste et une malformation congénita
         <rdfs:subClassOf rdf:resource="&vcm_concept;43"/>
         <rdfs:subClassOf rdf:resource="&vcm_concept;61"/>
         <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&vcm_concept;6"/>
+                <owl:someValuesFrom rdf:resource="&vcm_concept;47"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
             <owl:Class>
                 <owl:complementOf>
                     <owl:Restriction>
@@ -7891,12 +7908,6 @@ Ex : un kyste embryonaire est à la fois un kyste et une malformation congénita
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&vcm_concept;6"/>
                 <owl:someValuesFrom rdf:resource="&vcm_concept;103"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&vcm_concept;6"/>
-                <owl:someValuesFrom rdf:resource="&vcm_concept;47"/>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -7913,12 +7924,6 @@ Ex : un kyste embryonaire est à la fois un kyste et une malformation congénita
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&vcm_concept;6"/>
-                <owl:someValuesFrom rdf:resource="&vcm_concept;103"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&vcm_concept;6"/>
                 <owl:someValuesFrom rdf:resource="&vcm_concept;47"/>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -7936,6 +7941,12 @@ Ex : un kyste embryonaire est à la fois un kyste et une malformation congénita
                     </owl:Restriction>
                 </owl:complementOf>
             </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&vcm_concept;6"/>
+                <owl:someValuesFrom rdf:resource="&vcm_concept;103"/>
+            </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
@@ -7969,17 +7980,6 @@ Ex : un kyste embryonaire est à la fois un kyste et une malformation congénita
         <rdfs:subClassOf rdf:resource="&vcm_concept;461"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&vcm_concept;4"/>
-                <owl:someValuesFrom>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="&vcm_concept;12"/>
-                        <owl:someValuesFrom rdf:resource="&vcm_concept;335"/>
-                    </owl:Restriction>
-                </owl:someValuesFrom>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
                 <owl:onProperty rdf:resource="&vcm_concept;5"/>
                 <owl:allValuesFrom>
                     <owl:Restriction>
@@ -7987,6 +7987,17 @@ Ex : un kyste embryonaire est à la fois un kyste et une malformation congénita
                         <owl:someValuesFrom rdf:resource="&vcm_concept;335"/>
                     </owl:Restriction>
                 </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&vcm_concept;4"/>
+                <owl:someValuesFrom>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&vcm_concept;12"/>
+                        <owl:someValuesFrom rdf:resource="&vcm_concept;335"/>
+                    </owl:Restriction>
+                </owl:someValuesFrom>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -8281,6 +8292,12 @@ Ex : un kyste embryonaire est à la fois un kyste et une malformation congénita
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&vcm_concept;5"/>
+                <owl:allValuesFrom rdf:resource="&vcm_concept;480"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&vcm_concept;5"/>
                 <owl:allValuesFrom>
                     <owl:Restriction>
                         <owl:onProperty rdf:resource="&vcm_concept;13"/>
@@ -8296,12 +8313,6 @@ Ex : un kyste embryonaire est à la fois un kyste et une malformation congénita
                         </owl:someValuesFrom>
                     </owl:Restriction>
                 </owl:allValuesFrom>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&vcm_concept;5"/>
-                <owl:allValuesFrom rdf:resource="&vcm_concept;480"/>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -8380,14 +8391,6 @@ Ex : un kyste embryonaire est à la fois un kyste et une malformation congénita
         <rdfs:subClassOf>
             <owl:Class>
                 <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&vcm_concept;95"/>
-                    <rdf:Description rdf:about="&vcm_concept;96"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
                     <rdf:Description rdf:about="&vcm_concept;100"/>
                     <rdf:Description rdf:about="&vcm_concept;98"/>
                 </owl:unionOf>
@@ -8398,6 +8401,14 @@ Ex : un kyste embryonaire est à la fois un kyste et une malformation congénita
                 <owl:unionOf rdf:parseType="Collection">
                     <rdf:Description rdf:about="&vcm_concept;97"/>
                     <rdf:Description rdf:about="&vcm_concept;99"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&vcm_concept;95"/>
+                    <rdf:Description rdf:about="&vcm_concept;96"/>
                 </owl:unionOf>
             </owl:Class>
         </rdfs:subClassOf>
@@ -8469,51 +8480,37 @@ Ex : un kyste embryonaire est à la fois un kyste et une malformation congénita
     <rdf:Description>
         <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
         <owl:members rdf:parseType="Collection">
-            <rdf:Description rdf:about="&vcm_concept;177"/>
-            <rdf:Description rdf:about="&vcm_concept;180"/>
-            <rdf:Description rdf:about="&vcm_concept;29"/>
+            <rdf:Description rdf:about="&vcm_concept;274"/>
+            <rdf:Description rdf:about="&vcm_concept;391"/>
+            <rdf:Description rdf:about="&vcm_concept;392"/>
+            <rdf:Description rdf:about="&vcm_concept;419"/>
         </owl:members>
     </rdf:Description>
     <rdf:Description>
         <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
         <owl:members rdf:parseType="Collection">
-            <rdf:Description rdf:about="&vcm_concept;285"/>
-            <rdf:Description rdf:about="&vcm_concept;305"/>
-            <rdf:Description rdf:about="&vcm_concept;315"/>
+            <rdf:Description rdf:about="&vcm_concept;188"/>
+            <rdf:Description rdf:about="&vcm_concept;189"/>
+            <rdf:Description rdf:about="&vcm_concept;190"/>
+            <rdf:Description rdf:about="&vcm_concept;191"/>
         </owl:members>
     </rdf:Description>
     <rdf:Description>
         <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
         <owl:members rdf:parseType="Collection">
-            <rdf:Description rdf:about="&vcm_concept;104"/>
-            <rdf:Description rdf:about="&vcm_concept;105"/>
-            <rdf:Description rdf:about="&vcm_concept;107"/>
-            <rdf:Description rdf:about="&vcm_concept;112"/>
-            <rdf:Description rdf:about="&vcm_concept;139"/>
-            <rdf:Description rdf:about="&vcm_concept;140"/>
+            <rdf:Description rdf:about="&vcm_concept;319"/>
+            <rdf:Description rdf:about="&vcm_concept;330"/>
+            <rdf:Description rdf:about="&vcm_concept;399"/>
+            <rdf:Description rdf:about="&vcm_concept;408"/>
         </owl:members>
     </rdf:Description>
     <rdf:Description>
         <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
         <owl:members rdf:parseType="Collection">
-            <rdf:Description rdf:about="&vcm_concept;192"/>
-            <rdf:Description rdf:about="&vcm_concept;193"/>
-            <rdf:Description rdf:about="&vcm_concept;198"/>
-            <rdf:Description rdf:about="&vcm_concept;200"/>
-            <rdf:Description rdf:about="&vcm_concept;206"/>
-            <rdf:Description rdf:about="&vcm_concept;25"/>
-            <rdf:Description rdf:about="&vcm_concept;447"/>
-            <rdf:Description rdf:about="&vcm_concept;452"/>
-            <rdf:Description rdf:about="&vcm_concept;487"/>
-            <rdf:Description rdf:about="&vcm_concept;78"/>
-        </owl:members>
-    </rdf:Description>
-    <rdf:Description>
-        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
-        <owl:members rdf:parseType="Collection">
-            <rdf:Description rdf:about="&vcm_concept;135"/>
-            <rdf:Description rdf:about="&vcm_concept;136"/>
-            <rdf:Description rdf:about="&vcm_concept;35"/>
+            <rdf:Description rdf:about="&vcm_concept;242"/>
+            <rdf:Description rdf:about="&vcm_concept;75"/>
+            <rdf:Description rdf:about="&vcm_concept;76"/>
+            <rdf:Description rdf:about="&vcm_concept;77"/>
         </owl:members>
     </rdf:Description>
     <rdf:Description>
@@ -8529,49 +8526,9 @@ Ex : un kyste embryonaire est à la fois un kyste et une malformation congénita
     <rdf:Description>
         <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
         <owl:members rdf:parseType="Collection">
-            <rdf:Description rdf:about="&vcm_concept;176"/>
-            <rdf:Description rdf:about="&vcm_concept;187"/>
-            <rdf:Description rdf:about="&vcm_concept;27"/>
-            <rdf:Description rdf:about="&vcm_concept;34"/>
-            <rdf:Description rdf:about="&vcm_concept;46"/>
-            <rdf:Description rdf:about="&vcm_concept;470"/>
-            <rdf:Description rdf:about="&vcm_concept;488"/>
-            <rdf:Description rdf:about="&vcm_concept;489"/>
-        </owl:members>
-    </rdf:Description>
-    <rdf:Description>
-        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
-        <owl:members rdf:parseType="Collection">
-            <rdf:Description rdf:about="&vcm_concept;165"/>
-            <rdf:Description rdf:about="&vcm_concept;223"/>
-            <rdf:Description rdf:about="&vcm_concept;65"/>
-        </owl:members>
-    </rdf:Description>
-    <rdf:Description>
-        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
-        <owl:members rdf:parseType="Collection">
-            <rdf:Description rdf:about="&vcm_concept;304"/>
-            <rdf:Description rdf:about="&vcm_concept;332"/>
-            <rdf:Description rdf:about="&vcm_concept;354"/>
-        </owl:members>
-    </rdf:Description>
-    <rdf:Description>
-        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
-        <owl:members rdf:parseType="Collection">
-            <rdf:Description rdf:about="&vcm_concept;169"/>
-            <rdf:Description rdf:about="&vcm_concept;170"/>
-            <rdf:Description rdf:about="&vcm_concept;212"/>
-        </owl:members>
-    </rdf:Description>
-    <rdf:Description>
-        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
-        <owl:members rdf:parseType="Collection">
-            <rdf:Description rdf:about="&vcm_concept;333"/>
-            <rdf:Description rdf:about="&vcm_concept;341"/>
-            <rdf:Description rdf:about="&vcm_concept;394"/>
-            <rdf:Description rdf:about="&vcm_concept;395"/>
-            <rdf:Description rdf:about="&vcm_concept;410"/>
-            <rdf:Description rdf:about="&vcm_concept;413"/>
+            <rdf:Description rdf:about="&vcm_concept;171"/>
+            <rdf:Description rdf:about="&vcm_concept;186"/>
+            <rdf:Description rdf:about="&vcm_concept;81"/>
         </owl:members>
     </rdf:Description>
     <rdf:Description>
@@ -8590,81 +8547,43 @@ Ex : un kyste embryonaire est à la fois un kyste et une malformation congénita
     <rdf:Description>
         <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
         <owl:members rdf:parseType="Collection">
-            <rdf:Description rdf:about="&vcm_concept;205"/>
-            <rdf:Description rdf:about="&vcm_concept;209"/>
-            <rdf:Description rdf:about="&vcm_concept;24"/>
-            <rdf:Description rdf:about="&vcm_concept;82"/>
+            <rdf:Description rdf:about="&vcm_concept;211"/>
+            <rdf:Description rdf:about="&vcm_concept;30"/>
+            <rdf:Description rdf:about="&vcm_concept;74"/>
         </owl:members>
     </rdf:Description>
     <rdf:Description>
         <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
         <owl:members rdf:parseType="Collection">
-            <rdf:Description rdf:about="&vcm_concept;289"/>
-            <rdf:Description rdf:about="&vcm_concept;310"/>
-            <rdf:Description rdf:about="&vcm_concept;364"/>
+            <rdf:Description rdf:about="&vcm_concept;437"/>
+            <rdf:Description rdf:about="&vcm_concept;444"/>
+            <rdf:Description rdf:about="&vcm_concept;446"/>
         </owl:members>
     </rdf:Description>
     <rdf:Description>
         <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
         <owl:members rdf:parseType="Collection">
-            <rdf:Description rdf:about="&vcm_concept;314"/>
-            <rdf:Description rdf:about="&vcm_concept;333"/>
-            <rdf:Description rdf:about="&vcm_concept;341"/>
-            <rdf:Description rdf:about="&vcm_concept;394"/>
-            <rdf:Description rdf:about="&vcm_concept;395"/>
-            <rdf:Description rdf:about="&vcm_concept;410"/>
-            <rdf:Description rdf:about="&vcm_concept;413"/>
+            <rdf:Description rdf:about="&vcm_concept;304"/>
+            <rdf:Description rdf:about="&vcm_concept;332"/>
+            <rdf:Description rdf:about="&vcm_concept;354"/>
         </owl:members>
     </rdf:Description>
     <rdf:Description>
         <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
         <owl:members rdf:parseType="Collection">
-            <rdf:Description rdf:about="&vcm_concept;261"/>
-            <rdf:Description rdf:about="&vcm_concept;277"/>
-            <rdf:Description rdf:about="&vcm_concept;306"/>
-            <rdf:Description rdf:about="&vcm_concept;317"/>
-            <rdf:Description rdf:about="&vcm_concept;334"/>
-            <rdf:Description rdf:about="&vcm_concept;372"/>
-            <rdf:Description rdf:about="&vcm_concept;379"/>
-        </owl:members>
-    </rdf:Description>
-    <rdf:Description>
-        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
-        <owl:members rdf:parseType="Collection">
-            <rdf:Description rdf:about="&vcm_concept;319"/>
-            <rdf:Description rdf:about="&vcm_concept;330"/>
-            <rdf:Description rdf:about="&vcm_concept;399"/>
-            <rdf:Description rdf:about="&vcm_concept;408"/>
-        </owl:members>
-    </rdf:Description>
-    <rdf:Description>
-        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
-        <owl:members rdf:parseType="Collection">
-            <rdf:Description rdf:about="&vcm_concept;130"/>
-            <rdf:Description rdf:about="&vcm_concept;153"/>
-            <rdf:Description rdf:about="&vcm_concept;156"/>
-        </owl:members>
-    </rdf:Description>
-    <rdf:Description>
-        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
-        <owl:members rdf:parseType="Collection">
-            <rdf:Description rdf:about="&vcm_concept;196"/>
-            <rdf:Description rdf:about="&vcm_concept;224"/>
-            <rdf:Description rdf:about="&vcm_concept;414"/>
-            <rdf:Description rdf:about="&vcm_concept;51"/>
-        </owl:members>
-    </rdf:Description>
-    <rdf:Description>
-        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
-        <owl:members rdf:parseType="Collection">
-            <rdf:Description rdf:about="&vcm_concept;459"/>
-            <rdf:Description rdf:about="&vcm_concept;460"/>
-            <rdf:Description rdf:about="&vcm_concept;461"/>
-            <rdf:Description rdf:about="&vcm_concept;462"/>
-            <rdf:Description rdf:about="&vcm_concept;463"/>
-            <rdf:Description rdf:about="&vcm_concept;464"/>
-            <rdf:Description rdf:about="&vcm_concept;466"/>
-            <rdf:Description rdf:about="&vcm_concept;469"/>
+            <rdf:Description rdf:about="&vcm_concept;117"/>
+            <rdf:Description rdf:about="&vcm_concept;118"/>
+            <rdf:Description rdf:about="&vcm_concept;119"/>
+            <rdf:Description rdf:about="&vcm_concept;120"/>
+            <rdf:Description rdf:about="&vcm_concept;121"/>
+            <rdf:Description rdf:about="&vcm_concept;122"/>
+            <rdf:Description rdf:about="&vcm_concept;123"/>
+            <rdf:Description rdf:about="&vcm_concept;124"/>
+            <rdf:Description rdf:about="&vcm_concept;125"/>
+            <rdf:Description rdf:about="&vcm_concept;126"/>
+            <rdf:Description rdf:about="&vcm_concept;127"/>
+            <rdf:Description rdf:about="&vcm_concept;128"/>
+            <rdf:Description rdf:about="&vcm_concept;134"/>
         </owl:members>
     </rdf:Description>
     <rdf:Description>
@@ -8679,32 +8598,9 @@ Ex : un kyste embryonaire est à la fois un kyste et une malformation congénita
     <rdf:Description>
         <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
         <owl:members rdf:parseType="Collection">
-            <rdf:Description rdf:about="&vcm_concept;479"/>
-            <rdf:Description rdf:about="&vcm_concept;480"/>
-            <rdf:Description rdf:about="&vcm_concept;483"/>
-        </owl:members>
-    </rdf:Description>
-    <rdf:Description>
-        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
-        <owl:members rdf:parseType="Collection">
-            <rdf:Description rdf:about="&vcm_concept;202"/>
-            <rdf:Description rdf:about="&vcm_concept;214"/>
-            <rdf:Description rdf:about="&vcm_concept;218"/>
-            <rdf:Description rdf:about="&vcm_concept;251"/>
-            <rdf:Description rdf:about="&vcm_concept;38"/>
-            <rdf:Description rdf:about="&vcm_concept;426"/>
-            <rdf:Description rdf:about="&vcm_concept;436"/>
-            <rdf:Description rdf:about="&vcm_concept;477"/>
-            <rdf:Description rdf:about="&vcm_concept;85"/>
-            <rdf:Description rdf:about="&vcm_concept;94"/>
-        </owl:members>
-    </rdf:Description>
-    <rdf:Description>
-        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
-        <owl:members rdf:parseType="Collection">
-            <rdf:Description rdf:about="&vcm_concept;211"/>
-            <rdf:Description rdf:about="&vcm_concept;30"/>
-            <rdf:Description rdf:about="&vcm_concept;74"/>
+            <rdf:Description rdf:about="&vcm_concept;285"/>
+            <rdf:Description rdf:about="&vcm_concept;305"/>
+            <rdf:Description rdf:about="&vcm_concept;315"/>
         </owl:members>
     </rdf:Description>
     <rdf:Description>
@@ -8713,39 +8609,6 @@ Ex : un kyste embryonaire est à la fois un kyste et une malformation congénita
             <rdf:Description rdf:about="&vcm_concept;19"/>
             <rdf:Description rdf:about="&vcm_concept;210"/>
             <rdf:Description rdf:about="&vcm_concept;220"/>
-        </owl:members>
-    </rdf:Description>
-    <rdf:Description>
-        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
-        <owl:members rdf:parseType="Collection">
-            <rdf:Description rdf:about="&vcm_concept;421"/>
-            <rdf:Description rdf:about="&vcm_concept;63"/>
-            <rdf:Description rdf:about="&vcm_concept;64"/>
-        </owl:members>
-    </rdf:Description>
-    <rdf:Description>
-        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
-        <owl:members rdf:parseType="Collection">
-            <rdf:Description rdf:about="&vcm_concept;172"/>
-            <rdf:Description rdf:about="&vcm_concept;204"/>
-            <rdf:Description rdf:about="&vcm_concept;219"/>
-        </owl:members>
-    </rdf:Description>
-    <rdf:Description>
-        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
-        <owl:members rdf:parseType="Collection">
-            <rdf:Description rdf:about="&vcm_concept;188"/>
-            <rdf:Description rdf:about="&vcm_concept;189"/>
-            <rdf:Description rdf:about="&vcm_concept;190"/>
-            <rdf:Description rdf:about="&vcm_concept;191"/>
-        </owl:members>
-    </rdf:Description>
-    <rdf:Description>
-        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
-        <owl:members rdf:parseType="Collection">
-            <rdf:Description rdf:about="&vcm_concept;28"/>
-            <rdf:Description rdf:about="&vcm_concept;474"/>
-            <rdf:Description rdf:about="&vcm_concept;91"/>
         </owl:members>
     </rdf:Description>
     <rdf:Description>
@@ -8788,128 +8651,100 @@ Ex : un kyste embryonaire est à la fois un kyste et une malformation congénita
     <rdf:Description>
         <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
         <owl:members rdf:parseType="Collection">
-            <rdf:Description rdf:about="&vcm_concept;215"/>
-            <rdf:Description rdf:about="&vcm_concept;429"/>
-            <rdf:Description rdf:about="&vcm_concept;430"/>
-            <rdf:Description rdf:about="&vcm_concept;435"/>
+            <rdf:Description rdf:about="&vcm_concept;202"/>
+            <rdf:Description rdf:about="&vcm_concept;214"/>
+            <rdf:Description rdf:about="&vcm_concept;218"/>
+            <rdf:Description rdf:about="&vcm_concept;251"/>
+            <rdf:Description rdf:about="&vcm_concept;38"/>
+            <rdf:Description rdf:about="&vcm_concept;426"/>
+            <rdf:Description rdf:about="&vcm_concept;436"/>
+            <rdf:Description rdf:about="&vcm_concept;477"/>
+            <rdf:Description rdf:about="&vcm_concept;85"/>
+            <rdf:Description rdf:about="&vcm_concept;94"/>
         </owl:members>
     </rdf:Description>
     <rdf:Description>
         <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
         <owl:members rdf:parseType="Collection">
-            <rdf:Description rdf:about="&vcm_concept;313"/>
-            <rdf:Description rdf:about="&vcm_concept;331"/>
-            <rdf:Description rdf:about="&vcm_concept;393"/>
-            <rdf:Description rdf:about="&vcm_concept;398"/>
-            <rdf:Description rdf:about="&vcm_concept;417"/>
+            <rdf:Description rdf:about="&vcm_concept;333"/>
+            <rdf:Description rdf:about="&vcm_concept;341"/>
+            <rdf:Description rdf:about="&vcm_concept;394"/>
+            <rdf:Description rdf:about="&vcm_concept;395"/>
+            <rdf:Description rdf:about="&vcm_concept;410"/>
+            <rdf:Description rdf:about="&vcm_concept;413"/>
         </owl:members>
     </rdf:Description>
     <rdf:Description>
         <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
         <owl:members rdf:parseType="Collection">
-            <rdf:Description rdf:about="&vcm_concept;437"/>
-            <rdf:Description rdf:about="&vcm_concept;444"/>
-            <rdf:Description rdf:about="&vcm_concept;446"/>
+            <rdf:Description rdf:about="&vcm_concept;459"/>
+            <rdf:Description rdf:about="&vcm_concept;460"/>
+            <rdf:Description rdf:about="&vcm_concept;461"/>
+            <rdf:Description rdf:about="&vcm_concept;462"/>
+            <rdf:Description rdf:about="&vcm_concept;463"/>
+            <rdf:Description rdf:about="&vcm_concept;464"/>
+            <rdf:Description rdf:about="&vcm_concept;466"/>
+            <rdf:Description rdf:about="&vcm_concept;469"/>
         </owl:members>
     </rdf:Description>
     <rdf:Description>
         <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
         <owl:members rdf:parseType="Collection">
-            <rdf:Description rdf:about="&vcm_concept;274"/>
-            <rdf:Description rdf:about="&vcm_concept;391"/>
-            <rdf:Description rdf:about="&vcm_concept;392"/>
-            <rdf:Description rdf:about="&vcm_concept;419"/>
+            <rdf:Description rdf:about="&vcm_concept;421"/>
+            <rdf:Description rdf:about="&vcm_concept;63"/>
+            <rdf:Description rdf:about="&vcm_concept;64"/>
         </owl:members>
     </rdf:Description>
     <rdf:Description>
         <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
         <owl:members rdf:parseType="Collection">
-            <rdf:Description rdf:about="&vcm_concept;284"/>
-            <rdf:Description rdf:about="&vcm_concept;286"/>
-            <rdf:Description rdf:about="&vcm_concept;294"/>
-            <rdf:Description rdf:about="&vcm_concept;301"/>
-            <rdf:Description rdf:about="&vcm_concept;307"/>
-            <rdf:Description rdf:about="&vcm_concept;316"/>
-            <rdf:Description rdf:about="&vcm_concept;375"/>
-            <rdf:Description rdf:about="&vcm_concept;382"/>
-        </owl:members>
-    </rdf:Description>
-    <rdf:Description>
-        <rdf:type rdf:resource="&owl;AllDisjointProperties"/>
-        <owl:members rdf:parseType="Collection">
-            <rdf:Description rdf:about="&vcm_concept;10"/>
-            <rdf:Description rdf:about="&vcm_concept;11"/>
-            <rdf:Description rdf:about="&vcm_concept;12"/>
+            <rdf:Description rdf:about="&vcm_concept;135"/>
+            <rdf:Description rdf:about="&vcm_concept;136"/>
+            <rdf:Description rdf:about="&vcm_concept;35"/>
         </owl:members>
     </rdf:Description>
     <rdf:Description>
         <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
         <owl:members rdf:parseType="Collection">
-            <rdf:Description rdf:about="&vcm_concept;40"/>
-            <rdf:Description rdf:about="&vcm_concept;42"/>
-            <rdf:Description rdf:about="&vcm_concept;43"/>
+            <rdf:Description rdf:about="&vcm_concept;289"/>
+            <rdf:Description rdf:about="&vcm_concept;310"/>
+            <rdf:Description rdf:about="&vcm_concept;364"/>
         </owl:members>
     </rdf:Description>
     <rdf:Description>
         <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
         <owl:members rdf:parseType="Collection">
-            <rdf:Description rdf:about="&vcm_concept;21"/>
-            <rdf:Description rdf:about="&vcm_concept;213"/>
-            <rdf:Description rdf:about="&vcm_concept;22"/>
-            <rdf:Description rdf:about="&vcm_concept;26"/>
-            <rdf:Description rdf:about="&vcm_concept;425"/>
-            <rdf:Description rdf:about="&vcm_concept;473"/>
-            <rdf:Description rdf:about="&vcm_concept;476"/>
-            <rdf:Description rdf:about="&vcm_concept;53"/>
-            <rdf:Description rdf:about="&vcm_concept;59"/>
-            <rdf:Description rdf:about="&vcm_concept;60"/>
-            <rdf:Description rdf:about="&vcm_concept;62"/>
-            <rdf:Description rdf:about="&vcm_concept;83"/>
-            <rdf:Description rdf:about="&vcm_concept;90"/>
+            <rdf:Description rdf:about="&vcm_concept;314"/>
+            <rdf:Description rdf:about="&vcm_concept;333"/>
+            <rdf:Description rdf:about="&vcm_concept;341"/>
+            <rdf:Description rdf:about="&vcm_concept;394"/>
+            <rdf:Description rdf:about="&vcm_concept;395"/>
+            <rdf:Description rdf:about="&vcm_concept;410"/>
+            <rdf:Description rdf:about="&vcm_concept;413"/>
         </owl:members>
     </rdf:Description>
     <rdf:Description>
         <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
         <owl:members rdf:parseType="Collection">
-            <rdf:Description rdf:about="&vcm_concept;117"/>
-            <rdf:Description rdf:about="&vcm_concept;118"/>
-            <rdf:Description rdf:about="&vcm_concept;119"/>
-            <rdf:Description rdf:about="&vcm_concept;120"/>
-            <rdf:Description rdf:about="&vcm_concept;121"/>
-            <rdf:Description rdf:about="&vcm_concept;122"/>
-            <rdf:Description rdf:about="&vcm_concept;123"/>
-            <rdf:Description rdf:about="&vcm_concept;124"/>
-            <rdf:Description rdf:about="&vcm_concept;125"/>
-            <rdf:Description rdf:about="&vcm_concept;126"/>
-            <rdf:Description rdf:about="&vcm_concept;127"/>
-            <rdf:Description rdf:about="&vcm_concept;128"/>
-            <rdf:Description rdf:about="&vcm_concept;134"/>
+            <rdf:Description rdf:about="&vcm_concept;172"/>
+            <rdf:Description rdf:about="&vcm_concept;204"/>
+            <rdf:Description rdf:about="&vcm_concept;219"/>
         </owl:members>
     </rdf:Description>
     <rdf:Description>
         <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
         <owl:members rdf:parseType="Collection">
-            <rdf:Description rdf:about="&vcm_concept;173"/>
-            <rdf:Description rdf:about="&vcm_concept;174"/>
-            <rdf:Description rdf:about="&vcm_concept;175"/>
-            <rdf:Description rdf:about="&vcm_concept;18"/>
+            <rdf:Description rdf:about="&vcm_concept;479"/>
+            <rdf:Description rdf:about="&vcm_concept;480"/>
+            <rdf:Description rdf:about="&vcm_concept;483"/>
         </owl:members>
     </rdf:Description>
     <rdf:Description>
         <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
         <owl:members rdf:parseType="Collection">
-            <rdf:Description rdf:about="&vcm_concept;242"/>
-            <rdf:Description rdf:about="&vcm_concept;75"/>
-            <rdf:Description rdf:about="&vcm_concept;76"/>
-            <rdf:Description rdf:about="&vcm_concept;77"/>
-        </owl:members>
-    </rdf:Description>
-    <rdf:Description>
-        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
-        <owl:members rdf:parseType="Collection">
-            <rdf:Description rdf:about="&vcm_concept;171"/>
-            <rdf:Description rdf:about="&vcm_concept;186"/>
-            <rdf:Description rdf:about="&vcm_concept;81"/>
+            <rdf:Description rdf:about="&vcm_concept;177"/>
+            <rdf:Description rdf:about="&vcm_concept;180"/>
+            <rdf:Description rdf:about="&vcm_concept;29"/>
         </owl:members>
     </rdf:Description>
     <rdf:Description>
@@ -8933,6 +8768,68 @@ Ex : un kyste embryonaire est à la fois un kyste et une malformation congénita
     <rdf:Description>
         <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
         <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="&vcm_concept;284"/>
+            <rdf:Description rdf:about="&vcm_concept;286"/>
+            <rdf:Description rdf:about="&vcm_concept;294"/>
+            <rdf:Description rdf:about="&vcm_concept;301"/>
+            <rdf:Description rdf:about="&vcm_concept;307"/>
+            <rdf:Description rdf:about="&vcm_concept;316"/>
+            <rdf:Description rdf:about="&vcm_concept;375"/>
+            <rdf:Description rdf:about="&vcm_concept;382"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="&vcm_concept;192"/>
+            <rdf:Description rdf:about="&vcm_concept;193"/>
+            <rdf:Description rdf:about="&vcm_concept;198"/>
+            <rdf:Description rdf:about="&vcm_concept;200"/>
+            <rdf:Description rdf:about="&vcm_concept;206"/>
+            <rdf:Description rdf:about="&vcm_concept;25"/>
+            <rdf:Description rdf:about="&vcm_concept;447"/>
+            <rdf:Description rdf:about="&vcm_concept;452"/>
+            <rdf:Description rdf:about="&vcm_concept;487"/>
+            <rdf:Description rdf:about="&vcm_concept;78"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="&vcm_concept;196"/>
+            <rdf:Description rdf:about="&vcm_concept;224"/>
+            <rdf:Description rdf:about="&vcm_concept;414"/>
+            <rdf:Description rdf:about="&vcm_concept;51"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="&vcm_concept;165"/>
+            <rdf:Description rdf:about="&vcm_concept;223"/>
+            <rdf:Description rdf:about="&vcm_concept;65"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="&vcm_concept;28"/>
+            <rdf:Description rdf:about="&vcm_concept;474"/>
+            <rdf:Description rdf:about="&vcm_concept;91"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="&vcm_concept;205"/>
+            <rdf:Description rdf:about="&vcm_concept;209"/>
+            <rdf:Description rdf:about="&vcm_concept;24"/>
+            <rdf:Description rdf:about="&vcm_concept;82"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
             <rdf:Description rdf:about="&vcm_concept;295"/>
             <rdf:Description rdf:about="&vcm_concept;320"/>
             <rdf:Description rdf:about="&vcm_concept;401"/>
@@ -8941,9 +8838,123 @@ Ex : un kyste embryonaire est à la fois un kyste et une malformation congénita
     <rdf:Description>
         <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
         <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="&vcm_concept;215"/>
+            <rdf:Description rdf:about="&vcm_concept;429"/>
+            <rdf:Description rdf:about="&vcm_concept;430"/>
+            <rdf:Description rdf:about="&vcm_concept;435"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointProperties"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="&vcm_concept;10"/>
+            <rdf:Description rdf:about="&vcm_concept;11"/>
+            <rdf:Description rdf:about="&vcm_concept;12"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="&vcm_concept;130"/>
+            <rdf:Description rdf:about="&vcm_concept;153"/>
+            <rdf:Description rdf:about="&vcm_concept;156"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="&vcm_concept;173"/>
+            <rdf:Description rdf:about="&vcm_concept;174"/>
+            <rdf:Description rdf:about="&vcm_concept;175"/>
+            <rdf:Description rdf:about="&vcm_concept;18"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="&vcm_concept;313"/>
+            <rdf:Description rdf:about="&vcm_concept;331"/>
+            <rdf:Description rdf:about="&vcm_concept;393"/>
+            <rdf:Description rdf:about="&vcm_concept;398"/>
+            <rdf:Description rdf:about="&vcm_concept;417"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="&vcm_concept;40"/>
+            <rdf:Description rdf:about="&vcm_concept;42"/>
+            <rdf:Description rdf:about="&vcm_concept;43"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="&vcm_concept;104"/>
+            <rdf:Description rdf:about="&vcm_concept;105"/>
+            <rdf:Description rdf:about="&vcm_concept;107"/>
+            <rdf:Description rdf:about="&vcm_concept;112"/>
+            <rdf:Description rdf:about="&vcm_concept;139"/>
+            <rdf:Description rdf:about="&vcm_concept;140"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
             <rdf:Description rdf:about="&vcm_concept;246"/>
             <rdf:Description rdf:about="&vcm_concept;278"/>
             <rdf:Description rdf:about="&vcm_concept;353"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="&vcm_concept;21"/>
+            <rdf:Description rdf:about="&vcm_concept;213"/>
+            <rdf:Description rdf:about="&vcm_concept;22"/>
+            <rdf:Description rdf:about="&vcm_concept;26"/>
+            <rdf:Description rdf:about="&vcm_concept;425"/>
+            <rdf:Description rdf:about="&vcm_concept;473"/>
+            <rdf:Description rdf:about="&vcm_concept;476"/>
+            <rdf:Description rdf:about="&vcm_concept;53"/>
+            <rdf:Description rdf:about="&vcm_concept;59"/>
+            <rdf:Description rdf:about="&vcm_concept;60"/>
+            <rdf:Description rdf:about="&vcm_concept;62"/>
+            <rdf:Description rdf:about="&vcm_concept;83"/>
+            <rdf:Description rdf:about="&vcm_concept;90"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="&vcm_concept;169"/>
+            <rdf:Description rdf:about="&vcm_concept;170"/>
+            <rdf:Description rdf:about="&vcm_concept;212"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="&vcm_concept;261"/>
+            <rdf:Description rdf:about="&vcm_concept;277"/>
+            <rdf:Description rdf:about="&vcm_concept;306"/>
+            <rdf:Description rdf:about="&vcm_concept;317"/>
+            <rdf:Description rdf:about="&vcm_concept;334"/>
+            <rdf:Description rdf:about="&vcm_concept;372"/>
+            <rdf:Description rdf:about="&vcm_concept;379"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="&vcm_concept;176"/>
+            <rdf:Description rdf:about="&vcm_concept;187"/>
+            <rdf:Description rdf:about="&vcm_concept;27"/>
+            <rdf:Description rdf:about="&vcm_concept;34"/>
+            <rdf:Description rdf:about="&vcm_concept;46"/>
+            <rdf:Description rdf:about="&vcm_concept;470"/>
+            <rdf:Description rdf:about="&vcm_concept;488"/>
+            <rdf:Description rdf:about="&vcm_concept;489"/>
         </owl:members>
     </rdf:Description>
 </rdf:RDF>
