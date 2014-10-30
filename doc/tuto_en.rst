@@ -9,6 +9,7 @@ terminologies in Python. The following terminologies are available:
 
  - SNOMED CT
  - ICD10
+ - MedDRA
  - UMLS
  - VCM icons (an iconic terminology developped at Paris 13 University)
 

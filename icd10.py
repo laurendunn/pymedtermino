@@ -79,7 +79,7 @@ class Text(object):
   
   def __init__(self, id, concept, relation, text, text_en, dagger, reference):
     self.id       = id
-    self.concept     = concept
+    self.concept  = concept
     self.relation = relation
     self.text     = text or text_en
     self.dagger   = dagger

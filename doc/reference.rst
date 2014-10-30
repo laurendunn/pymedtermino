@@ -9,6 +9,9 @@ Module reference
 .. automodule:: pymedtermino.icd10
    :members: Text, ICD10Concept
 
+.. automodule:: pymedtermino.meddra
+   :members: MEDDRAConcept
+
 .. automodule:: pymedtermino.umls
    :members: UMLSConcept, connect_to_umls_db
 
