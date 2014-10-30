@@ -23,6 +23,11 @@ pymedtermino.meddra
 
 PyMedtermino module for MedDRA.
 
+Several concepts can share the same code in MedDRA.
+For example, a preferred term (PT) and a low-level term (LLT) can have the same code and label.
+In order to distinguish them, PyMedTermino does not use directly the MedDRA codes,
+but associates the term's level with the code to obtain a unique code, for example "SOC_10019805" or "PT_10069435".
+
 .. class:: MEDDRA
    
    The MedDRA terminology. See :class:`pymedtermino.Terminology` for common terminology members; only MedDRA-specific members are described here.
@@ -30,6 +35,10 @@ PyMedtermino module for MedDRA.
    .. method:: first_levels()
 
       Returns the root concepts in MedDRA (=the SOC), in international order.
+
+   .. method:: get_by_meddra_code(meddra_code)
+
+      Returns a list of MedDRA concepts corresponding to the given MedDRA numeric code (e.g. 10073496).
 
 """
 
@@ -58,10 +67,16 @@ class MEDDRA(pymedtermino.Terminology):
   def _create_Concept(self): return MEDDRAConcept
   
   def first_levels(self):
-    
     db_cursor.execute("SELECT Concept.code FROM Concept WHERE Concept.depth = 0")
     db_cursor.execute("SELECT Concept.code FROM Concept_SOC, Concept WHERE Concept.id = Concept_SOC.id ORDER BY Concept_SOC.international_order")
     return [self[code] for (code,) in db_cursor.fetchall()]
+
+  def get_by_meddra_code(self, meddra_code):
+    concepts = []
+    for depth in range(5):
+      concept = self.get("%s_%s" % (_DEPTH_2_TYPE[depth], meddra_code))
+      if concept: concepts.append(concept)
+    return concepts
     
   def search(self, text):
     #db_cursor.execute("SELECT DISTINCT conceptId FROM Description WHERE term LIKE ?", ("%%%s%%" % text,))
