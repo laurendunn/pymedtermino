@@ -27,9 +27,6 @@ MEDDRA_DIRS = {
   # Add / remove languages as desired
 }
 
-#ONLY_ACTIVE_CONCEPT = 1
-ONLY_ACTIVE_CONCEPT = 0
-
 import sys, os, os.path, stat, sqlite3
 
 HERE = os.path.dirname(sys.argv[0])
