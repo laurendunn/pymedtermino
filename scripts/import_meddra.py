@@ -23,7 +23,7 @@
 
 MEDDRA_DIRS = {
   "en" : "/home/jiba/telechargements/base_med/meddra/en/MedAscii",
-#  "fr" : "/home/jiba/telechargements/base_med/meddra/fr/ascii-171",
+  "fr" : "/home/jiba/telechargements/base_med/meddra/fr/ascii-171",
   # Add / remove languages as desired
 }
 
@@ -35,10 +35,12 @@ sys.path.append(os.path.join(HERE, ".."))
 
 from utils.db import *
 
-if len(sys.argv) >= 3:
-  SNOMEDCT_DIR       = sys.argv[1]
-  SNOMEDCT_CORE_FILE = sys.argv[2]
-
+if len(sys.argv) > 1:
+  MEDDRA_DIRS = {}
+  for arg in sys.argv[1:]:
+    lang, path = arg.split("_", 1)
+    MEDDRA_DIRS[lang] = path
+    
 LANGS = list(MEDDRA_DIRS.keys())
 
 SQLITE_FILE = os.path.join(HERE, "..", "meddra.sqlite3")
@@ -119,11 +121,17 @@ ISA = []
 def assert_isa(child_code, parent_code):
   ISA.append((child_code, parent_code))
 
-for lang in LANGS:
-  path = MEDDRA_DIRS[lang]
+
+def open_meddra_file(filename, lang):
+  filename = os.path.join(MEDDRA_DIRS[lang], "%s.asc" % filename)
+  if lang in ["cs", "hu", "zh"]: encoding = "utf8" # Czech, Hungarian, and Chinese
+  else:                          encoding = "latin1"
+  return open(filename, encoding = encoding).read()
   
+
+for lang in LANGS:
   for depth, filename in [(0, "soc"), (1, "hlgt"), (2, "hlt"), (3, "pt"), (4, "llt")]:
-    for line in open(os.path.join(path, "%s.asc" % filename)).read().split("\n"):
+    for line in open_meddra_file(filename, lang).split("\n"):
       if line:
         words = line.split("$")
         concept = get_concept("%s_%s" % (filename.upper(), words[0]))
@@ -142,12 +150,12 @@ for lang in LANGS:
           
 for filename in ["soc_hlgt", "hlgt_hlt", "hlt_pt"]:
   parent_type, child_type = filename.upper().split("_")
-  for line in open(os.path.join(path, "%s.asc" % filename)).read().split("\n"):
+  for line in open_meddra_file(filename, lang).split("\n"):
     if line:
       words = line.split("$")
       assert_isa("%s_%s" % (child_type, words[1]), "%s_%s" % (parent_type, words[0]))
       
-for line in open(os.path.join(path, "intl_ord.asc")).read().split("\n"):
+for line in open_meddra_file("intl_ord", lang).split("\n"):
   if line:
     words = line.split("$")
     concept = get_concept("SOC_%s" % words[1])
