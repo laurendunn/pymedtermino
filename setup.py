@@ -43,6 +43,18 @@ ICD10_DIR = ""
 # Example: CIM10_DIR = "/home/jiba/telechargements/base_med/cim10"
 CIM10_DIR = ""
 
+# Get MedDRA from (available in several languages):
+# https://www.meddra.org/software-packages
+
+# Example:
+# MEDDRA_DIRS =  {
+#  "en" : "/home/jiba/telechargements/base_med/meddra/en/MedAscii",
+#  "fr" : "/home/jiba/telechargements/base_med/meddra/fr/ascii-171",
+# }
+MEDDRA_DIRS = {
+  # "lang" : "path",
+}
+
 # Set to False if you don't want to build VCM terminologies.
 #
 # VCM is pre-built in release source distribution, so it has no impact it in this case.
@@ -67,6 +79,11 @@ while i < len(sys.argv):
   elif sys.argv[i] == "--snomedct-core":     del sys.argv[i]; SNOMEDCT_CORE_FILE = sys.argv[i]; del sys.argv[i]
   elif sys.argv[i] == "--icd10":             del sys.argv[i]; ICD10_DIR          = sys.argv[i]; del sys.argv[i]
   elif sys.argv[i] == "--icd10-translation": del sys.argv[i]; CIM10_DIR          = sys.argv[i]; del sys.argv[i]
+  elif sys.argv[i] == "--meddra":
+    del sys.argv[i]
+    lang, path = sys.argv[i].split("_", 1)
+    MEDDRA_DIRS[lang] = path
+    del sys.argv[i]
   else: i += 1
 
 
@@ -84,10 +101,14 @@ if ("build" in sys.argv) or ("install" in sys.argv):
   if SNOMEDCT_DIR and (not os.path.exists(os.path.join(HERE, "snomedct.sqlite3"))):
     cmd = sys.executable + ' %s%sscripts%simport_snomedct.py "%s" "%s"' % (HERE, os.sep, os.sep, SNOMEDCT_DIR, SNOMEDCT_CORE_FILE)
     if do(cmd) != 0: failed(os.path.join(HERE, "snomedct.sqlite3"))
-      
+    
   if ICD10_DIR and (not os.path.exists(os.path.join(HERE, "icd10.sqlite3"))):
     cmd = sys.executable + ' %s%sscripts%simport_icd10.py "%s" "%s"' % (HERE, os.sep, os.sep, ICD10_DIR, CIM10_DIR)
     if do(cmd) != 0: failed(os.path.join(HERE, "icd10.sqlite3"))
+    
+  if MEDDRA_DIRS and (not os.path.exists(os.path.join(HERE, "meddra.sqlite3"))):
+    cmd = sys.executable + ' %s%sscripts%simport_meddra.py %s' % (HERE, os.sep, os.sep, " ".join('"%s_%s"' % (lang, MEDDRA_DIRS[lang]) for lang in MEDDRA_DIRS))
+    if do(cmd) != 0: failed(os.path.join(HERE, "meddra.sqlite3"))
     
   if BUILD_VCM and (not os.path.exists(os.path.join(HERE, "vcm_concept.sqlite3"))):
     """
@@ -137,9 +158,9 @@ if ("upload_docs" in sys.argv) or ("build_sphinx" in sys.argv): import setuptool
 
 distutils.core.setup(
   name         = "PyMedTermino",
-  version      = "0.2",
+  version      = "0.3",
   license      = "LGPLv3+",
-  description  = "Medical Terminologies for Python: SNOMED CT, ICD10, UMLS and VCM icons",
+  description  = "Medical Terminologies for Python: SNOMED CT, ICD10, MedDRA, UMLS and VCM icons",
   long_description = open(os.path.join(HERE, "README.rst")).read(),
   
   author       = "Lamy Jean-Baptiste (Jiba)",
@@ -169,5 +190,7 @@ if "clean" in sys.argv:
   try: os.unlink(os.path.join(HERE, "snomedct.sqlite3"))
   except: pass
   try: os.unlink(os.path.join(HERE, "icd10.sqlite3"))
+  except: pass
+  try: os.unlink(os.path.join(HERE, "meddra.sqlite3"))
   except: pass
 
