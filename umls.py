@@ -174,6 +174,16 @@ class UMLS_AUI(UMLSBase):
         (ICD10    >> extracted_terminology >> UMLS_CUI).register()
         (UMLS_AUI >> extracted_terminology >> ICD10   ).register()
         (UMLS_CUI >> extracted_terminology >> ICD10   ).register()
+    elif original_terminology_name.startswith("MDR"): # MDR, MDRFRE,...
+      try: from pymedtermino.meddra import MEDDRA; ok = 1
+      except: ok = 0
+      if ok:
+        pymedtermino.SameCodeMapping(extracted_terminology, MEDDRA).register()
+        pymedtermino.SameCodeMapping(MEDDRA, extracted_terminology).register()
+        (MEDDRA   >> extracted_terminology >> UMLS_AUI).register()
+        (MEDDRA   >> extracted_terminology >> UMLS_CUI).register()
+        (UMLS_AUI >> extracted_terminology >> MEDDRA  ).register()
+        (UMLS_CUI >> extracted_terminology >> MEDDRA  ).register()
         
     return extracted_terminology
   

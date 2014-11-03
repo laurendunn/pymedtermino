@@ -28,6 +28,7 @@ global-exclude icd10_2_vcm_manual_rouen.sqlite3
 global-exclude snomedct.sqlite3
 global-exclude snomedct_2_icd10.sqlite3
 global-exclude snomedct_2_icd10_reverse.sqlite3
+global-exclude meddra.sqlite3
 global-exclude icpc2.py
 global-exclude icpc2_2_vcm.py
 global-exclude icpc2.sqlite3
