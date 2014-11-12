@@ -33,6 +33,7 @@ global-exclude icpc2.py
 global-exclude icpc2_2_vcm.py
 global-exclude icpc2.sqlite3
 global-exclude icpc2_2_vcm.sqlite3
+global-exclude cdf_2_meddra.sqlite3
 global-exclude icpc2_vcm_lexicon_index.sqlite3
 global-exclude icpc2_onto/*
 global-exclude import_icpc2.py
