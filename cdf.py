@@ -36,6 +36,8 @@ import pymedtermino
 
 db = db_cursor = None
 def connect_to_theriaque_db(host = "", port = "", user = "theriaque", password = "", db_name = "theriaque", encoding = "latin1"):
+  """Connects to a Thériaque PostgreSQL database.
+This function **must** be called before using CDF."""
   global db, db_cursor
   db        = psycopg2.connect(host = host, port = port, database = db_name, user = user, password = password)
   db_cursor = db.cursor()
