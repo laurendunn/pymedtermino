@@ -29,6 +29,9 @@ except: pass
 try: from pymedtermino.meddra import *
 except: pass
 
+try: from pymedtermino.cdf import *
+except: pass
+
 try: from pymedtermino.umls import *
 except: pass
 
