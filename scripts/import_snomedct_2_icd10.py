@@ -53,7 +53,7 @@ db = create_db(SQLITE_FILE)
 nb = 0
 snomedct_codes = set()
 icd10_codes    = set()
-for line in open(MAPPING_FILE).read().split("\n")[1:]:
+for line in read_file(MAPPING_FILE).split("\n")[1:]:
   if line:
     words = line.split("\t")
     if words[2] != "1": continue # Not active
@@ -89,7 +89,7 @@ for line in open(MAPPING_FILE).read().split("\n")[1:]:
     nb  += 1
       
 sys.stderr.write("%s mappings involving %s SNOMEDCT concepts and %s ICD10 concepts.\n" % (nb, len(snomedct_codes), len(icd10_codes)))
-open("/tmp/t.txt", "w").write(TXT.encode("utf8"))
+write_file("/tmp/t.txt", TXT)
 
 Txt_2_SQLMapping(None, db, code1_type = "INTEGER", code2_type = "TEXT", txt = TXT)
 close_db(db, SQLITE_FILE)
@@ -128,7 +128,7 @@ for icd10 in ICD10.all_concepts():
   TXT += u"%s == %s\n" % (icd10.code, u" ".join(u"%s" % c.code for c in snomedcts))
 
 sys.stderr.write("%s exact ICD10 => SNOMEDCT matches.\n" % nb_exact)
-open("/tmp/t2.txt", "w").write(TXT)
+write_file("/tmp/t2.txt", TXT)
 
 Txt_2_SQLMapping(None, db, code1_type = "TEXT", code2_type = "INTEGER", txt = TXT)
 close_db(db, SQLITE_FILE)

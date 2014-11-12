@@ -17,38 +17,15 @@
 # You should have received a copy of the GNU Lesser General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+#__all__ = ["snomedct_2_icd10", "icd10_2_snomedct"]
 
-from pymedtermino import *
+import os, os.path
+from pymedtermino          import *
+from pymedtermino.cdf      import *
+from pymedtermino.meddra   import *
 
-try: from pymedtermino.icd10 import *
-except: pass
-
-try: from pymedtermino.snomedct import *
-except: pass
-
-try: from pymedtermino.meddra import *
-except: pass
-
-try: from pymedtermino.cdf import *
-except: pass
-
-try: from pymedtermino.umls import *
-except: pass
-
-try: from pymedtermino.vcm import *
-except: pass
-
-try: from pymedtermino.snomedct_2_vcm import *
-except: pass
-try: from pymedtermino.icd10_2_vcm import *
-except: pass
-try: from pymedtermino.snomedct_2_icd10 import *
-except: pass
-try: from pymedtermino.cdf_2_meddra import *
-except: pass
-
-try: from pymedtermino.icpc2 import *
-except: pass
-try: from pymedtermino.icpc2_2_vcm import *
-except: pass
+cdf_2_meddra = SQLMapping(CDF, MEDDRA, os.path.join(DATA_DIR, "cdf_2_meddra.sqlite3"), has_and = 0)
+cdf_2_meddra.register()
+meddra_2_cdf = cdf_2_meddra._create_reverse_mapping()
+meddra_2_cdf.register()
 
