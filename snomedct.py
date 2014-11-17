@@ -57,7 +57,11 @@ class SNOMEDCT(pymedtermino.Terminology):
   
   def search(self, text):
     #db_cursor.execute("SELECT DISTINCT conceptId FROM Description WHERE term LIKE ?", ("%%%s%%" % text,))
-    db_cursor.execute("SELECT DISTINCT Description.conceptId FROM Description, Description_fts WHERE (Description_fts.term MATCH ?) AND (Description.id = Description_fts.docid)", (text,))
+    if pymedtermino.REMOVE_SUPPRESSED_CONCEPTS:
+      db_cursor.execute("SELECT DISTINCT Description.conceptId FROM Concept, Description, Description_fts WHERE (Description_fts.term MATCH ?) AND (Description.id = Description_fts.docid) AND (Concept.id = Description.conceptId) AND (Concept.active = 1)", (text,))
+    else:
+      db_cursor.execute("SELECT DISTINCT Description.conceptId FROM Description, Description_fts WHERE (Description_fts.term MATCH ?) AND (Description.id = Description_fts.docid)", (text,))
+      
     r = db_cursor.fetchall()
     l = []
     for (code,) in r:

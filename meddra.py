@@ -79,8 +79,10 @@ class MEDDRA(pymedtermino.Terminology):
     return concepts
     
   def search(self, text):
-    #db_cursor.execute("SELECT DISTINCT conceptId FROM Description WHERE term LIKE ?", ("%%%s%%" % text,))
-    db_cursor.execute("SELECT DISTINCT Concept.code FROM Concept, Concept_fts WHERE (Concept_fts.term MATCH ?) AND (Concept.id = Concept_fts.docid)", (text,))
+    if pymedtermino.REMOVE_SUPPRESSED_CONCEPTS:
+      db_cursor.execute("SELECT DISTINCT Concept.code FROM Concept, Concept_fts WHERE (Concept_fts.term MATCH ?) AND (Concept.id = Concept_fts.docid) AND (Concept.active = 1)", (text,))
+    else:
+      db_cursor.execute("SELECT DISTINCT Concept.code FROM Concept, Concept_fts WHERE (Concept_fts.term MATCH ?) AND (Concept.id = Concept_fts.docid)", (text,))
     r = db_cursor.fetchall()
     l = []
     for (code,) in r:
