@@ -137,12 +137,18 @@ Additional attributes are available for relations, and are listed in the :attr:`
   
   def __getattr__(self, attr):
     if   attr == "parents":
-      db_cursor.execute("SELECT parent FROM IsA WHERE child=?", (self.code,))
+      if pymedtermino.REMOVE_SUPPRESSED_CONCEPTS:
+        db_cursor.execute("SELECT parent FROM IsA, Concept WHERE (child=?) AND (Concept.code = child) AND (Concept.active)", (self.code,))
+      else:
+        db_cursor.execute("SELECT parent FROM IsA WHERE child=?", (self.code,))
       self.parents = [self.terminology[code] for (code,) in db_cursor.fetchall()]
       return self.parents
       
     elif attr == "children":
-      db_cursor.execute("SELECT child FROM IsA WHERE parent=?", (self.code,))
+      if pymedtermino.REMOVE_SUPPRESSED_CONCEPTS:
+        db_cursor.execute("SELECT child FROM IsA, Concept WHERE (parent=?) AND (Concept.code = child) AND (Concept.active)", (self.code,))
+      else:
+        db_cursor.execute("SELECT child FROM IsA WHERE parent=?", (self.code,))
       self.children = [self.terminology[code] for (code,) in db_cursor.fetchall()]
       return self.children
       
