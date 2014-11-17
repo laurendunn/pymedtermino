@@ -27,6 +27,7 @@ PyMedtermino module for CDF (Thériaque French drug database).
    
    The CDF terminology. See :class:`pymedtermino.Terminology` for common terminology members; only CDF-specific members are described here.
 
+   A CDF to ICD10 mapping (from Thériaque) is also provided.
 """
 
 __all__ = ["CDF", "connect_to_theriaque_db"]
@@ -37,7 +38,7 @@ import pymedtermino
 db = db_cursor = None
 def connect_to_theriaque_db(host = "", port = "", user = "theriaque", password = "", db_name = "theriaque", encoding = "latin1"):
   """Connects to a Thériaque PostgreSQL database.
-This function **must** be called before using CDF."""
+This function **must** be called before using CDF. Default values should be OK for a local Theriaque installation with PostgresQL."""
   global db, db_cursor
   db        = psycopg2.connect(host = host, port = port, database = db_name, user = user, password = password)
   db_cursor = db.cursor()

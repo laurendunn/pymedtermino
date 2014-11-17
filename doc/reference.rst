@@ -13,7 +13,7 @@ Module reference
    :members: MEDDRAConcept
 
 .. automodule:: pymedtermino.cdf
-   :members: CDFConcept
+   :members: CDFConcept, connect_to_theriaque_db
 
 .. automodule:: pymedtermino.umls
    :members: UMLSConcept, connect_to_umls_db
