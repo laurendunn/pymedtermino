@@ -12,6 +12,9 @@ Module reference
 .. automodule:: pymedtermino.meddra
    :members: MEDDRAConcept
 
+.. automodule:: pymedtermino.cdf
+   :members: CDFConcept
+
 .. automodule:: pymedtermino.umls
    :members: UMLSConcept, connect_to_umls_db
 

@@ -160,7 +160,7 @@ distutils.core.setup(
   name         = "PyMedTermino",
   version      = "0.3",
   license      = "LGPLv3+",
-  description  = "Medical Terminologies for Python: SNOMED CT, ICD10, MedDRA, UMLS and VCM icons",
+  description  = "Medical Terminologies for Python: SNOMED CT, ICD10, MedDRA, CDF, UMLS and VCM icons",
   long_description = open(os.path.join(HERE, "README.rst")).read(),
   
   author       = "Lamy Jean-Baptiste (Jiba)",

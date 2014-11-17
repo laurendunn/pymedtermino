@@ -10,6 +10,7 @@ principales terminologies médicales. Les terminologies suivantes sont proposée
  - La SNOMED CT
  - La CIM10
  - MedDRA
+ - La CDF (CoDiFication, thésaurus de la banque Thériaque)
  - L'UMLS
  - Les icônes VCM (une terminologie à base d'icônes développée à l'université Paris 13)
 

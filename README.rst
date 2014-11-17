@@ -2,7 +2,7 @@ PyMedTermino
 ============
 
 PyMedTermino (Medical Terminologies for Python) is a Python module for
-easy access to the main medical terminologies in Python. The following terminologies are available: SNOMED CT, ICD10, MedDRA, UMLS, VCM
+easy access to the main medical terminologies in Python. The following terminologies are available: SNOMED CT, ICD10, MedDRA, CDF, UMLS, VCM
 icons (an iconic terminology developped at Paris 13 University).
 
 PyMedTermino has been created at the LIMICS reseach lab,
