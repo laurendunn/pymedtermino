@@ -57,8 +57,9 @@ class CDF(pymedtermino.Terminology):
     raise NotImplementedError
     
   def search(self, text):
+    text = text.upper().replace("*", "%")
     #db_cursor.execute("SELECT DISTINCT conceptId FROM Description WHERE term LIKE ?", ("%%%s%%" % text,))
-    db_cursor.execute("SELECT cdf_numero_pk, cdf_code_pk FROM cdf_codif WHERE cdf_nom LIKE %s", ("%%%s%%" % text.upper(),))
+    db_cursor.execute("SELECT cdf_numero_pk, cdf_code_pk FROM cdf_codif WHERE cdf_nom LIKE %s", (text,))
     r = db_cursor.fetchall()
     l = []
     for (numero, code) in r:
