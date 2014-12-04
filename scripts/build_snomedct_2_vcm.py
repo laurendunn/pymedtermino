@@ -111,7 +111,7 @@ def snomedct_2_multi_snomedcts(terme, multi_snomedcts = None, debug = 0, avec_ic
       termes_du_groupe = Concepts(terme2 for relation in groupe.relations & MAIN_CLINICAL_FINDING_RELATIONS for terme2 in getattr(groupe, relation))
       
       if termes_du_groupe.find(SNOMEDCT[123037004]): # Body structure (body structure)
-        ajouter_termes(multi_snomedcts, Concepts(i for i in snomedcts_hors_groupe if not i.is_a(SNOMEDCT[123037004])))
+        ajouter_termes(multi_snomedcts, Concepts(i for i in snomedcts_hors_groupe if not i.is_a(SNOMEDCT[123037004]))) # Body structure (body structure)
       else:
         ajouter_termes(multi_snomedcts, Concepts(snomedcts_hors_groupe))
       for relation in groupe.relations & MAIN_CLINICAL_FINDING_RELATIONS:
@@ -163,6 +163,12 @@ def snomedct_2_multi_snomedcts(terme, multi_snomedcts = None, debug = 0, avec_ic
   if multi_snomedcts.find(SNOMEDCT[79654002]): # Edema (morphologic abnormality)
     for termes in multi_snomedcts:
       termes.subtract_update(SNOMEDCT[442672001]) # Swelling (morphologic abnormality)
+
+  # REGLE : les abcès sont par défaut considérés comme bactérien ;
+  # si une étiologie d'infection (bactérien ou autre) est présente on retire donc l'abcès.
+  for termes in multi_snomedcts:
+    if termes.find(SNOMEDCT[44132006]) and termes.find(SNOMEDCT[441862004]): # Abscess ; Infectious process
+      termes.subtract_update(SNOMEDCT[44132006]) # Abscess
       
   return multi_snomedcts
 
@@ -281,6 +287,15 @@ def multi_snomedcts_2_multi_concepts(terme_de_depart, multi_snomedcts, debug = 0
       if concepts.find(VCM_CONCEPT[450]): multi_concepts[-1].add(VCM_CONCEPT[450]) # Pathological_alteration, Pathological_alteration
       if concepts.find(VCM_CONCEPT[ 15]): multi_concepts[-1].add(VCM_CONCEPT[ 15]) # Absence_of_pathological_alteration, Absence_of_pathological_alteration
       
+      
+  # Retire les groupes doublons
+  for concepts1 in multi_concepts[:]:
+    for concepts2 in multi_concepts[:]:
+      if concepts1 is concepts2: continue
+      if concepts1 == concepts2: continue
+      if concepts1.imply(concepts2):
+        multi_concepts.remove(concepts2)
+        
   return multi_concepts
 
 
@@ -318,7 +333,7 @@ def multi_concepts_2_multi_lexiques(multi_concepts, debug = 0):
 
 def multi_lexiques_2_icones(multi_lexiques, debug = 0):
   icones = Concepts()
-  for lexs in multi_lexiques: icones.update((VCM_LEXICON >> VCM).map_concepts(lexs, debug = debug))
+  for lexs in multi_lexiques: icones.update((VCM_LEXICON >> VCM).map_concepts(lexs, debug = debug))      
   return keep_most_graphically_specific_icons(icones)
 
 
@@ -417,9 +432,11 @@ if __name__ == "__main__":
     #t = SNOMEDCT[95851007]
     #t = SNOMEDCT[430621000]
     
-    #t = SNOMEDCT[41553006]
+    #t = SNOMEDCT[41553006] 
     
-    t = SNOMEDCT[34129005]
+    #t = SNOMEDCT[792004] # Creutzfeldt-Jakob
+    
+    t = SNOMEDCT[20927009]
     
     #t = SNOMEDCT[87666009]
     

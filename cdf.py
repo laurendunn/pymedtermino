@@ -53,9 +53,27 @@ class CDF(pymedtermino.Terminology):
     
   def _create_Concept(self): return CDFConcept
   
-  def first_levels(self):
-    raise NotImplementedError
-    
+  def first_levels(self, numero = None):
+    if numero:
+      db_cursor.execute("SELECT cdf_numero_pk, cdf_code_pk FROM cdf_codif WHERE cdf_numero_pk = %s", (numero,))
+      for (numero, code) in db_cursor.fetchall():
+        concept = self["%s_%s" % (numero, code)]
+        for p in concept.parents:
+          if p.code.startswith(numero): break
+        else: yield concept
+    else:
+      db_cursor.execute("SELECT cdf_numero_pk, cdf_code_pk FROM cdf_codif")
+      for (numero, code) in db_cursor.fetchall():
+        concept = self["%s_%s" % (numero, code)]
+        if not concept.parents: yield concept
+        
+  def all_concepts(self, *args):
+    """Retuns a generator for iterating over *all* concepts in the terminology."""
+    for root in self.first_levels(*args):
+      yield root
+      for concept in root.descendants():
+        yield concept
+        
   def search(self, text):
     text = text.upper().replace("*", "%")
     #db_cursor.execute("SELECT DISTINCT conceptId FROM Description WHERE term LIKE ?", ("%%%s%%" % text,))

@@ -232,6 +232,8 @@ class TestSNOMEDCT_2_VCM(unittest.TestCase):
     SNOMEDCT[20656007] : set([u"current--patho-vessel--mouth"]), # Sublingual varices (disorder)
     SNOMEDCT[28670008] : set([u"current--patho-vessel--oesophagia"]), # Esophageal varices (disorder)
 
+    SNOMEDCT[75119003] : set([u"current--parasite--liver"]), # Amebic liver abscess (disorder)
+
 #    SNOMEDCT[] : set([u""]), # 
     }
   

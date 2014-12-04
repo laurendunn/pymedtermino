@@ -143,9 +143,9 @@ class Terminology(object):
     if mapping is None: raise ValueError("No mapping available or loaded between %s and %s!" % (origin, destination))
     return mapping
     
-  def all_concepts(self):
+  def all_concepts(self, *args):
     """Retuns a generator for iterating over *all* concepts in the terminology."""
-    for root in self.first_levels():
+    for root in self.first_levels(*args):
       yield root
       for concept in root.descendants():
         yield concept
