@@ -43,4 +43,3 @@ for i in range(len(categories)):
     term.db_cursor.execute(u"""UPDATE Concept SET category=? WHERE code=?""", (i, term.code))
 VCM_LEXICON.db.commit()
 close_db(None, SQLITE_FILE2, close = 0, set_readonly = 1)
-  

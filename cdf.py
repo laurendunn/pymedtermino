@@ -85,6 +85,7 @@ class CDF(pymedtermino.Terminology):
       except ValueError: pass
     return l
 
+_HIERARCHICAL_CDF_CLASSIFICATONS = { "CS" }
 
 class CDFConcept(pymedtermino.MultiaxialConcept, pymedtermino._StringCodeConcept):
   """A CDF concept. See :class:`pymedtermino.Concept` for common terminology members; only CDF-specific members are described here.
@@ -113,13 +114,18 @@ Additional attributes are available for relations, and are listed in the :attr:`
     if   attr == "parents":
       db_cursor.execute("SELECT cdfpf_numerop_fk_pk, cdfpf_codep_fk_pk FROM cdfpf_lien_cdf_pere_fils WHERE (cdfpf_numerof_fk_pk = %s) AND (cdfpf_codef_fk_pk = %s)", (self.cdf_numero, self.cdf_code))
       self.parents = [self.terminology["%s_%s" % (numero, code)] for (numero, code) in db_cursor.fetchall()]
+      if (self.cdf_numero in _HIERARCHICAL_CDF_CLASSIFICATONS) and (len(self.cdf_code) > 1):
+        self.parents.insert(0, self.terminology[self.code[:-1]])
       return self.parents
       
     elif attr == "children":
       db_cursor.execute("SELECT cdfpf_numerof_fk_pk, cdfpf_codef_fk_pk FROM cdfpf_lien_cdf_pere_fils WHERE (cdfpf_numerop_fk_pk = %s) AND (cdfpf_codep_fk_pk = %s) ORDER BY cdfpf_numord", (self.cdf_numero, self.cdf_code))
       self.children = [self.terminology["%s_%s" % (numero, code)] for (numero, code) in db_cursor.fetchall()]
+      if (self.cdf_numero in _HIERARCHICAL_CDF_CLASSIFICATONS):
+        db_cursor.execute("SELECT cdf_code_pk FROM cdf_codif WHERE (cdf_numero_pk = %s) AND (cdf_code_pk LIKE %s)", (self.cdf_numero, "%s_" % self.cdf_code))
+        self.children = [self.terminology["%s_%s" % (self.cdf_numero, code)] for (code,) in db_cursor.fetchall()] + self.children
       return self.children
-      
+    
     elif attr == "relations":
       return []
       
