@@ -46,6 +46,8 @@ try: from pymedtermino.snomedct_2_icd10 import *
 except: pass
 try: from pymedtermino.cdf_2_meddra import *
 except: pass
+try: from pymedtermino.cdf_2_vcm import *
+except: pass
 
 try: from pymedtermino.icpc2 import *
 except: pass

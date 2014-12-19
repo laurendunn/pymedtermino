@@ -872,19 +872,23 @@ def concepts_2_parts(concepts, orig = None):
   raise ValueError(concepts)
 
 def concepts_2_label(concepts):
-  if not concepts: return Label(fr = "(pas de libellé)", en = "(no label)")
-  if concepts.find(VCM_CONCEPT[182]):  # Violent_hypofunctionning
-    concepts.remove(VCM_CONCEPT[182])  # Violent_hypofunctionning
-    concepts.add(VCM_CONCEPT[180])  # Hypofunctionning
-  if concepts.find(VCM_CONCEPT[179]):  # Violent_hyperfunctionning
-    concepts.remove(VCM_CONCEPT[179])  # Violent_hyperfunctionning
-    concepts.add(VCM_CONCEPT[177])  # Hyperfunctionning
-  if concepts.find(VCM_CONCEPT[187]):  # Infection
-    concepts.add(VCM_CONCEPT[192])  # Inflammation
-  #print("  ", ", ".join(c.term for c in concepts))
-  parts = concepts_2_parts(frozenset(concepts))
-  return combine(parts, concepts)
-
+  try:
+    if not concepts: return Label(fr = "(pas de libellé)", en = "(no label)")
+    if concepts.find(VCM_CONCEPT[182]):  # Violent_hypofunctionning
+      concepts.remove(VCM_CONCEPT[182])  # Violent_hypofunctionning
+      concepts.add(VCM_CONCEPT[180])  # Hypofunctionning
+    if concepts.find(VCM_CONCEPT[179]):  # Violent_hyperfunctionning
+      concepts.remove(VCM_CONCEPT[179])  # Violent_hyperfunctionning
+      concepts.add(VCM_CONCEPT[177])  # Hyperfunctionning
+    if concepts.find(VCM_CONCEPT[187]):  # Infection
+      concepts.add(VCM_CONCEPT[192])  # Inflammation
+    #print("  ", ", ".join(c.term for c in concepts))
+    parts = concepts_2_parts(frozenset(concepts))
+    return combine(parts, concepts)
+  except:
+    sys.excepthook(*sys.exc_info())
+    return Label(en = "xxx", fr = "xxx")
+  
 def icon_2_label(icon): return concepts_2_label(icon.concepts)
 
 

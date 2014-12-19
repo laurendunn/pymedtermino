@@ -239,6 +239,7 @@ def multi_snomedcts_2_multi_concepts(terme_de_depart, multi_snomedcts, debug = 0
     for cs1 in concepts_of_ancestors[:]:
       for cs2 in concepts_of_ancestors:
         if cs1 is cs2: continue
+        
         if cs1.imply(cs2):
           concepts_of_ancestors.remove(cs1)
           break

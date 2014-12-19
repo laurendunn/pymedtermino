@@ -425,10 +425,19 @@ inherits from Python's :class:`set` the methods for computing intersection, unio
         if c.is_a(concept): return c
         
   def imply(self, other):
-    """returns true if all concepts in the set are descendants of at least one of the concept in the set other."""
+    """returns true if all concepts in the OTHER set are descendants of (at least) one of the concept in this set."""
     for cb in other:
       for ca in self:
         if ca.imply(cb): break
+      else:
+        return 0
+    return 1
+  
+  def is_semantic_subset(self, other):
+    """returns true if all concepts in this set are descendants of (at least) one of the concept in the OTHER set."""
+    for c1 in self:
+      for c2 in other:
+        if c1.is_a(c2): break
       else:
         return 0
     return 1

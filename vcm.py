@@ -200,6 +200,10 @@ VCM lexicon defines "graphical is a" relation in addition to standard "is a". A 
    
    True if this concept is an 'empty' lexicon, such as "no pictogram".
 
+.. attribute:: priority
+   
+   The priority of this lexicon concept.
+
 Additional attributes can be available, listed in the :attr:`relations <pymedtermino.Concept.relations>` attribute.
 """
   @staticmethod
@@ -210,14 +214,14 @@ Additional attributes can be available, listed in the :attr:`relations <pymedter
   def __init__(self, code):
     if isinstance(code, tuple): raise ValueError("No such VCM lexicon element: %s!" % (code,))
     
-    self.db_cursor.execute("SELECT term, category, text_code FROM Concept WHERE lang=? AND code=?", (pymedtermino.LANGUAGE, code))
+    self.db_cursor.execute("SELECT term, category, text_code, priority FROM Concept WHERE lang=? AND code=?", (pymedtermino.LANGUAGE, code))
     r = self.db_cursor.fetchone()
     if not r:
       self.db_cursor.execute("SELECT term, category, text_code FROM Concept WHERE code=?", (code,))
       r = self.db_cursor.fetchone()
       if not r: raise ValueError()
     self.code = code
-    self.term, self.category, self.text_code = r
+    self.term, self.category, self.text_code, self.priority = r
     
     VCM_LEXICON.dict[self.code] = self
     
@@ -239,7 +243,7 @@ Additional attributes can be available, listed in the :attr:`relations <pymedter
       if "INVERSE_graphical_is_a" in self.relations: self.graphical_children = self.INVERSE_graphical_is_a
       else:                                          self.graphical_children = []
       return self.graphical_children
-      
+    
     elif attr == "abstract": return (not self.text_code) or self.text_code.startswith(u"_")
     
     elif attr == "empty": return (self.text_code == u"empty") or (self.text_code == u"rien")
@@ -496,6 +500,10 @@ class VCM(pymedtermino.Terminology):
 class VCMIcon(pymedtermino.MultiaxialConcept, pymedtermino._StringCodeConcept):
   """A VCM icon (=a concept in the VCM terminology). See :class:`pymedtermino.Concept` for common terminology members; only VCM-specific members are described here.
 
+.. attribute:: lexs
+
+   The list of lexicon concept in this icon.
+
 .. attribute:: physio
 
 .. attribute:: patho
@@ -525,6 +533,10 @@ class VCMIcon(pymedtermino.MultiaxialConcept, pymedtermino._StringCodeConcept):
 .. attribute:: concepts
    
    The set of VCM medical concepts associated to this icon.
+
+.. attribute:: priority
+   
+   The priority of this icon (for sorting purpose).
 
 """
   relations = ["central_color", "modifiers", "central_pictogram", "top_right_color", "top_right_pictogram", "second_top_right_pictogram", "shadow", "physio", "patho", "etiology", "quantitative", "process", "transverse"]
@@ -715,9 +727,22 @@ class VCMIcon(pymedtermino.MultiaxialConcept, pymedtermino._StringCodeConcept):
       self.concepts.update([VCM_CONCEPT[code] for (code,) in picto_mods_concepts])
       if not (VCM_CONCEPT[15] in self.concepts): self.concepts.add(VCM_CONCEPT[450]) # Absence_de_trouble_pathologique, Trouble_pathologique
       return self.concepts
-      
-    raise AttributeError(attr)
     
+    elif attr == "priority":
+      self.priority = 0
+      for lex in self.lexs:
+        if (not self.central_pictogram.is_a(VCM_LEXICON.EMPTY_CENTRAL_PICTOGRAM)) and lex.is_a(VCM_LEXICON.TRANSVERSE_MODIFIER): continue
+        if self.transverse and lex.is_a(VCM_LEXICON.EMPTY_CENTRAL_PICTOGRAM): continue
+        #print(lex.term, lex.priority)
+        self.priority += lex.priority
+      return self.priority
+    
+    raise AttributeError(attr)
+  
+  def __lt__(self, other): return self.priority < other.priority
+  def __gt__(self, other): return self.priority > other.priority
+    
+  
   def get_translation(self, lang): return self.label[lang]
     
   def get_english_code(self):
