@@ -29,7 +29,7 @@ ONTOLOGY_PATH     = os.path.join(HERE, "..", "vcm_onto")
 SQLITE_FILE2      = os.path.join(HERE, "..", "vcm_lexicon.sqlite3")
 
 db = create_db(SQLITE_FILE2)
-OWL_2_SQL       ([os.path.join(ONTOLOGY_PATH, "vcm_lexique.owl")], db, annotations = [(u"category", u"INTEGER"), (u"text_code", u"TEXT"), (u"priority", u"INTEGER")])
+OWL_2_SQL       ([os.path.join(ONTOLOGY_PATH, "vcm_lexique.owl")], db, annotations = [(u"category", u"INTEGER"), (u"text_code", u"TEXT"), (u"priority", u"INTEGER"), (u"second_priority", u"INTEGER")])
 do_sql(db.cursor(), u"""
 CREATE INDEX Concept_category_text_code_index ON Concept(category, text_code)""")
 close_db(db, SQLITE_FILE2, close = 1, set_readonly = 0)

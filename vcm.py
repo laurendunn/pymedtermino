@@ -202,7 +202,11 @@ VCM lexicon defines "graphical is a" relation in addition to standard "is a". A 
 
 .. attribute:: priority
    
-   The priority of this lexicon concept.
+   The priority of this lexicon concept, for icon sorting.
+
+.. attribute:: second_priority
+   
+   The second priority of this lexicon concept, for icon sorting. Only used (non-zero) for some transverse modifiers ; these modifiers use a different priority if they are used along with a central pictogram or not.
 
 Additional attributes can be available, listed in the :attr:`relations <pymedtermino.Concept.relations>` attribute.
 """
@@ -214,14 +218,14 @@ Additional attributes can be available, listed in the :attr:`relations <pymedter
   def __init__(self, code):
     if isinstance(code, tuple): raise ValueError("No such VCM lexicon element: %s!" % (code,))
     
-    self.db_cursor.execute("SELECT term, category, text_code, priority FROM Concept WHERE lang=? AND code=?", (pymedtermino.LANGUAGE, code))
+    self.db_cursor.execute("SELECT term, category, text_code, priority, second_priority FROM Concept WHERE lang=? AND code=?", (pymedtermino.LANGUAGE, code))
     r = self.db_cursor.fetchone()
     if not r:
       self.db_cursor.execute("SELECT term, category, text_code FROM Concept WHERE code=?", (code,))
       r = self.db_cursor.fetchone()
       if not r: raise ValueError()
     self.code = code
-    self.term, self.category, self.text_code, self.priority = r
+    self.term, self.category, self.text_code, self.priority, self.second_priority = r
     
     VCM_LEXICON.dict[self.code] = self
     
@@ -731,8 +735,10 @@ class VCMIcon(pymedtermino.MultiaxialConcept, pymedtermino._StringCodeConcept):
     elif attr == "priority":
       self.priority = 0
       for lex in self.lexs:
-        if (not self.central_pictogram.is_a(VCM_LEXICON.EMPTY_CENTRAL_PICTOGRAM)) and lex.is_a(VCM_LEXICON.TRANSVERSE_MODIFIER): continue
-        if self.transverse and lex.is_a(VCM_LEXICON.EMPTY_CENTRAL_PICTOGRAM): continue
+        if (not self.central_pictogram.is_a(VCM_LEXICON.EMPTY_CENTRAL_PICTOGRAM)) and lex.is_a(VCM_LEXICON.TRANSVERSE_MODIFIER) and lex.second_priority:
+          self.priority += lex.second_priority
+          continue
+        if self.transverse and self.transverse.second_priority and lex.is_a(VCM_LEXICON.EMPTY_CENTRAL_PICTOGRAM): continue
         #print(lex.term, lex.priority)
         self.priority += lex.priority
       return self.priority

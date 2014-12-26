@@ -40,6 +40,12 @@
     
 
 
+    <!-- http://localhost/~jiba/vcm_onto/vcm_lexique.owl#second_priority -->
+
+    <owl:AnnotationProperty rdf:about="&vcm_lexique;second_priority"/>
+    
+
+
     <!-- http://localhost/~jiba/vcm_onto/vcm_lexique.owl#text_code -->
 
     <owl:AnnotationProperty rdf:about="&vcm_lexique;text_code"/>
@@ -148,6 +154,7 @@
         <owl:disjointWith rdf:resource="&vcm_lexique;498"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;499"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;500"/>
+        
         <text_code xml:lang="en">past</text_code>
         <text_code xml:lang="fr">antecedent</text_code>
     </owl:Class>
@@ -170,6 +177,7 @@
         <owl:disjointWith rdf:resource="&vcm_lexique;498"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;499"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;500"/>
+        
         <text_code xml:lang="en">current</text_code>
         <text_code xml:lang="fr">en_cours</text_code>
     </owl:Class>
@@ -191,6 +199,7 @@
         <owl:disjointWith rdf:resource="&vcm_lexique;498"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;499"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;500"/>
+        
         <text_code xml:lang="en">risk</text_code>
         <text_code xml:lang="fr">risque</text_code>
     </owl:Class>
@@ -311,6 +320,7 @@
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&vcm_lexique;504"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;535"/>
+        
         <text_code xml:lang="en">physio</text_code>
         <text_code xml:lang="fr">physio</text_code>
     </owl:Class>
@@ -330,6 +340,7 @@
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&vcm_lexique;535"/>
+        
         <text_code xml:lang="en">patho</text_code>
         <text_code xml:lang="fr">patho</text_code>
     </owl:Class>
@@ -377,6 +388,7 @@
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&vcm_lexique;508"/>
+        
         <text_code xml:lang="en">hyper</text_code>
         <text_code xml:lang="fr">hyper</text_code>
     </owl:Class>
@@ -395,6 +407,7 @@
                 <owl:someValuesFrom rdf:resource="&vcm_lexique;506"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        
         <text_code xml:lang="en">hyper2</text_code>
         <text_code xml:lang="fr">hyper2</text_code>
     </owl:Class>
@@ -413,6 +426,7 @@
                 <owl:someValuesFrom rdf:resource="&vcm_lexique;505"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        
         <text_code xml:lang="en">hypo</text_code>
         <text_code xml:lang="fr">hypo</text_code>
     </owl:Class>
@@ -432,6 +446,7 @@
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&vcm_lexique;510"/>
+        
         <text_code xml:lang="en">arrest</text_code>
         <text_code xml:lang="fr">arret</text_code>
     </owl:Class>
@@ -450,6 +465,7 @@
                 <owl:someValuesFrom rdf:resource="&vcm_lexique;508"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        
         <text_code xml:lang="en">hypo2</text_code>
         <text_code xml:lang="fr">hypo2</text_code>
     </owl:Class>
@@ -463,6 +479,12 @@
         <rdfs:label xml:lang="fr">Modificateur_etiologie</rdfs:label>
         <rdfs:subClassOf rdf:resource="&vcm_lexique;504"/>
         <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&vcm_lexique;493"/>
+                <owl:someValuesFrom rdf:resource="&vcm_lexique;504"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
             <owl:Class>
                 <owl:unionOf rdf:parseType="Collection">
                     <rdf:Description rdf:about="&vcm_lexique;512"/>
@@ -474,12 +496,6 @@
                     <rdf:Description rdf:about="&vcm_lexique;523"/>
                 </owl:unionOf>
             </owl:Class>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&vcm_lexique;493"/>
-                <owl:someValuesFrom rdf:resource="&vcm_lexique;504"/>
-            </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&vcm_lexique;528"/>
         <text_code xml:lang="en">_etiology</text_code>
@@ -647,6 +663,7 @@
         <owl:disjointWith rdf:resource="&vcm_lexique;521"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;522"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;523"/>
+        
         <text_code xml:lang="en">allergy</text_code>
         <text_code xml:lang="fr">allergie</text_code>
     </owl:Class>
@@ -668,6 +685,7 @@
         <owl:disjointWith rdf:resource="&vcm_lexique;521"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;522"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;523"/>
+        
         <text_code xml:lang="en">chemical</text_code>
         <text_code xml:lang="fr">substance</text_code>
     </owl:Class>
@@ -688,6 +706,7 @@
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&vcm_lexique;522"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;523"/>
+        
         <text_code xml:lang="en">genetic</text_code>
         <text_code xml:lang="fr">genetique</text_code>
     </owl:Class>
@@ -707,6 +726,7 @@
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&vcm_lexique;523"/>
+        
         <text_code xml:lang="en">autoimmune</text_code>
         <text_code xml:lang="fr">autoimmune</text_code>
     </owl:Class>
@@ -725,6 +745,7 @@
                 <owl:someValuesFrom rdf:resource="&vcm_lexique;511"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        
         <text_code xml:lang="en">due_to_treatment</text_code>
         <text_code xml:lang="fr">etio_traitement</text_code>
     </owl:Class>
@@ -745,6 +766,7 @@
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&vcm_lexique;525"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;526"/>
+        
         <text_code xml:lang="en">due_to_radiation</text_code>
         <text_code xml:lang="fr">etio_radio</text_code>
     </owl:Class>
@@ -764,6 +786,7 @@
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&vcm_lexique;526"/>
+        
         <text_code xml:lang="en">due_to_drug</text_code>
         <text_code xml:lang="fr">etio_medicament</text_code>
     </owl:Class>
@@ -782,6 +805,7 @@
                 <owl:someValuesFrom rdf:resource="&vcm_lexique;523"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        
         <text_code xml:lang="en">due_to_procedure</text_code>
         <text_code xml:lang="fr">etio_procedure</text_code>
     </owl:Class>
@@ -800,6 +824,7 @@
                 <owl:someValuesFrom rdf:resource="&vcm_lexique;526"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        
         <text_code xml:lang="en">due_to_graft</text_code>
         <text_code xml:lang="fr">etio_greffe</text_code>
     </owl:Class>
@@ -813,6 +838,12 @@
         <rdfs:label xml:lang="fr">Modificateur_processus</rdfs:label>
         <rdfs:subClassOf rdf:resource="&vcm_lexique;504"/>
         <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&vcm_lexique;493"/>
+                <owl:someValuesFrom rdf:resource="&vcm_lexique;504"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
             <owl:Class>
                 <owl:unionOf rdf:parseType="Collection">
                     <rdf:Description rdf:about="&vcm_lexique;529"/>
@@ -823,12 +854,6 @@
                     <rdf:Description rdf:about="&vcm_lexique;534"/>
                 </owl:unionOf>
             </owl:Class>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&vcm_lexique;493"/>
-                <owl:someValuesFrom rdf:resource="&vcm_lexique;504"/>
-            </owl:Restriction>
         </rdfs:subClassOf>
         <text_code xml:lang="en">_process</text_code>
         <text_code xml:lang="fr">_processus</text_code>
@@ -853,6 +878,7 @@
         <owl:disjointWith rdf:resource="&vcm_lexique;532"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;533"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;534"/>
+        
         <text_code xml:lang="en">inflammation</text_code>
         <text_code xml:lang="fr">inflammation</text_code>
     </owl:Class>
@@ -875,6 +901,7 @@
         <owl:disjointWith rdf:resource="&vcm_lexique;532"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;533"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;534"/>
+        
         <text_code xml:lang="en">pain</text_code>
         <text_code xml:lang="fr">douleur</text_code>
     </owl:Class>
@@ -896,6 +923,7 @@
         <owl:disjointWith rdf:resource="&vcm_lexique;532"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;533"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;534"/>
+        
         <text_code xml:lang="en">dependency</text_code>
         <text_code xml:lang="fr">dependance</text_code>
     </owl:Class>
@@ -916,6 +944,7 @@
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&vcm_lexique;533"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;534"/>
+        
         <text_code xml:lang="en">lesion</text_code>
         <text_code xml:lang="fr">lesion</text_code>
     </owl:Class>
@@ -935,6 +964,7 @@
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&vcm_lexique;534"/>
+        
         <text_code xml:lang="en">malformation</text_code>
         <text_code xml:lang="fr">malformation</text_code>
     </owl:Class>
@@ -953,6 +983,7 @@
                 <owl:someValuesFrom rdf:resource="&vcm_lexique;528"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        
         <text_code xml:lang="en">enlargement</text_code>
         <text_code xml:lang="fr">agrandissement</text_code>
     </owl:Class>
@@ -1002,6 +1033,7 @@
         <owl:disjointWith rdf:resource="&vcm_lexique;537"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;541"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;542"/>
+        
         <text_code xml:lang="en">vessel</text_code>
         <text_code xml:lang="fr">vaisseau</text_code>
     </owl:Class>
@@ -1022,6 +1054,7 @@
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&vcm_lexique;541"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;542"/>
+        
         <text_code xml:lang="en">vessel_bp</text_code>
         <text_code xml:lang="fr">vaisseau_pa</text_code>
     </owl:Class>
@@ -1042,6 +1075,7 @@
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&vcm_lexique;539"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;540"/>
+        
         <text_code xml:lang="en">edema</text_code>
         <text_code xml:lang="fr">oedeme</text_code>
     </owl:Class>
@@ -1061,6 +1095,7 @@
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&vcm_lexique;540"/>
+        
         <text_code xml:lang="en">haemorrhage</text_code>
         <text_code xml:lang="fr">hemorragie</text_code>
     </owl:Class>
@@ -1079,6 +1114,7 @@
                 <owl:someValuesFrom rdf:resource="&vcm_lexique;536"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        
         <text_code xml:lang="en">obstructed_vessel</text_code>
         <text_code xml:lang="fr">vaisseau_bouche</text_code>
     </owl:Class>
@@ -1098,6 +1134,7 @@
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&vcm_lexique;542"/>
+        
         <text_code xml:lang="en">nerve</text_code>
         <text_code xml:lang="fr">nerf</text_code>
     </owl:Class>
@@ -1116,6 +1153,7 @@
                 <owl:someValuesFrom rdf:resource="&vcm_lexique;535"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        
         <text_code xml:lang="en">metab</text_code>
         <text_code xml:lang="fr">metab</text_code>
     </owl:Class>
@@ -1161,6 +1199,7 @@
         <owl:disjointWith rdf:resource="&vcm_lexique;654"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;661"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;680"/>
+        
         <text_code xml:lang="en">empty</text_code>
         <text_code xml:lang="fr">rien</text_code>
     </owl:Class>
@@ -1173,6 +1212,12 @@
         <rdfs:label xml:lang="en">Anatomo_functional_pictogram</rdfs:label>
         <rdfs:label xml:lang="fr">Pictogramme_anatomo_fonctionnel</rdfs:label>
         <rdfs:subClassOf rdf:resource="&vcm_lexique;543"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&vcm_lexique;493"/>
+                <owl:someValuesFrom rdf:resource="&vcm_lexique;543"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Class>
                 <owl:unionOf rdf:parseType="Collection">
@@ -1237,12 +1282,6 @@
                     <rdf:Description rdf:about="&vcm_lexique;653"/>
                 </owl:unionOf>
             </owl:Class>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&vcm_lexique;493"/>
-                <owl:someValuesFrom rdf:resource="&vcm_lexique;543"/>
-            </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&vcm_lexique;654"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;661"/>
@@ -1323,6 +1362,7 @@
         <owl:disjointWith rdf:resource="&vcm_lexique;651"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;652"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;653"/>
+        
         <text_code xml:lang="en">lung</text_code>
         <text_code xml:lang="fr">poumon</text_code>
     </owl:Class>
@@ -1398,6 +1438,7 @@
         <owl:disjointWith rdf:resource="&vcm_lexique;651"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;652"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;653"/>
+        
         <text_code xml:lang="en">bronchial</text_code>
         <text_code xml:lang="fr">bronches</text_code>
     </owl:Class>
@@ -1416,6 +1457,7 @@
                 <owl:someValuesFrom rdf:resource="&vcm_lexique;547"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        
         <text_code xml:lang="en">obstructed_bronchial</text_code>
         <text_code xml:lang="fr">bronches_bouche</text_code>
     </owl:Class>
@@ -1490,6 +1532,7 @@
         <owl:disjointWith rdf:resource="&vcm_lexique;651"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;652"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;653"/>
+        
         <text_code xml:lang="en">heart</text_code>
         <text_code xml:lang="fr">coeur</text_code>
     </owl:Class>
@@ -1563,6 +1606,7 @@
         <owl:disjointWith rdf:resource="&vcm_lexique;651"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;652"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;653"/>
+        
         <text_code xml:lang="en">heart_rhythm</text_code>
         <text_code xml:lang="fr">coeur_rythme</text_code>
     </owl:Class>
@@ -1635,6 +1679,7 @@
         <owl:disjointWith rdf:resource="&vcm_lexique;651"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;652"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;653"/>
+        
         <text_code xml:lang="en">blood</text_code>
         <text_code xml:lang="fr">sang</text_code>
     </owl:Class>
@@ -1706,6 +1751,7 @@
         <owl:disjointWith rdf:resource="&vcm_lexique;651"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;652"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;653"/>
+        
         <text_code xml:lang="en">bone_narrow</text_code>
         <text_code xml:lang="fr">moelle</text_code>
     </owl:Class>
@@ -1776,6 +1822,7 @@
         <owl:disjointWith rdf:resource="&vcm_lexique;651"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;652"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;653"/>
+        
         <text_code xml:lang="en">red_cell</text_code>
         <text_code xml:lang="fr">globule_rouge</text_code>
     </owl:Class>
@@ -1845,6 +1892,7 @@
         <owl:disjointWith rdf:resource="&vcm_lexique;651"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;652"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;653"/>
+        
         <text_code xml:lang="en">white_cell</text_code>
         <text_code xml:lang="fr">globule_blanc</text_code>
     </owl:Class>
@@ -1913,6 +1961,7 @@
         <owl:disjointWith rdf:resource="&vcm_lexique;651"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;652"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;653"/>
+        
         <text_code xml:lang="en">platelet</text_code>
         <text_code xml:lang="fr">plaquette</text_code>
     </owl:Class>
@@ -1980,6 +2029,7 @@
         <owl:disjointWith rdf:resource="&vcm_lexique;651"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;652"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;653"/>
+        
         <text_code xml:lang="en">plasma</text_code>
         <text_code xml:lang="fr">serique</text_code>
     </owl:Class>
@@ -2046,6 +2096,7 @@
         <owl:disjointWith rdf:resource="&vcm_lexique;651"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;652"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;653"/>
+        
         <text_code xml:lang="en">plasma_drug_concentration</text_code>
         <text_code xml:lang="fr">concentration_plasma_med</text_code>
     </owl:Class>
@@ -2111,6 +2162,7 @@
         <owl:disjointWith rdf:resource="&vcm_lexique;651"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;652"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;653"/>
+        
         <text_code xml:lang="en">glycemia</text_code>
         <text_code xml:lang="fr">glycemie</text_code>
     </owl:Class>
@@ -2175,6 +2227,7 @@
         <owl:disjointWith rdf:resource="&vcm_lexique;651"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;652"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;653"/>
+        
         <text_code xml:lang="en">lipidemia</text_code>
         <text_code xml:lang="fr">lipidemie</text_code>
     </owl:Class>
@@ -2238,6 +2291,7 @@
         <owl:disjointWith rdf:resource="&vcm_lexique;651"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;652"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;653"/>
+        
         <text_code xml:lang="en">natremia</text_code>
         <text_code xml:lang="fr">natremie</text_code>
     </owl:Class>
@@ -2300,6 +2354,7 @@
         <owl:disjointWith rdf:resource="&vcm_lexique;651"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;652"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;653"/>
+        
         <text_code xml:lang="en">chloremia</text_code>
         <text_code xml:lang="fr">chloremie</text_code>
     </owl:Class>
@@ -2361,6 +2416,7 @@
         <owl:disjointWith rdf:resource="&vcm_lexique;651"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;652"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;653"/>
+        
         <text_code xml:lang="en">kaliemia</text_code>
         <text_code xml:lang="fr">kaliemie</text_code>
     </owl:Class>
@@ -2421,6 +2477,7 @@
         <owl:disjointWith rdf:resource="&vcm_lexique;651"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;652"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;653"/>
+        
         <text_code xml:lang="en">calcemia</text_code>
         <text_code xml:lang="fr">calcemie</text_code>
     </owl:Class>
@@ -2480,6 +2537,7 @@
         <owl:disjointWith rdf:resource="&vcm_lexique;651"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;652"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;653"/>
+        
         <text_code xml:lang="en">phosphoremia</text_code>
         <text_code xml:lang="fr">phosphoremie</text_code>
     </owl:Class>
@@ -2538,6 +2596,7 @@
         <owl:disjointWith rdf:resource="&vcm_lexique;651"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;652"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;653"/>
+        
         <text_code xml:lang="en">lithiemia</text_code>
         <text_code xml:lang="fr">lithiemie</text_code>
     </owl:Class>
@@ -2595,6 +2654,7 @@
         <owl:disjointWith rdf:resource="&vcm_lexique;651"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;652"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;653"/>
+        
         <text_code xml:lang="en">ferremia</text_code>
         <text_code xml:lang="fr">ferremie</text_code>
     </owl:Class>
@@ -2651,6 +2711,7 @@
         <owl:disjointWith rdf:resource="&vcm_lexique;651"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;652"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;653"/>
+        
         <text_code xml:lang="en">magnesemia</text_code>
         <text_code xml:lang="fr">magnesemie</text_code>
     </owl:Class>
@@ -2706,6 +2767,7 @@
         <owl:disjointWith rdf:resource="&vcm_lexique;651"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;652"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;653"/>
+        
         <text_code xml:lang="en">spleen</text_code>
         <text_code xml:lang="fr">rate</text_code>
     </owl:Class>
@@ -2760,6 +2822,7 @@
         <owl:disjointWith rdf:resource="&vcm_lexique;651"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;652"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;653"/>
+        
         <text_code xml:lang="en">genital</text_code>
         <text_code xml:lang="fr">genital</text_code>
     </owl:Class>
@@ -2779,6 +2842,7 @@
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&vcm_lexique;572"/>
+        
         <text_code xml:lang="en">genital_male</text_code>
         <text_code xml:lang="fr">genital_male</text_code>
     </owl:Class>
@@ -2797,6 +2861,7 @@
                 <owl:someValuesFrom rdf:resource="&vcm_lexique;570"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        
         <text_code xml:lang="en">prostate</text_code>
         <text_code xml:lang="fr">prostate</text_code>
     </owl:Class>
@@ -2815,6 +2880,7 @@
                 <owl:someValuesFrom rdf:resource="&vcm_lexique;569"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        
         <text_code xml:lang="en">genital_female</text_code>
         <text_code xml:lang="fr">genital_femelle</text_code>
     </owl:Class>
@@ -2836,6 +2902,7 @@
         <owl:disjointWith rdf:resource="&vcm_lexique;579"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;581"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;582"/>
+        
         <text_code xml:lang="en">uterus</text_code>
         <text_code xml:lang="fr">uterus</text_code>
     </owl:Class>
@@ -2854,6 +2921,7 @@
                 <owl:someValuesFrom rdf:resource="&vcm_lexique;573"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        
         <text_code xml:lang="en">pregnancy</text_code>
         <text_code xml:lang="fr">grossesse</text_code>
     </owl:Class>
@@ -2875,6 +2943,7 @@
         <owl:disjointWith rdf:resource="&vcm_lexique;576"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;577"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;578"/>
+        
         <text_code xml:lang="en">pregnancy_1</text_code>
         <text_code xml:lang="fr">grossesse_1</text_code>
     </owl:Class>
@@ -2895,6 +2964,7 @@
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&vcm_lexique;577"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;578"/>
+        
         <text_code xml:lang="en">pregnancy_2</text_code>
         <text_code xml:lang="fr">grossesse_2</text_code>
     </owl:Class>
@@ -2914,6 +2984,7 @@
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&vcm_lexique;578"/>
+        
         <text_code xml:lang="en">pregnancy_3</text_code>
         <text_code xml:lang="fr">grossesse_3</text_code>
     </owl:Class>
@@ -2932,6 +3003,7 @@
                 <owl:someValuesFrom rdf:resource="&vcm_lexique;574"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        
         <text_code xml:lang="en">delivery</text_code>
         <text_code xml:lang="fr">accouchement</text_code>
     </owl:Class>
@@ -2952,6 +3024,7 @@
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&vcm_lexique;581"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;582"/>
+        
         <text_code xml:lang="en">breast</text_code>
         <text_code xml:lang="fr">sein</text_code>
     </owl:Class>
@@ -3005,6 +3078,7 @@
         <owl:disjointWith rdf:resource="&vcm_lexique;651"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;652"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;653"/>
+        
         <text_code xml:lang="en">breastfeeding</text_code>
         <text_code xml:lang="fr">allaitement</text_code>
     </owl:Class>
@@ -3024,6 +3098,7 @@
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&vcm_lexique;582"/>
+        
         <text_code xml:lang="en">menopause</text_code>
         <text_code xml:lang="fr">menopause</text_code>
     </owl:Class>
@@ -3042,6 +3117,7 @@
                 <owl:someValuesFrom rdf:resource="&vcm_lexique;572"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        
         <text_code xml:lang="en">premenopause</text_code>
         <text_code xml:lang="fr">premenopause</text_code>
     </owl:Class>
@@ -3094,6 +3170,7 @@
         <owl:disjointWith rdf:resource="&vcm_lexique;651"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;652"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;653"/>
+        
         <text_code xml:lang="en">kidney</text_code>
         <text_code xml:lang="fr">rein</text_code>
     </owl:Class>
@@ -3145,6 +3222,7 @@
         <owl:disjointWith rdf:resource="&vcm_lexique;651"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;652"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;653"/>
+        
         <text_code xml:lang="en">ureter</text_code>
         <text_code xml:lang="fr">uretere</text_code>
     </owl:Class>
@@ -3195,6 +3273,7 @@
         <owl:disjointWith rdf:resource="&vcm_lexique;651"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;652"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;653"/>
+        
         <text_code xml:lang="en">urinary_bladder</text_code>
         <text_code xml:lang="fr">vessie</text_code>
     </owl:Class>
@@ -3213,6 +3292,7 @@
                 <owl:someValuesFrom rdf:resource="&vcm_lexique;585"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        
         <text_code xml:lang="en">obstructed_urinary_bladder</text_code>
         <text_code xml:lang="fr">vessie_bouche</text_code>
     </owl:Class>
@@ -3262,6 +3342,7 @@
         <owl:disjointWith rdf:resource="&vcm_lexique;651"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;652"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;653"/>
+        
         <text_code xml:lang="en">renal_excretion</text_code>
         <text_code xml:lang="fr">excretion_renale</text_code>
     </owl:Class>
@@ -3283,6 +3364,7 @@
         <owl:disjointWith rdf:resource="&vcm_lexique;589"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;590"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;591"/>
+        
         <text_code xml:lang="en">hematuria</text_code>
         <text_code xml:lang="fr">hematurie</text_code>
     </owl:Class>
@@ -3303,6 +3385,7 @@
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&vcm_lexique;590"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;591"/>
+        
         <text_code xml:lang="en">leucocyturia</text_code>
         <text_code xml:lang="fr">leucocyturie</text_code>
     </owl:Class>
@@ -3322,6 +3405,7 @@
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&vcm_lexique;591"/>
+        
         <text_code xml:lang="en">urinary_concentration</text_code>
         <text_code xml:lang="fr">urique</text_code>
     </owl:Class>
@@ -3340,6 +3424,7 @@
                 <owl:someValuesFrom rdf:resource="&vcm_lexique;587"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        
         <text_code xml:lang="en">urinary_drug_concentration</text_code>
         <text_code xml:lang="fr">concentration_urique_med</text_code>
     </owl:Class>
@@ -3388,6 +3473,7 @@
         <owl:disjointWith rdf:resource="&vcm_lexique;651"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;652"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;653"/>
+        
         <text_code xml:lang="en">temperature</text_code>
         <text_code xml:lang="fr">temperature</text_code>
     </owl:Class>
@@ -3435,6 +3521,7 @@
         <owl:disjointWith rdf:resource="&vcm_lexique;651"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;652"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;653"/>
+        
         <text_code xml:lang="en">mouth</text_code>
         <text_code xml:lang="fr">bouche</text_code>
     </owl:Class>
@@ -3481,6 +3568,7 @@
         <owl:disjointWith rdf:resource="&vcm_lexique;651"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;652"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;653"/>
+        
         <text_code xml:lang="en">tooth</text_code>
         <text_code xml:lang="fr">dent</text_code>
     </owl:Class>
@@ -3526,6 +3614,7 @@
         <owl:disjointWith rdf:resource="&vcm_lexique;651"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;652"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;653"/>
+        
         <text_code xml:lang="en">gingiva</text_code>
         <text_code xml:lang="fr">dent_gencive</text_code>
     </owl:Class>
@@ -3570,6 +3659,7 @@
         <owl:disjointWith rdf:resource="&vcm_lexique;651"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;652"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;653"/>
+        
         <text_code xml:lang="en">ivory</text_code>
         <text_code xml:lang="fr">dent_dent</text_code>
     </owl:Class>
@@ -3613,6 +3703,7 @@
         <owl:disjointWith rdf:resource="&vcm_lexique;651"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;652"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;653"/>
+        
         <text_code xml:lang="en">dental_pulp</text_code>
         <text_code xml:lang="fr">dent_pulpe</text_code>
     </owl:Class>
@@ -3655,6 +3746,7 @@
         <owl:disjointWith rdf:resource="&vcm_lexique;651"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;652"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;653"/>
+        
         <text_code xml:lang="en">throat_nose</text_code>
         <text_code xml:lang="fr">gorge_nez</text_code>
     </owl:Class>
@@ -3674,6 +3766,7 @@
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&vcm_lexique;600"/>
+        
         <text_code xml:lang="en">cough</text_code>
         <text_code xml:lang="fr">toux</text_code>
     </owl:Class>
@@ -3692,6 +3785,7 @@
                 <owl:someValuesFrom rdf:resource="&vcm_lexique;598"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        
         <text_code xml:lang="en">obstructed_throat_nose</text_code>
         <text_code xml:lang="fr">gorge_nez_bouche</text_code>
     </owl:Class>
@@ -3733,6 +3827,7 @@
         <owl:disjointWith rdf:resource="&vcm_lexique;651"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;652"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;653"/>
+        
         <text_code xml:lang="en">digestive_tube</text_code>
         <text_code xml:lang="fr">tube_digestif</text_code>
     </owl:Class>
@@ -3773,6 +3868,7 @@
         <owl:disjointWith rdf:resource="&vcm_lexique;651"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;652"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;653"/>
+        
         <text_code xml:lang="en">stomach</text_code>
         <text_code xml:lang="fr">estomac</text_code>
     </owl:Class>
@@ -3792,6 +3888,7 @@
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&vcm_lexique;604"/>
+        
         <text_code xml:lang="en">obstructed_stomach</text_code>
         <text_code xml:lang="fr">estomac_bouche</text_code>
     </owl:Class>
@@ -3810,6 +3907,7 @@
                 <owl:someValuesFrom rdf:resource="&vcm_lexique;602"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        
         <text_code xml:lang="en">nausea</text_code>
         <text_code xml:lang="fr">nausee</text_code>
     </owl:Class>
@@ -3849,6 +3947,7 @@
         <owl:disjointWith rdf:resource="&vcm_lexique;651"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;652"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;653"/>
+        
         <text_code xml:lang="en">oesophagia</text_code>
         <text_code xml:lang="fr">oesophage</text_code>
     </owl:Class>
@@ -3868,6 +3967,7 @@
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&vcm_lexique;607"/>
+        
         <text_code xml:lang="en">gerd</text_code>
         <text_code xml:lang="fr">rgo</text_code>
     </owl:Class>
@@ -3886,6 +3986,7 @@
                 <owl:someValuesFrom rdf:resource="&vcm_lexique;605"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        
         <text_code xml:lang="en">obstructed_oesophagia</text_code>
         <text_code xml:lang="fr">oesophage_bouche</text_code>
     </owl:Class>
@@ -3924,6 +4025,7 @@
         <owl:disjointWith rdf:resource="&vcm_lexique;651"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;652"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;653"/>
+        
         <text_code xml:lang="en">small_intestine</text_code>
         <text_code xml:lang="fr">petit_intestin</text_code>
     </owl:Class>
@@ -3942,6 +4044,7 @@
                 <owl:someValuesFrom rdf:resource="&vcm_lexique;608"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        
         <text_code xml:lang="en">obstructed_small_intestin</text_code>
         <text_code xml:lang="fr">petit_intestin_bouche</text_code>
     </owl:Class>
@@ -3979,6 +4082,7 @@
         <owl:disjointWith rdf:resource="&vcm_lexique;651"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;652"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;653"/>
+        
         <text_code xml:lang="en">large_intestine</text_code>
         <text_code xml:lang="fr">gros_intestin</text_code>
     </owl:Class>
@@ -3997,6 +4101,7 @@
                 <owl:someValuesFrom rdf:resource="&vcm_lexique;610"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        
         <text_code xml:lang="en">obstructed_large_intestine</text_code>
         <text_code xml:lang="fr">gros_intestin_bouche</text_code>
     </owl:Class>
@@ -4033,6 +4138,7 @@
         <owl:disjointWith rdf:resource="&vcm_lexique;651"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;652"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;653"/>
+        
         <text_code xml:lang="en">liver</text_code>
         <text_code xml:lang="fr">foie</text_code>
     </owl:Class>
@@ -4068,6 +4174,7 @@
         <owl:disjointWith rdf:resource="&vcm_lexique;651"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;652"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;653"/>
+        
         <text_code xml:lang="en">gallbladder</text_code>
         <text_code xml:lang="fr">vesicule</text_code>
     </owl:Class>
@@ -4086,6 +4193,7 @@
                 <owl:someValuesFrom rdf:resource="&vcm_lexique;613"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        
         <text_code xml:lang="en">obstructed_gallbladder</text_code>
         <text_code xml:lang="fr">vesicule_bouche</text_code>
     </owl:Class>
@@ -4120,6 +4228,7 @@
         <owl:disjointWith rdf:resource="&vcm_lexique;651"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;652"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;653"/>
+        
         <text_code xml:lang="en">gland</text_code>
         <text_code xml:lang="fr">glande</text_code>
     </owl:Class>
@@ -4141,6 +4250,7 @@
         <owl:disjointWith rdf:resource="&vcm_lexique;617"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;618"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;619"/>
+        
         <text_code xml:lang="en">thyroid</text_code>
         <text_code xml:lang="fr">thyroide</text_code>
     </owl:Class>
@@ -4161,6 +4271,7 @@
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&vcm_lexique;618"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;619"/>
+        
         <text_code xml:lang="en">pancreas</text_code>
         <text_code xml:lang="fr">pancreas</text_code>
     </owl:Class>
@@ -4180,6 +4291,7 @@
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&vcm_lexique;619"/>
+        
         <text_code xml:lang="en">gland_diabetes</text_code>
         <text_code xml:lang="fr">glande_diabete</text_code>
     </owl:Class>
@@ -4198,6 +4310,7 @@
                 <owl:someValuesFrom rdf:resource="&vcm_lexique;615"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        
         <text_code xml:lang="en">obstructed_gland</text_code>
         <text_code xml:lang="fr">glande_bouche</text_code>
     </owl:Class>
@@ -4231,6 +4344,7 @@
         <owl:disjointWith rdf:resource="&vcm_lexique;651"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;652"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;653"/>
+        
         <text_code xml:lang="en">brain</text_code>
         <text_code xml:lang="fr">cerveau</text_code>
     </owl:Class>
@@ -4251,6 +4365,7 @@
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&vcm_lexique;626"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;627"/>
+        
         <text_code xml:lang="en">spinal_cord</text_code>
         <text_code xml:lang="fr">moelle_epiniere</text_code>
     </owl:Class>
@@ -4283,6 +4398,7 @@
         <owl:disjointWith rdf:resource="&vcm_lexique;651"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;652"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;653"/>
+        
         <text_code xml:lang="en">cerebral_function</text_code>
         <text_code xml:lang="fr">fonction_cerebrale</text_code>
     </owl:Class>
@@ -4314,6 +4430,7 @@
         <owl:disjointWith rdf:resource="&vcm_lexique;651"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;652"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;653"/>
+        
         <text_code xml:lang="en">sensitive_function</text_code>
         <text_code xml:lang="fr">fonction_sensorielle</text_code>
     </owl:Class>
@@ -4344,6 +4461,7 @@
         <owl:disjointWith rdf:resource="&vcm_lexique;651"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;652"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;653"/>
+        
         <text_code xml:lang="en">motor_function</text_code>
         <text_code xml:lang="fr">fonction_motrice</text_code>
     </owl:Class>
@@ -4373,6 +4491,7 @@
         <owl:disjointWith rdf:resource="&vcm_lexique;651"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;652"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;653"/>
+        
         <text_code xml:lang="en">brain_eeg</text_code>
         <text_code xml:lang="fr">cerveau_eeg</text_code>
     </owl:Class>
@@ -4392,6 +4511,7 @@
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&vcm_lexique;627"/>
+        
         <text_code xml:lang="en">brain_degenerative</text_code>
         <text_code xml:lang="fr">cerveau_degenerescence</text_code>
     </owl:Class>
@@ -4410,6 +4530,7 @@
                 <owl:someValuesFrom rdf:resource="&vcm_lexique;620"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        
         <text_code xml:lang="en">extrapyramidal</text_code>
         <text_code xml:lang="fr">extrapyramidal</text_code>
     </owl:Class>
@@ -4438,6 +4559,7 @@
         <owl:disjointWith rdf:resource="&vcm_lexique;651"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;652"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;653"/>
+        
         <text_code xml:lang="en">psy</text_code>
         <text_code xml:lang="fr">psy</text_code>
     </owl:Class>
@@ -4463,6 +4585,7 @@
         <owl:disjointWith rdf:resource="&vcm_lexique;634"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;635"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;636"/>
+        
         <text_code xml:lang="en">sleep</text_code>
         <text_code xml:lang="fr">sommeil</text_code>
     </owl:Class>
@@ -4487,6 +4610,7 @@
         <owl:disjointWith rdf:resource="&vcm_lexique;634"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;635"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;636"/>
+        
         <text_code xml:lang="en">mood</text_code>
         <text_code xml:lang="fr">humeur</text_code>
     </owl:Class>
@@ -4510,6 +4634,7 @@
         <owl:disjointWith rdf:resource="&vcm_lexique;634"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;635"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;636"/>
+        
         <text_code xml:lang="en">asthenia</text_code>
         <text_code xml:lang="fr">asthenie</text_code>
     </owl:Class>
@@ -4532,6 +4657,7 @@
         <owl:disjointWith rdf:resource="&vcm_lexique;634"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;635"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;636"/>
+        
         <text_code xml:lang="en">fear</text_code>
         <text_code xml:lang="fr">peur</text_code>
     </owl:Class>
@@ -4553,6 +4679,7 @@
         <owl:disjointWith rdf:resource="&vcm_lexique;634"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;635"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;636"/>
+        
         <text_code xml:lang="en">vertigo</text_code>
         <text_code xml:lang="fr">vertige</text_code>
     </owl:Class>
@@ -4573,6 +4700,7 @@
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&vcm_lexique;635"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;636"/>
+        
         <text_code xml:lang="en">psy_alimentation</text_code>
         <text_code xml:lang="fr">psy_alimentation</text_code>
     </owl:Class>
@@ -4592,6 +4720,7 @@
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&vcm_lexique;636"/>
+        
         <text_code xml:lang="en">psy_sexual</text_code>
         <text_code xml:lang="fr">psy_sexuel</text_code>
     </owl:Class>
@@ -4610,6 +4739,7 @@
                 <owl:someValuesFrom rdf:resource="&vcm_lexique;628"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        
         <text_code xml:lang="en">speech</text_code>
         <text_code xml:lang="fr">paroles</text_code>
     </owl:Class>
@@ -4637,6 +4767,7 @@
         <owl:disjointWith rdf:resource="&vcm_lexique;651"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;652"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;653"/>
+        
         <text_code xml:lang="en">eye</text_code>
         <text_code xml:lang="fr">oeil</text_code>
     </owl:Class>
@@ -4655,6 +4786,7 @@
                 <owl:someValuesFrom rdf:resource="&vcm_lexique;637"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        
         <text_code xml:lang="en">glaucoma</text_code>
         <text_code xml:lang="fr">glaucome</text_code>
     </owl:Class>
@@ -4681,6 +4813,7 @@
         <owl:disjointWith rdf:resource="&vcm_lexique;651"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;652"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;653"/>
+        
         <text_code xml:lang="en">ear</text_code>
         <text_code xml:lang="fr">oreille</text_code>
     </owl:Class>
@@ -4706,6 +4839,7 @@
         <owl:disjointWith rdf:resource="&vcm_lexique;651"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;652"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;653"/>
+        
         <text_code xml:lang="en">skin</text_code>
         <text_code xml:lang="fr">peau</text_code>
     </owl:Class>
@@ -4726,6 +4860,7 @@
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&vcm_lexique;642"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;643"/>
+        
         <text_code xml:lang="en">photosens</text_code>
         <text_code xml:lang="fr">photosens</text_code>
     </owl:Class>
@@ -4745,6 +4880,7 @@
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&vcm_lexique;643"/>
+        
         <text_code xml:lang="en">psoriasis</text_code>
         <text_code xml:lang="fr">psoriasis</text_code>
     </owl:Class>
@@ -4763,6 +4899,7 @@
                 <owl:someValuesFrom rdf:resource="&vcm_lexique;640"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        
         <text_code xml:lang="en">acnea</text_code>
         <text_code xml:lang="fr">acne</text_code>
     </owl:Class>
@@ -4787,6 +4924,7 @@
         <owl:disjointWith rdf:resource="&vcm_lexique;651"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;652"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;653"/>
+        
         <text_code xml:lang="en">hair</text_code>
         <text_code xml:lang="fr">cheveux</text_code>
     </owl:Class>
@@ -4810,6 +4948,7 @@
         <owl:disjointWith rdf:resource="&vcm_lexique;651"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;652"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;653"/>
+        
         <text_code xml:lang="en">mucosa</text_code>
         <text_code xml:lang="fr">muqueuse</text_code>
     </owl:Class>
@@ -4832,6 +4971,7 @@
         <owl:disjointWith rdf:resource="&vcm_lexique;651"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;652"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;653"/>
+        
         <text_code xml:lang="en">fingernail</text_code>
         <text_code xml:lang="fr">ongle</text_code>
     </owl:Class>
@@ -4853,6 +4993,7 @@
         <owl:disjointWith rdf:resource="&vcm_lexique;651"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;652"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;653"/>
+        
         <text_code xml:lang="en">bone</text_code>
         <text_code xml:lang="fr">os</text_code>
     </owl:Class>
@@ -4873,6 +5014,7 @@
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&vcm_lexique;649"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;650"/>
+        
         <text_code xml:lang="en">fracture</text_code>
         <text_code xml:lang="fr">fracture</text_code>
     </owl:Class>
@@ -4892,6 +5034,7 @@
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&vcm_lexique;650"/>
+        
         <text_code xml:lang="en">bone_destructuration</text_code>
         <text_code xml:lang="fr">os_destructuration</text_code>
     </owl:Class>
@@ -4910,6 +5053,7 @@
                 <owl:someValuesFrom rdf:resource="&vcm_lexique;647"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        
         <text_code xml:lang="en">bone_remodeling</text_code>
         <text_code xml:lang="fr">os_remodelage</text_code>
     </owl:Class>
@@ -4930,6 +5074,7 @@
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&vcm_lexique;652"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;653"/>
+        
         <text_code xml:lang="en">joint</text_code>
         <text_code xml:lang="fr">articulation</text_code>
     </owl:Class>
@@ -4949,6 +5094,7 @@
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&vcm_lexique;653"/>
+        
         <text_code xml:lang="en">muscle</text_code>
         <text_code xml:lang="fr">muscle</text_code>
     </owl:Class>
@@ -4967,6 +5113,7 @@
                 <owl:someValuesFrom rdf:resource="&vcm_lexique;545"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        
         <text_code xml:lang="en">fat</text_code>
         <text_code xml:lang="fr">graisse</text_code>
     </owl:Class>
@@ -5022,6 +5169,7 @@
         <owl:disjointWith rdf:resource="&vcm_lexique;658"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;659"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;660"/>
+        
         <text_code xml:lang="en">leg</text_code>
         <text_code xml:lang="fr">jambe</text_code>
     </owl:Class>
@@ -5044,6 +5192,7 @@
         <owl:disjointWith rdf:resource="&vcm_lexique;658"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;659"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;660"/>
+        
         <text_code xml:lang="en">arm</text_code>
         <text_code xml:lang="fr">bras</text_code>
     </owl:Class>
@@ -5065,6 +5214,7 @@
         <owl:disjointWith rdf:resource="&vcm_lexique;658"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;659"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;660"/>
+        
         <text_code xml:lang="en">head</text_code>
         <text_code xml:lang="fr">tete</text_code>
     </owl:Class>
@@ -5085,6 +5235,7 @@
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&vcm_lexique;659"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;660"/>
+        
         <text_code xml:lang="en">thorax</text_code>
         <text_code xml:lang="fr">thorax</text_code>
     </owl:Class>
@@ -5104,6 +5255,7 @@
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&vcm_lexique;660"/>
+        
         <text_code xml:lang="en">abdomen</text_code>
         <text_code xml:lang="fr">abdomen</text_code>
     </owl:Class>
@@ -5122,6 +5274,7 @@
                 <owl:someValuesFrom rdf:resource="&vcm_lexique;654"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        
         <text_code xml:lang="en">back</text_code>
         <text_code xml:lang="fr">dos</text_code>
     </owl:Class>
@@ -5134,6 +5287,12 @@
         <rdfs:label xml:lang="en">Patient_caracteristic_pictogram</rdfs:label>
         <rdfs:label xml:lang="fr">Pictogramme_caracteristique_patient</rdfs:label>
         <rdfs:subClassOf rdf:resource="&vcm_lexique;543"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&vcm_lexique;493"/>
+                <owl:someValuesFrom rdf:resource="&vcm_lexique;543"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Class>
                 <owl:unionOf rdf:parseType="Collection">
@@ -5153,12 +5312,6 @@
                     <rdf:Description rdf:about="&vcm_lexique;679"/>
                 </owl:unionOf>
             </owl:Class>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&vcm_lexique;493"/>
-                <owl:someValuesFrom rdf:resource="&vcm_lexique;543"/>
-            </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&vcm_lexique;680"/>
         <text_code xml:lang="en">_patient_caracteristic</text_code>
@@ -5192,6 +5345,7 @@
         <owl:disjointWith rdf:resource="&vcm_lexique;677"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;678"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;679"/>
+        
         <text_code xml:lang="en">age_class</text_code>
         <text_code xml:lang="fr">classe_dage</text_code>
     </owl:Class>
@@ -5213,6 +5367,7 @@
         <owl:disjointWith rdf:resource="&vcm_lexique;664"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;665"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;666"/>
+        
         <text_code xml:lang="en">infant</text_code>
         <text_code xml:lang="fr">nourrisson</text_code>
     </owl:Class>
@@ -5233,6 +5388,7 @@
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&vcm_lexique;665"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;666"/>
+        
         <text_code xml:lang="en">child</text_code>
         <text_code xml:lang="fr">enfant</text_code>
     </owl:Class>
@@ -5252,6 +5408,7 @@
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&vcm_lexique;666"/>
+        
         <text_code xml:lang="en">adult</text_code>
         <text_code xml:lang="fr">adulte</text_code>
     </owl:Class>
@@ -5270,6 +5427,7 @@
                 <owl:someValuesFrom rdf:resource="&vcm_lexique;662"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        
         <text_code xml:lang="en">elderly</text_code>
         <text_code xml:lang="fr">personne_agee</text_code>
     </owl:Class>
@@ -5300,6 +5458,7 @@
         <owl:disjointWith rdf:resource="&vcm_lexique;677"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;678"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;679"/>
+        
         <text_code xml:lang="en">weight</text_code>
         <text_code xml:lang="fr">poids</text_code>
     </owl:Class>
@@ -5329,6 +5488,7 @@
         <owl:disjointWith rdf:resource="&vcm_lexique;677"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;678"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;679"/>
+        
         <text_code xml:lang="en">height</text_code>
         <text_code xml:lang="fr">taille</text_code>
     </owl:Class>
@@ -5357,6 +5517,7 @@
         <owl:disjointWith rdf:resource="&vcm_lexique;677"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;678"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;679"/>
+        
         <text_code xml:lang="en">car</text_code>
         <text_code xml:lang="fr">voiture</text_code>
     </owl:Class>
@@ -5384,6 +5545,7 @@
         <owl:disjointWith rdf:resource="&vcm_lexique;677"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;678"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;679"/>
+        
         <text_code xml:lang="en">geo</text_code>
         <text_code xml:lang="fr">geo</text_code>
     </owl:Class>
@@ -5410,6 +5572,7 @@
         <owl:disjointWith rdf:resource="&vcm_lexique;677"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;678"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;679"/>
+        
         <text_code xml:lang="en">sport</text_code>
         <text_code xml:lang="fr">sportif</text_code>
     </owl:Class>
@@ -5435,6 +5598,7 @@
         <owl:disjointWith rdf:resource="&vcm_lexique;677"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;678"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;679"/>
+        
         <text_code xml:lang="en">alimentation</text_code>
         <text_code xml:lang="fr">alimentation</text_code>
     </owl:Class>
@@ -5459,6 +5623,7 @@
         <owl:disjointWith rdf:resource="&vcm_lexique;677"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;678"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;679"/>
+        
         <text_code xml:lang="en">alcohol</text_code>
         <text_code xml:lang="fr">alcool</text_code>
     </owl:Class>
@@ -5482,6 +5647,7 @@
         <owl:disjointWith rdf:resource="&vcm_lexique;677"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;678"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;679"/>
+        
         <text_code xml:lang="en">smoking</text_code>
         <text_code xml:lang="fr">tabac</text_code>
     </owl:Class>
@@ -5504,6 +5670,7 @@
         <owl:disjointWith rdf:resource="&vcm_lexique;677"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;678"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;679"/>
+        
         <text_code xml:lang="en">drug_addiction</text_code>
         <text_code xml:lang="fr">drogue</text_code>
     </owl:Class>
@@ -5525,6 +5692,7 @@
         <owl:disjointWith rdf:resource="&vcm_lexique;677"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;678"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;679"/>
+        
         <text_code xml:lang="en">family</text_code>
         <text_code xml:lang="fr">famille</text_code>
     </owl:Class>
@@ -5545,6 +5713,7 @@
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&vcm_lexique;678"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;679"/>
+        
         <text_code xml:lang="en">entourage</text_code>
         <text_code xml:lang="fr">entourage</text_code>
     </owl:Class>
@@ -5564,6 +5733,7 @@
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&vcm_lexique;679"/>
+        
         <text_code xml:lang="en">patient_activity</text_code>
         <text_code xml:lang="fr">activite_patient</text_code>
     </owl:Class>
@@ -5582,6 +5752,7 @@
                 <owl:someValuesFrom rdf:resource="&vcm_lexique;661"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        
         <text_code xml:lang="en">accomodation</text_code>
         <text_code xml:lang="fr">logement</text_code>
     </owl:Class>
@@ -5595,12 +5766,6 @@
         <rdfs:label xml:lang="fr">Pictogramme_medicament</rdfs:label>
         <rdfs:subClassOf rdf:resource="&vcm_lexique;543"/>
         <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&vcm_lexique;493"/>
-                <owl:someValuesFrom rdf:resource="&vcm_lexique;543"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
             <owl:Class>
                 <owl:unionOf rdf:parseType="Collection">
                     <rdf:Description rdf:about="&vcm_lexique;681"/>
@@ -5609,6 +5774,12 @@
                     <rdf:Description rdf:about="&vcm_lexique;687"/>
                 </owl:unionOf>
             </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&vcm_lexique;493"/>
+                <owl:someValuesFrom rdf:resource="&vcm_lexique;543"/>
+            </owl:Restriction>
         </rdfs:subClassOf>
         <text_code xml:lang="en">_drug</text_code>
         <text_code xml:lang="fr">_medicament</text_code>
@@ -5928,6 +6099,7 @@
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&vcm_lexique;709"/>
+        
         <text_code xml:lang="en">treatment</text_code>
         <text_code xml:lang="fr">traitement</text_code>
     </owl:Class>
@@ -5949,6 +6121,7 @@
         <owl:disjointWith rdf:resource="&vcm_lexique;701"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;707"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;708"/>
+        
         <text_code xml:lang="en">drug</text_code>
         <text_code xml:lang="fr">medicament</text_code>
     </owl:Class>
@@ -5969,6 +6142,7 @@
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&vcm_lexique;699"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;700"/>
+        
         <text_code xml:lang="en">tablet</text_code>
         <text_code xml:lang="fr">comprime</text_code>
     </owl:Class>
@@ -5988,6 +6162,7 @@
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&vcm_lexique;700"/>
+        
         <text_code xml:lang="en">pomade</text_code>
         <text_code xml:lang="fr">pommade</text_code>
     </owl:Class>
@@ -6006,6 +6181,7 @@
                 <owl:someValuesFrom rdf:resource="&vcm_lexique;697"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        
         <text_code xml:lang="en">parenteral</text_code>
         <text_code xml:lang="fr">injectable</text_code>
     </owl:Class>
@@ -6026,6 +6202,7 @@
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&vcm_lexique;707"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;708"/>
+        
         <text_code xml:lang="en">procedure</text_code>
         <text_code xml:lang="fr">procedure</text_code>
     </owl:Class>
@@ -6045,6 +6222,7 @@
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&vcm_lexique;703"/>
+        
         <text_code xml:lang="en">radiothe</text_code>
         <text_code xml:lang="fr">radiothe</text_code>
     </owl:Class>
@@ -6063,6 +6241,7 @@
                 <owl:someValuesFrom rdf:resource="&vcm_lexique;701"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        
         <text_code xml:lang="en">surgery</text_code>
         <text_code xml:lang="fr">chirurgie</text_code>
     </owl:Class>
@@ -6083,6 +6262,7 @@
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&vcm_lexique;705"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;706"/>
+        
         <text_code xml:lang="en">ectomy</text_code>
         <text_code xml:lang="fr">ectomie</text_code>
     </owl:Class>
@@ -6102,6 +6282,7 @@
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&vcm_lexique;706"/>
+        
         <text_code xml:lang="en">implant</text_code>
         <text_code xml:lang="fr">implant</text_code>
     </owl:Class>
@@ -6120,6 +6301,7 @@
                 <owl:someValuesFrom rdf:resource="&vcm_lexique;703"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        
         <text_code xml:lang="en">graft</text_code>
         <text_code xml:lang="fr">greffe</text_code>
     </owl:Class>
@@ -6139,6 +6321,7 @@
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&vcm_lexique;708"/>
+        
         <text_code xml:lang="en">sport</text_code>
         <text_code xml:lang="fr">sportif</text_code>
     </owl:Class>
@@ -6157,6 +6340,7 @@
                 <owl:someValuesFrom rdf:resource="&vcm_lexique;696"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        
         <text_code xml:lang="en">alimentation</text_code>
         <text_code xml:lang="fr">alimentation</text_code>
     </owl:Class>
@@ -6208,6 +6392,7 @@
         <owl:disjointWith rdf:resource="&vcm_lexique;712"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;715"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;716"/>
+        
         <text_code xml:lang="en">diagnostic</text_code>
         <text_code xml:lang="fr">diagnostic</text_code>
     </owl:Class>
@@ -6229,6 +6414,7 @@
         <owl:disjointWith rdf:resource="&vcm_lexique;712"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;715"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;716"/>
+        
         <text_code xml:lang="en">clinical</text_code>
         <text_code xml:lang="fr">clinique</text_code>
     </owl:Class>
@@ -6249,6 +6435,7 @@
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&vcm_lexique;715"/>
         <owl:disjointWith rdf:resource="&vcm_lexique;716"/>
+        
         <text_code xml:lang="en">bio</text_code>
         <text_code xml:lang="fr">bio</text_code>
     </owl:Class>
@@ -6268,6 +6455,7 @@
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&vcm_lexique;714"/>
+        
         <text_code xml:lang="en">bio_modified</text_code>
         <text_code xml:lang="fr">bio_modifie</text_code>
     </owl:Class>
@@ -6286,6 +6474,7 @@
                 <owl:someValuesFrom rdf:resource="&vcm_lexique;712"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        
         <text_code xml:lang="en">biopsy</text_code>
         <text_code xml:lang="fr">biopsie</text_code>
     </owl:Class>
@@ -6305,6 +6494,7 @@
             </owl:Restriction>
         </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&vcm_lexique;716"/>
+        
         <text_code xml:lang="en">imaging</text_code>
         <text_code xml:lang="fr">radio</text_code>
     </owl:Class>
@@ -6323,6 +6513,7 @@
                 <owl:someValuesFrom rdf:resource="&vcm_lexique;710"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        
         <text_code xml:lang="en">functional</text_code>
         <text_code xml:lang="fr">fonctionnel</text_code>
     </owl:Class>
@@ -6469,39 +6660,40 @@
     <owl:Class rdf:about="&owl;Thing"/>
 
 
+    
 
     <owl:Class rdf:about="&vcm_lexique;512">
-        <priority>-7687680</priority>
+        <priority>-10890880</priority>
     </owl:Class>
 
 
     <owl:Class rdf:about="&vcm_lexique;513">
-        <priority>-15375360</priority>
+        <priority>-21781760</priority>
     </owl:Class>
 
 
     <owl:Class rdf:about="&vcm_lexique;514">
-        <priority>-23063040</priority>
+        <priority>-32672640</priority>
     </owl:Class>
 
 
     <owl:Class rdf:about="&vcm_lexique;515">
-        <priority>-38438400</priority>
+        <priority>-54454400</priority>
     </owl:Class>
 
 
     <owl:Class rdf:about="&vcm_lexique;516">
-        <priority>-30750720</priority>
+        <priority>-43563520</priority>
     </owl:Class>
 
 
     <owl:Class rdf:about="&vcm_lexique;517">
-        <priority>-46126080</priority>
+        <priority>-65345280</priority>
     </owl:Class>
 
 
     <owl:Class rdf:about="&vcm_lexique;518">
-        <priority>-53813760</priority>
+        <priority>-76236160</priority>
     </owl:Class>
 
 
@@ -6551,732 +6743,732 @@
 
 
     <owl:Class rdf:about="&vcm_lexique;529">
-        <priority>13440</priority>
+        <priority>35840</priority>
     </owl:Class>
 
 
     <owl:Class rdf:about="&vcm_lexique;530">
-        <priority>22400</priority>
+        <priority>44800</priority>
     </owl:Class>
 
 
     <owl:Class rdf:about="&vcm_lexique;531">
-        <priority>1128960</priority>
+        <priority>1599360</priority>
     </owl:Class>
 
 
     <owl:Class rdf:about="&vcm_lexique;532">
-        <priority>17920</priority>
+        <priority>40320</priority>
     </owl:Class>
 
 
     <owl:Class rdf:about="&vcm_lexique;533">
-        <priority>5376000</priority>
+        <priority>7616000</priority>
     </owl:Class>
 
 
     <owl:Class rdf:about="&vcm_lexique;534">
-        <priority>26880</priority>
+        <priority>49280</priority>
     </owl:Class>
 
 
     <owl:Class rdf:about="&vcm_lexique;536">
-        <priority>2042880</priority>
+        <priority>2894080</priority>
     </owl:Class>
 
 
     <owl:Class rdf:about="&vcm_lexique;537">
-        <priority>2096640</priority>
+        <priority>2970240</priority>
     </owl:Class>
 
 
     <owl:Class rdf:about="&vcm_lexique;538">
-        <priority>2204160</priority>
+        <priority>3122560</priority>
     </owl:Class>
 
 
     <owl:Class rdf:about="&vcm_lexique;539">
-        <priority>2257920</priority>
+        <priority>3198720</priority>
     </owl:Class>
 
 
     <owl:Class rdf:about="&vcm_lexique;540">
-        <priority>2150400</priority>
+        <priority>3046400</priority>
     </owl:Class>
 
 
     <owl:Class rdf:about="&vcm_lexique;541">
-        <priority>1827840</priority>
+        <priority>2589440</priority>
     </owl:Class>
 
 
     <owl:Class rdf:about="&vcm_lexique;542">
-        <priority>591360</priority>
+        <priority>837760</priority>
     </owl:Class>
 
 
     <owl:Class rdf:about="&vcm_lexique;544">
-        <priority>53760</priority>
+        <priority>76160</priority>
     </owl:Class>
 
 
     <owl:Class rdf:about="&vcm_lexique;546">
-        <priority>2419200</priority>
+        <priority>3427200</priority>
     </owl:Class>
 
 
     <owl:Class rdf:about="&vcm_lexique;547">
-        <priority>2472960</priority>
+        <priority>3503360</priority>
     </owl:Class>
 
 
     <owl:Class rdf:about="&vcm_lexique;548">
-        <priority>2526720</priority>
+        <priority>3579520</priority>
     </owl:Class>
 
 
     <owl:Class rdf:about="&vcm_lexique;549">
-        <priority>2311680</priority>
+        <priority>3274880</priority>
     </owl:Class>
 
 
     <owl:Class rdf:about="&vcm_lexique;550">
-        <priority>2365440</priority>
+        <priority>3351040</priority>
     </owl:Class>
 
 
     <owl:Class rdf:about="&vcm_lexique;551">
-        <priority>107520</priority>
+        <priority>152320</priority>
     </owl:Class>
 
 
     <owl:Class rdf:about="&vcm_lexique;552">
-        <priority>161280</priority>
+        <priority>228480</priority>
     </owl:Class>
 
 
     <owl:Class rdf:about="&vcm_lexique;553">
-        <priority>268800</priority>
+        <priority>380800</priority>
     </owl:Class>
 
 
     <owl:Class rdf:about="&vcm_lexique;554">
-        <priority>322560</priority>
+        <priority>456960</priority>
     </owl:Class>
 
 
     <owl:Class rdf:about="&vcm_lexique;555">
-        <priority>215040</priority>
+        <priority>304640</priority>
     </owl:Class>
 
 
     <owl:Class rdf:about="&vcm_lexique;556">
-        <priority>5429760</priority>
+        <priority>7692160</priority>
     </owl:Class>
 
 
     <owl:Class rdf:about="&vcm_lexique;557">
-        <priority>6021120</priority>
+        <priority>8529920</priority>
     </owl:Class>
 
 
     <owl:Class rdf:about="&vcm_lexique;558">
-        <priority>5483520</priority>
+        <priority>7768320</priority>
     </owl:Class>
 
 
     <owl:Class rdf:about="&vcm_lexique;559">
-        <priority>5537280</priority>
+        <priority>7844480</priority>
     </owl:Class>
 
 
     <owl:Class rdf:about="&vcm_lexique;560">
-        <priority>5644800</priority>
+        <priority>7996800</priority>
     </owl:Class>
 
 
     <owl:Class rdf:about="&vcm_lexique;561">
-        <priority>5752320</priority>
+        <priority>8149120</priority>
     </owl:Class>
 
 
     <owl:Class rdf:about="&vcm_lexique;562">
-        <priority>5591040</priority>
+        <priority>7920640</priority>
     </owl:Class>
 
 
     <owl:Class rdf:about="&vcm_lexique;563">
-        <priority>5698560</priority>
+        <priority>8072960</priority>
     </owl:Class>
 
 
     <owl:Class rdf:about="&vcm_lexique;564">
-        <priority>5913600</priority>
+        <priority>8377600</priority>
     </owl:Class>
 
 
     <owl:Class rdf:about="&vcm_lexique;565">
-        <priority>5967360</priority>
+        <priority>8453760</priority>
     </owl:Class>
 
 
     <owl:Class rdf:about="&vcm_lexique;566">
-        <priority>5859840</priority>
+        <priority>8301440</priority>
     </owl:Class>
 
 
     <owl:Class rdf:about="&vcm_lexique;567">
-        <priority>5806080</priority>
+        <priority>8225280</priority>
     </owl:Class>
 
 
     <owl:Class rdf:about="&vcm_lexique;568">
-        <priority>376320</priority>
+        <priority>533120</priority>
     </owl:Class>
 
 
     <owl:Class rdf:about="&vcm_lexique;569">
-        <priority>4462080</priority>
+        <priority>6321280</priority>
     </owl:Class>
 
 
     <owl:Class rdf:about="&vcm_lexique;570">
-        <priority>4784640</priority>
+        <priority>6778240</priority>
     </owl:Class>
 
 
     <owl:Class rdf:about="&vcm_lexique;571">
-        <priority>4838400</priority>
+        <priority>6854400</priority>
     </owl:Class>
 
 
     <owl:Class rdf:about="&vcm_lexique;572">
-        <priority>4515840</priority>
-    </owl:Class>
-
-
-    <owl:Class rdf:about="&vcm_lexique;573">
-        <priority>4730880</priority>
-    </owl:Class>
-
-
-    <owl:Class rdf:about="&vcm_lexique;574">
-        <priority>7365120</priority>
-    </owl:Class>
-
-
-    <owl:Class rdf:about="&vcm_lexique;575">
-        <priority>7418880</priority>
-    </owl:Class>
-
-
-    <owl:Class rdf:about="&vcm_lexique;576">
-        <priority>7472640</priority>
-    </owl:Class>
-
-
-    <owl:Class rdf:about="&vcm_lexique;577">
-        <priority>7526400</priority>
-    </owl:Class>
-
-
-    <owl:Class rdf:about="&vcm_lexique;578">
-        <priority>7580160</priority>
-    </owl:Class>
-
-
-    <owl:Class rdf:about="&vcm_lexique;579">
-        <priority>4569600</priority>
-    </owl:Class>
-
-
-    <owl:Class rdf:about="&vcm_lexique;580">
-        <priority>7633920</priority>
-    </owl:Class>
-
-
-    <owl:Class rdf:about="&vcm_lexique;581">
-        <priority>4677120</priority>
-    </owl:Class>
-
-
-    <owl:Class rdf:about="&vcm_lexique;582">
-        <priority>4623360</priority>
-    </owl:Class>
-
-
-    <owl:Class rdf:about="&vcm_lexique;583">
-        <priority>4892160</priority>
-    </owl:Class>
-
-
-    <owl:Class rdf:about="&vcm_lexique;584">
-        <priority>5322240</priority>
-    </owl:Class>
-
-
-    <owl:Class rdf:about="&vcm_lexique;585">
-        <priority>5214720</priority>
-    </owl:Class>
-
-
-    <owl:Class rdf:about="&vcm_lexique;586">
-        <priority>5268480</priority>
-    </owl:Class>
-
-
-    <owl:Class rdf:about="&vcm_lexique;587">
-        <priority>4945920</priority>
-    </owl:Class>
-
-
-    <owl:Class rdf:about="&vcm_lexique;588">
-        <priority>5053440</priority>
-    </owl:Class>
-
-
-    <owl:Class rdf:about="&vcm_lexique;589">
-        <priority>4999680</priority>
-    </owl:Class>
-
-
-    <owl:Class rdf:about="&vcm_lexique;590">
-        <priority>5107200</priority>
-    </owl:Class>
-
-
-    <owl:Class rdf:about="&vcm_lexique;591">
-        <priority>5160960</priority>
-    </owl:Class>
-
-
-    <owl:Class rdf:about="&vcm_lexique;592">
         <priority>6397440</priority>
     </owl:Class>
 
 
-    <owl:Class rdf:about="&vcm_lexique;593">
-        <priority>2795520</priority>
+    <owl:Class rdf:about="&vcm_lexique;573">
+        <priority>6702080</priority>
     </owl:Class>
 
 
-    <owl:Class rdf:about="&vcm_lexique;594">
-        <priority>2849280</priority>
+    <owl:Class rdf:about="&vcm_lexique;574">
+        <priority>10433920</priority>
     </owl:Class>
 
 
-    <owl:Class rdf:about="&vcm_lexique;595">
-        <priority>3010560</priority>
+    <owl:Class rdf:about="&vcm_lexique;575">
+        <priority>10510080</priority>
     </owl:Class>
 
 
-    <owl:Class rdf:about="&vcm_lexique;596">
-        <priority>2903040</priority>
+    <owl:Class rdf:about="&vcm_lexique;576">
+        <priority>10586240</priority>
     </owl:Class>
 
 
-    <owl:Class rdf:about="&vcm_lexique;597">
-        <priority>2956800</priority>
+    <owl:Class rdf:about="&vcm_lexique;577">
+        <priority>10662400</priority>
     </owl:Class>
 
 
-    <owl:Class rdf:about="&vcm_lexique;598">
-        <priority>2580480</priority>
+    <owl:Class rdf:about="&vcm_lexique;578">
+        <priority>10738560</priority>
     </owl:Class>
 
 
-    <owl:Class rdf:about="&vcm_lexique;599">
-        <priority>2634240</priority>
+    <owl:Class rdf:about="&vcm_lexique;579">
+        <priority>6473600</priority>
     </owl:Class>
 
 
-    <owl:Class rdf:about="&vcm_lexique;600">
-        <priority>2688000</priority>
+    <owl:Class rdf:about="&vcm_lexique;580">
+        <priority>10814720</priority>
     </owl:Class>
 
 
-    <owl:Class rdf:about="&vcm_lexique;601">
-        <priority>2741760</priority>
+    <owl:Class rdf:about="&vcm_lexique;581">
+        <priority>6625920</priority>
     </owl:Class>
 
 
-    <owl:Class rdf:about="&vcm_lexique;602">
-        <priority>3225600</priority>
+    <owl:Class rdf:about="&vcm_lexique;582">
+        <priority>6549760</priority>
     </owl:Class>
 
 
-    <owl:Class rdf:about="&vcm_lexique;603">
-        <priority>3279360</priority>
+    <owl:Class rdf:about="&vcm_lexique;583">
+        <priority>6930560</priority>
     </owl:Class>
 
 
-    <owl:Class rdf:about="&vcm_lexique;604">
-        <priority>3333120</priority>
+    <owl:Class rdf:about="&vcm_lexique;584">
+        <priority>7539840</priority>
     </owl:Class>
 
 
-    <owl:Class rdf:about="&vcm_lexique;605">
-        <priority>3064320</priority>
+    <owl:Class rdf:about="&vcm_lexique;585">
+        <priority>7387520</priority>
     </owl:Class>
 
 
-    <owl:Class rdf:about="&vcm_lexique;606">
-        <priority>3171840</priority>
+    <owl:Class rdf:about="&vcm_lexique;586">
+        <priority>7463680</priority>
     </owl:Class>
 
 
-    <owl:Class rdf:about="&vcm_lexique;607">
-        <priority>3118080</priority>
+    <owl:Class rdf:about="&vcm_lexique;587">
+        <priority>7006720</priority>
     </owl:Class>
 
 
-    <owl:Class rdf:about="&vcm_lexique;608">
-        <priority>3386880</priority>
+    <owl:Class rdf:about="&vcm_lexique;588">
+        <priority>7159040</priority>
     </owl:Class>
 
 
-    <owl:Class rdf:about="&vcm_lexique;609">
-        <priority>3440640</priority>
+    <owl:Class rdf:about="&vcm_lexique;589">
+        <priority>7082880</priority>
     </owl:Class>
 
 
-    <owl:Class rdf:about="&vcm_lexique;610">
-        <priority>3494400</priority>
+    <owl:Class rdf:about="&vcm_lexique;590">
+        <priority>7235200</priority>
     </owl:Class>
 
 
-    <owl:Class rdf:about="&vcm_lexique;611">
-        <priority>3548160</priority>
-    </owl:Class>
-
-
-    <owl:Class rdf:about="&vcm_lexique;612">
-        <priority>3601920</priority>
-    </owl:Class>
-
-
-    <owl:Class rdf:about="&vcm_lexique;613">
-        <priority>3655680</priority>
-    </owl:Class>
-
-
-    <owl:Class rdf:about="&vcm_lexique;614">
-        <priority>3709440</priority>
-    </owl:Class>
-
-
-    <owl:Class rdf:about="&vcm_lexique;615">
-        <priority>430080</priority>
-    </owl:Class>
-
-
-    <owl:Class rdf:about="&vcm_lexique;616">
-        <priority>537600</priority>
-    </owl:Class>
-
-
-    <owl:Class rdf:about="&vcm_lexique;617">
-        <priority>752640</priority>
-    </owl:Class>
-
-
-    <owl:Class rdf:about="&vcm_lexique;618">
-        <priority>806400</priority>
-    </owl:Class>
-
-
-    <owl:Class rdf:about="&vcm_lexique;619">
-        <priority>483840</priority>
-    </owl:Class>
-
-
-    <owl:Class rdf:about="&vcm_lexique;620">
-        <priority>1344000</priority>
-    </owl:Class>
-
-
-    <owl:Class rdf:about="&vcm_lexique;621">
-        <priority>1720320</priority>
-    </owl:Class>
-
-
-    <owl:Class rdf:about="&vcm_lexique;622">
-        <priority>1666560</priority>
-    </owl:Class>
-
-
-    <owl:Class rdf:about="&vcm_lexique;623">
-        <priority>1612800</priority>
-    </owl:Class>
-
-
-    <owl:Class rdf:about="&vcm_lexique;624">
-        <priority>1559040</priority>
-    </owl:Class>
-
-
-    <owl:Class rdf:about="&vcm_lexique;625">
-        <priority>1505280</priority>
-    </owl:Class>
-
-
-    <owl:Class rdf:about="&vcm_lexique;626">
-        <priority>1397760</priority>
-    </owl:Class>
-
-
-    <owl:Class rdf:about="&vcm_lexique;627">
-        <priority>1451520</priority>
-    </owl:Class>
-
-
-    <owl:Class rdf:about="&vcm_lexique;628">
-        <priority>860160</priority>
-    </owl:Class>
-
-
-    <owl:Class rdf:about="&vcm_lexique;629">
-        <priority>1236480</priority>
-    </owl:Class>
-
-
-    <owl:Class rdf:about="&vcm_lexique;630">
-        <priority>1021440</priority>
-    </owl:Class>
-
-
-    <owl:Class rdf:about="&vcm_lexique;631">
-        <priority>1290240</priority>
-    </owl:Class>
-
-
-    <owl:Class rdf:about="&vcm_lexique;632">
-        <priority>1075200</priority>
-    </owl:Class>
-
-
-    <owl:Class rdf:about="&vcm_lexique;633">
-        <priority>1774080</priority>
-    </owl:Class>
-
-
-    <owl:Class rdf:about="&vcm_lexique;634">
-        <priority>913920</priority>
-    </owl:Class>
-
-
-    <owl:Class rdf:about="&vcm_lexique;635">
-        <priority>967680</priority>
-    </owl:Class>
-
-
-    <owl:Class rdf:about="&vcm_lexique;636">
-        <priority>1182720</priority>
-    </owl:Class>
-
-
-    <owl:Class rdf:about="&vcm_lexique;637">
-        <priority>1881600</priority>
-    </owl:Class>
-
-
-    <owl:Class rdf:about="&vcm_lexique;638">
-        <priority>1935360</priority>
-    </owl:Class>
-
-
-    <owl:Class rdf:about="&vcm_lexique;639">
-        <priority>1989120</priority>
-    </owl:Class>
-
-
-    <owl:Class rdf:about="&vcm_lexique;640">
-        <priority>3763200</priority>
-    </owl:Class>
-
-
-    <owl:Class rdf:about="&vcm_lexique;641">
-        <priority>3870720</priority>
-    </owl:Class>
-
-
-    <owl:Class rdf:about="&vcm_lexique;642">
-        <priority>3924480</priority>
-    </owl:Class>
-
-
-    <owl:Class rdf:about="&vcm_lexique;643">
-        <priority>3816960</priority>
-    </owl:Class>
-
-
-    <owl:Class rdf:about="&vcm_lexique;644">
-        <priority>4032000</priority>
-    </owl:Class>
-
-
-    <owl:Class rdf:about="&vcm_lexique;645">
-        <priority>4085760</priority>
-    </owl:Class>
-
-
-    <owl:Class rdf:about="&vcm_lexique;646">
-        <priority>3978240</priority>
-    </owl:Class>
-
-
-    <owl:Class rdf:about="&vcm_lexique;647">
-        <priority>4139520</priority>
-    </owl:Class>
-
-
-    <owl:Class rdf:about="&vcm_lexique;648">
-        <priority>4193280</priority>
-    </owl:Class>
-
-
-    <owl:Class rdf:about="&vcm_lexique;649">
-        <priority>4300800</priority>
-    </owl:Class>
-
-
-    <owl:Class rdf:about="&vcm_lexique;650">
-        <priority>4247040</priority>
-    </owl:Class>
-
-
-    <owl:Class rdf:about="&vcm_lexique;651">
-        <priority>4354560</priority>
-    </owl:Class>
-
-
-    <owl:Class rdf:about="&vcm_lexique;652">
-        <priority>4408320</priority>
-    </owl:Class>
-
-
-    <owl:Class rdf:about="&vcm_lexique;653">
-        <priority>698880</priority>
-    </owl:Class>
-
-
-    <owl:Class rdf:about="&vcm_lexique;655">
-        <priority>6343680</priority>
-    </owl:Class>
-
-
-    <owl:Class rdf:about="&vcm_lexique;656">
-        <priority>6289920</priority>
-    </owl:Class>
-
-
-    <owl:Class rdf:about="&vcm_lexique;657">
-        <priority>6074880</priority>
-    </owl:Class>
-
-
-    <owl:Class rdf:about="&vcm_lexique;658">
-        <priority>6182400</priority>
-    </owl:Class>
-
-
-    <owl:Class rdf:about="&vcm_lexique;659">
-        <priority>6236160</priority>
-    </owl:Class>
-
-
-    <owl:Class rdf:about="&vcm_lexique;660">
-        <priority>6128640</priority>
-    </owl:Class>
-
-
-    <owl:Class rdf:about="&vcm_lexique;662">
-        <priority>6451200</priority>
-    </owl:Class>
-
-
-    <owl:Class rdf:about="&vcm_lexique;663">
-        <priority>6666240</priority>
-    </owl:Class>
-
-
-    <owl:Class rdf:about="&vcm_lexique;664">
-        <priority>6504960</priority>
-    </owl:Class>
-
-
-    <owl:Class rdf:about="&vcm_lexique;665">
-        <priority>6558720</priority>
-    </owl:Class>
-
-
-    <owl:Class rdf:about="&vcm_lexique;666">
-        <priority>6612480</priority>
-    </owl:Class>
-
-
-    <owl:Class rdf:about="&vcm_lexique;667">
-        <priority>6773760</priority>
-    </owl:Class>
-
-
-    <owl:Class rdf:about="&vcm_lexique;668">
-        <priority>6720000</priority>
-    </owl:Class>
-
-
-    <owl:Class rdf:about="&vcm_lexique;669">
-        <priority>6935040</priority>
-    </owl:Class>
-
-
-    <owl:Class rdf:about="&vcm_lexique;670">
-        <priority>7150080</priority>
-    </owl:Class>
-
-
-    <owl:Class rdf:about="&vcm_lexique;671">
-        <priority>6827520</priority>
-    </owl:Class>
-
-
-    <owl:Class rdf:about="&vcm_lexique;672">
-        <priority>645120</priority>
-    </owl:Class>
-
-
-    <owl:Class rdf:about="&vcm_lexique;673">
-        <priority>7042560</priority>
-    </owl:Class>
-
-
-    <owl:Class rdf:about="&vcm_lexique;674">
-        <priority>6988800</priority>
-    </owl:Class>
-
-
-    <owl:Class rdf:about="&vcm_lexique;675">
-        <priority>7096320</priority>
-    </owl:Class>
-
-
-    <owl:Class rdf:about="&vcm_lexique;676">
+    <owl:Class rdf:about="&vcm_lexique;591">
         <priority>7311360</priority>
     </owl:Class>
 
 
+    <owl:Class rdf:about="&vcm_lexique;592">
+        <priority>9063040</priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;593">
+        <priority>3960320</priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;594">
+        <priority>4036480</priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;595">
+        <priority>4264960</priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;596">
+        <priority>4112640</priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;597">
+        <priority>4188800</priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;598">
+        <priority>3655680</priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;599">
+        <priority>3731840</priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;600">
+        <priority>3808000</priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;601">
+        <priority>3884160</priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;602">
+        <priority>4569600</priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;603">
+        <priority>4645760</priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;604">
+        <priority>4721920</priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;605">
+        <priority>4341120</priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;606">
+        <priority>4493440</priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;607">
+        <priority>4417280</priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;608">
+        <priority>4798080</priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;609">
+        <priority>4874240</priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;610">
+        <priority>4950400</priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;611">
+        <priority>5026560</priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;612">
+        <priority>5102720</priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;613">
+        <priority>5178880</priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;614">
+        <priority>5255040</priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;615">
+        <priority>609280</priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;616">
+        <priority>761600</priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;617">
+        <priority>1066240</priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;618">
+        <priority>1142400</priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;619">
+        <priority>685440</priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;620">
+        <priority>1904000</priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;621">
+        <priority>2437120</priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;622">
+        <priority>2360960</priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;623">
+        <priority>2284800</priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;624">
+        <priority>2208640</priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;625">
+        <priority>2132480</priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;626">
+        <priority>1980160</priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;627">
+        <priority>2056320</priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;628">
+        <priority>1218560</priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;629">
+        <priority>1751680</priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;630">
+        <priority>1447040</priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;631">
+        <priority>1827840</priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;632">
+        <priority>1523200</priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;633">
+        <priority>2513280</priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;634">
+        <priority>1294720</priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;635">
+        <priority>1370880</priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;636">
+        <priority>1675520</priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;637">
+        <priority>2665600</priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;638">
+        <priority>2741760</priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;639">
+        <priority>2817920</priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;640">
+        <priority>5331200</priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;641">
+        <priority>5483520</priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;642">
+        <priority>5559680</priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;643">
+        <priority>5407360</priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;644">
+        <priority>5712000</priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;645">
+        <priority>5788160</priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;646">
+        <priority>5635840</priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;647">
+        <priority>5864320</priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;648">
+        <priority>5940480</priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;649">
+        <priority>6092800</priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;650">
+        <priority>6016640</priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;651">
+        <priority>6168960</priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;652">
+        <priority>6245120</priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;653">
+        <priority>990080</priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;655">
+        <priority>8986880</priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;656">
+        <priority>8910720</priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;657">
+        <priority>8606080</priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;658">
+        <priority>8758400</priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;659">
+        <priority>8834560</priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;660">
+        <priority>8682240</priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;662">
+        <priority>9139200</priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;663">
+        <priority>9443840</priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;664">
+        <priority>9215360</priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;665">
+        <priority>9291520</priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;666">
+        <priority>9367680</priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;667">
+        <priority>9596160</priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;668">
+        <priority>9520000</priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;669">
+        <priority>9824640</priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;670">
+        <priority>10129280</priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;671">
+        <priority>9672320</priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;672">
+        <priority>913920</priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;673">
+        <priority>9976960</priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;674">
+        <priority>9900800</priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;675">
+        <priority>10053120</priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;676">
+        <priority>10357760</priority>
+    </owl:Class>
+
+
     <owl:Class rdf:about="&vcm_lexique;677">
-        <priority>7203840</priority>
+        <priority>10205440</priority>
     </owl:Class>
 
 
     <owl:Class rdf:about="&vcm_lexique;678">
-        <priority>6881280</priority>
+        <priority>9748480</priority>
     </owl:Class>
 
 
     <owl:Class rdf:about="&vcm_lexique;679">
-        <priority>7257600</priority>
+        <priority>10281600</priority>
     </owl:Class>
 
 
@@ -7406,27 +7598,987 @@
 
 
     <owl:Class rdf:about="&vcm_lexique;506">
-        <priority>44800</priority>
+        <priority>67200</priority>
     </owl:Class>
 
 
     <owl:Class rdf:about="&vcm_lexique;507">
-        <priority>49280</priority>
+        <priority>71680</priority>
     </owl:Class>
 
 
     <owl:Class rdf:about="&vcm_lexique;508">
-        <priority>31360</priority>
+        <priority>53760</priority>
     </owl:Class>
 
 
     <owl:Class rdf:about="&vcm_lexique;509">
-        <priority>40320</priority>
+        <priority>62720</priority>
     </owl:Class>
 
 
     <owl:Class rdf:about="&vcm_lexique;510">
-        <priority>35840</priority>
+        <priority>58240</priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;512">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;513">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;514">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;515">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;516">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;517">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;518">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;519">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;520">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;521">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;522">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;523">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;524">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;525">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;526">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;527">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;529">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;530">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;531">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;532">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;533">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;534">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;536">
+        <second_priority>13440</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;537">
+        <second_priority>17920</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;538">
+        <second_priority>31360</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;539">
+        <second_priority>26880</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;540">
+        <second_priority>22400</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;541">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;542">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;544">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;546">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;547">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;548">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;549">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;550">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;551">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;552">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;553">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;554">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;555">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;556">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;557">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;558">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;559">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;560">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;561">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;562">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;563">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;564">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;565">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;566">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;567">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;568">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;569">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;570">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;571">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;572">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;573">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;574">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;575">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;576">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;577">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;578">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;579">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;580">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;581">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;582">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;583">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;584">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;585">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;586">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;587">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;588">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;589">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;590">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;591">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;592">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;593">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;594">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;595">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;596">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;597">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;598">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;599">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;600">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;601">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;602">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;603">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;604">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;605">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;606">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;607">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;608">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;609">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;610">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;611">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;612">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;613">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;614">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;615">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;616">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;617">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;618">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;619">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;620">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;621">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;622">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;623">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;624">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;625">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;626">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;627">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;628">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;629">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;630">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;631">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;632">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;633">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;634">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;635">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;636">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;637">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;638">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;639">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;640">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;641">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;642">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;643">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;644">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;645">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;646">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;647">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;648">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;649">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;650">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;651">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;652">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;653">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;655">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;656">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;657">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;658">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;659">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;660">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;662">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;663">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;664">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;665">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;666">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;667">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;668">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;669">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;670">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;671">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;672">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;673">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;674">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;675">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;676">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;677">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;678">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;679">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;696">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;697">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;698">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;699">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;700">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;701">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;702">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;703">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;704">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;705">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;706">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;707">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;708">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;710">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;711">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;712">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;713">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;714">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;715">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;716">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;495">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;496">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;497">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;503">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;504">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;506">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;507">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;508">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;509">
+        <second_priority>0</second_priority>
+    </owl:Class>
+
+
+    <owl:Class rdf:about="&vcm_lexique;510">
+        <second_priority>0</second_priority>
     </owl:Class>
 
 
