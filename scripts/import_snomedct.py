@@ -24,16 +24,14 @@
 # Get SNOMED CT CORE Problem list from :
 # http://www.nlm.nih.gov/research/umls/Snomed/core_subset.html
 
-#SNOMEDCT_DIR       = "/home/jiba/telechargements/base_med/SnomedCT_Release_INT_20130731"
-SNOMEDCT_DIR       = "/home/jiba/telechargements/base_med/SnomedCT_Release_INT_20140131"
-SNOMEDCT_CORE_FILE = "/home/jiba/telechargements/base_med/SNOMEDCT_CORE_SUBSET_201311.txt"
+#SNOMEDCT_DIR       = "/home/jiba/telechargements/base_med/SnomedCT_Release_INT_20140131"
+#SNOMEDCT_CORE_FILE = "/home/jiba/telechargements/base_med/SNOMEDCT_CORE_SUBSET_201311.txt"
+SNOMEDCT_DIR       = "/home/jiba/telechargements/base_med/SnomedCT_Release_INT_20140731"
+SNOMEDCT_CORE_FILE = "/home/jiba/telechargements/base_med/SNOMEDCT_CORE_SUBSET_201408.txt"
 
 #ONLY_ACTIVE_CONCEPT = 1
 ONLY_ACTIVE_CONCEPT = 0
 
-
-NB           = SNOMEDCT_DIR.split("_")[-1]
-LANGUAGE     = "en"
 
 import sys, os, os.path, stat, sqlite3
 
@@ -46,6 +44,9 @@ from utils.db import *
 if len(sys.argv) >= 3:
   SNOMEDCT_DIR       = sys.argv[1]
   SNOMEDCT_CORE_FILE = sys.argv[2]
+
+NB          = SNOMEDCT_DIR.split("_")[-1]
+LANGUAGE    = "en"
 
 SQLITE_FILE = os.path.join(HERE, "..", "snomedct.sqlite3")
 
