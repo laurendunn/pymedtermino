@@ -23,11 +23,37 @@
 
 ICD10_DIR = "/home/jiba/telechargements/base_med/icd10"
 
-# Get CIM10 French and German translation from (NB choose "XML" format) :
-# http://www.icd10.ch/telechargement/Exp_XML.zip
+# (optional) Get CIM10 French translation and extension from ATIH (NB choose "XML" format) :
+# http://www.atih.sante.fr/plateformes-de-transmission-et-logiciels/logiciels-espace-de-telechargement/id_lot/456
 
 CIM10_DIR = "/home/jiba/telechargements/base_med/cim10"
 
+
+
+CODE_2_CHAPTER = {
+  "A00-B99" : "I",
+  "C00-D48" : "II",
+  "D50-D89" : "III",
+  "E00-E90" : "IV",
+  "F00-F99" : "V",
+  "G00-G99" : "VI",
+  "H00-H59" : "VII",
+  "H60-H95" : "VIII",
+  "I00-I99" : "IX",
+  "J00-J99" : "X",
+  "K00-K93" : "XI",
+  "L00-L99" : "XII",
+  "M00-M99" : "XIII",
+  "N00-N99" : "XIV",
+  "O00-O99" : "XV",
+  "P00-P96" : "XVI",
+  "Q00-Q99" : "XVII",
+  "R00-R99" : "XVIII",
+  "S00-T98" : "XIX",
+  "V01-Y98" : "XX",
+  "Z00-Z99" : "XXI",
+  "U00-U99" : "XXII",
+  }
 
 import sys, os, os.path, stat, sqlite3
 
@@ -53,14 +79,13 @@ SQLITE_FILE = os.path.join(HERE, "..", "icd10.sqlite3")
 db = create_db(SQLITE_FILE)
 db_cursor = db.cursor()
 
-#r = open("/tmp/log.sql", "w")
-def do_sql(sql):
-  #r.write(sql.encode("utf8"))
-  #r.write(";\n")
-  db_cursor.execute(sql)
+r = open("/tmp/log.sql", "w")
+def do_sql(sql, *args):
+  r.write(sql)
+  r.write(";\n")
+  db_cursor.execute(sql, *args)
   
-def sql_escape(s):
-  return s.replace(u'"', u'""').replace(u'\r', u'').replace(u'\x92', u"'")
+def sql_escape(s): return s.replace(u'"', u'""').replace(u'\r', u'').replace(u'\x92', u"'")
 
 
 do_sql(u"PRAGMA synchronous  = OFF")
@@ -73,14 +98,15 @@ CREATE TABLE Concept (
   code VARCHAR(7),
   term_en TEXT,
   term_fr TEXT,
-  term_de TEXT,
   dagger INTEGER,
   star INTEGER,
   mortality1 TEXT,
   mortality2 TEXT,
   mortality3 TEXT,
   mortality4 TEXT,
-  morbidity TEXT
+  morbidity TEXT,
+  atih_extension INTEGER,
+  pmsi_restriction INTEGER
 )
 """)
 
@@ -90,104 +116,10 @@ CREATE TABLE Text (
   code VARCHAR(7),
   relation VARCHAR(13),
   text_en TEXT,
-  text_fr TEXT,
-  text_de TEXT,
   dagger INTEGER,
   reference TEXT
 )
 """)
-
-
-
-
-EN_2_FR    = {}
-EN_2_DE    = {}
-CODE_2_SID = {}
-SID_2_EN   = {}
-
-if CIM10_DIR:
-
-  class Handler(handler.ContentHandler):
-    def __init__(self):
-      pass
-
-    def startElement(self, name, attrs):
-      self.tag = name
-
-    def endElement(self, name):
-      pass
-
-    def characters(self, content):
-      if   self.tag == "SID":
-        self.sid = content.strip()
-        
-      elif self.tag == "code":
-        code = content.strip()
-        CODE_2_SID[code] = self.sid
-
-  if sys.version[0] == "2": xml = open(os.path.join(CIM10_DIR, "MASTER.xml")).read()
-  else:                     xml = open(os.path.join(CIM10_DIR, "MASTER.xml"), encoding = "latin").read()
-  xml = StringIO(xml)
-  parser = sax.make_parser()
-  parser.setContentHandler(Handler())
-  parser.parse(xml)
-  
-  
-  class Handler(handler.ContentHandler):
-    def __init__(self):
-      pass
-
-    def startElement(self, name, attrs):
-      self.tag = name
-
-      if name == "REC":
-        self.fr = self.en = self.de = self.sid = self.source = u""
-        
-    def characters(self, content):
-      if   self.tag == "FR_OMS":   self.fr     = content
-      elif self.tag == "EN_OMS":   self.en     = content
-      elif self.tag == "GE_DIMDI": self.de     = content
-      elif self.tag == "SID":      self.sid    = content
-      elif self.tag == "source":   self.source = content
-      
-    def endElement(self, name):
-      if name == "REC":
-        if self.source == "S":
-          if self.en:
-            if self.fr:  EN_2_FR [self.en ] = self.fr
-            if self.de:  EN_2_DE [self.en ] = self.de
-            if self.sid: SID_2_EN[self.sid] = self.en
-            
-  if sys.version[0] == "2": xml = open(os.path.join(CIM10_DIR, "LIBELLE.xml")).read()
-  else:                     xml = open(os.path.join(CIM10_DIR, "LIBELLE.xml"), encoding = "latin").read()
-  xml = StringIO(xml)
-  parser = sax.make_parser()
-  parser.setContentHandler(Handler())
-  parser.parse(xml)
-
-
-LANGUAGE_DICTS = { "fr" : EN_2_FR, "de" : EN_2_DE }
-def translate(en, language, code = ""):
-  if code:
-    sid = CODE_2_SID.get(code)
-    if sid:
-      en2 = SID_2_EN.get(sid)
-      if en2:
-        t = translate(en2, language)
-        if t: return t
-        
-  d = LANGUAGE_DICTS[language]
-  t = d.get(en)
-  if t: return t
-  splitted = en.rsplit(None, 1)
-  if len(splitted) == 2:
-    en, code = splitted
-    if code in CONCEPTS:
-      t = d.get(en)
-      if t: return u"%s %s" % (t, code)
-  return u""
-
-
 
 CONCEPTS = {}
 class Concept(object):
@@ -195,6 +127,7 @@ class Concept(object):
     self.parent_code      = ""
     self.code             = code
     self.term_en          = ""
+    self.term_fr          = ""
     self.dagger           = 0
     self.star             = 0
     self.mortality1       = ""
@@ -202,12 +135,11 @@ class Concept(object):
     self.mortality3       = ""
     self.mortality4       = ""
     self.morbidity        = ""
+    self.atih_extension   = 0
+    self.pmsi_restriction = 0
     self.texts            = []
     CONCEPTS[code] = self
 
-  def set_term(self, term_en):
-    self.term_en = term_en
-    
   def add_text(self, relation, text_en, dagger, reference):
     self.texts.append((relation, text_en, dagger, reference))
     
@@ -217,11 +149,11 @@ class Concept(object):
     if self.mortality3 == u"UNDEF": self.mortality3 = u""
     if self.mortality4 == u"UNDEF": self.mortality4 = u""
     if self.morbidity  == u"UNDEF": self.morbidity  = u""
-    return u"""(NULL, "%s", "%s", "%s", "%s", "%s", "%s", "%s", "%s", "%s", "%s", "%s", "%s")""" % (self.parent_code, self.code, sql_escape(self.term_en), sql_escape(translate(self.term_en, "fr", self.code)), sql_escape(translate(self.term_en, "de", self.code)), self.dagger, self.star, self.mortality1, self.mortality2, self.mortality3, self.mortality4, self.morbidity)
+    return u"""(NULL, "%s", "%s", "%s", "%s", "%s", "%s", "%s", "%s", "%s", "%s", "%s", "%s", "%s")""" % (self.parent_code, self.code, sql_escape(self.term_en), sql_escape(self.term_fr), self.dagger, self.star, self.mortality1, self.mortality2, self.mortality3, self.mortality4, self.morbidity, self.atih_extension, self.pmsi_restriction)
 
   def sql_text(self):
     return [
-      u"""(NULL, "%s", "%s", "%s", "%s", "%s", "%s", "%s")""" % (self.code, relation, sql_escape(text_en), sql_escape(translate(text_en, "fr")), sql_escape(translate(text_en, "de")), dagger, reference)
+      u"""(NULL, "%s", "%s", "%s", "%s", "%s")""" % (self.code, relation, sql_escape(text_en), dagger, reference)
       for (relation, text_en, dagger, reference) in self.texts
       ]
 
@@ -280,7 +212,7 @@ class Handler(handler.ContentHandler):
     self.content = self.content.strip()
     if self.content:
       if   name == "Label":
-        if   self.kind == "preferred": self.concept.set_term(self.content)
+        if   self.kind == "preferred": self.concept.term_en = self.content
         else:
           self.concept.add_text(self.kind, self.content, self.dagger, self.reference)
           
@@ -304,7 +236,57 @@ parser.parse(xml)
 
 
 
-
+if CIM10_DIR: # Optional French translation
+  GROUP_CODES = []
+  for line in open(os.path.join(HERE, "icd10_french_group_name.txt")).read().split("\n"):
+    if line and not line.startswith("#"):
+      code, term = line.split(" ", 1)
+      GROUP_CODES.append(code)
+      
+  def get_concept(code):
+    if code in CONCEPTS: return CONCEPTS[code]
+    concept = Concept(code)
+    concept.atih_extension = 1
+    concept.parent_code = code[:-1]
+    while not concept.parent_code in CONCEPTS:
+      if "." in concept.parent_code:
+        concept.parent_code = concept.parent_code[:-1]
+        while concept.parent_code.endswith(".") or concept.parent_code.endswith("+"): concept.parent_code = concept.parent_code[:-1]
+      else: break
+      
+    if not concept.parent_code in CONCEPTS:
+      if "-" in code: start , end = code.split("-")
+      else:           start = end = code
+      best = best_start = best_end = None
+      for parent_code_candidate in GROUP_CODES:
+        if parent_code_candidate == code: continue
+        parent_start, parent_end = parent_code_candidate.split("-")
+        if (parent_start <= start) and (parent_end >= end):
+          if (not best) or (best_start < parent_start) or (best_end > parent_end):
+            best = parent_code_candidate
+            best_start = parent_start
+            best_end   = parent_end
+      concept.parent_code = best
+    return concept
+  
+  for line in open(os.path.join(HERE, "icd10_french_group_name.txt")).read().split("\n"):
+    if line and not line.startswith("#"):
+      code, term = line.split(" ", 1)
+      if code in CODE_2_CHAPTER: code = CODE_2_CHAPTER[code]
+      concept = get_concept(code)
+      concept.term_fr = term
+      concept.pmsi_restriction = 3
+      
+  for line in open(os.path.join(CIM10_DIR, "LIBCIM10.TXT"), encoding = "latin1").read().split("\n"):
+    if line:
+      code, pmsi_restriction, short_term, long_term = line.split("|", 3)
+      code = code.strip()
+      if len(code) > 3: code = "%s.%s" % (code[:3], code[3:])
+      concept = get_concept(code)
+      concept.term_fr = long_term
+      concept.pmsi_restriction = int(pmsi_restriction)
+      
+      
 for concept in CONCEPTS.values():
   do_sql(u"INSERT INTO Concept VALUES %s" % concept.sql())
   
@@ -319,12 +301,12 @@ do_sql(u"""CREATE INDEX Text_code_index          ON Text(code)""")
 do_sql(u"""CREATE INDEX Text_code_relation_index ON Text(code, relation)""")
 
 
-do_sql(u"""CREATE VIRTUAL TABLE Concept_fts USING fts4(content="Concept", term_en, term_fr, term_de);""")
-do_sql(u"""INSERT INTO Concept_fts(docid, term_en, term_fr, term_de) SELECT id, term_en, term_fr, term_de FROM Concept;""")
+do_sql(u"""CREATE VIRTUAL TABLE Concept_fts USING fts4(content="Concept", term_en, term_fr);""")
+do_sql(u"""INSERT INTO Concept_fts(docid, term_en, term_fr) SELECT id, term_en, term_fr FROM Concept;""")
 do_sql(u"""INSERT INTO Concept_fts(Concept_fts) VALUES('optimize');""")
 
-do_sql(u"""CREATE VIRTUAL TABLE Text_fts USING fts4(content="Text", text_en, text_fr, text_de);""")
-do_sql(u"""INSERT INTO Text_fts(docid, text_en, text_fr, text_de) SELECT id, text_en, text_fr, text_de FROM Text;""")
+do_sql(u"""CREATE VIRTUAL TABLE Text_fts USING fts4(content="Text", text_en);""")
+do_sql(u"""INSERT INTO Text_fts(docid, text_en) SELECT id, text_en FROM Text;""")
 do_sql(u"""INSERT INTO Text_fts(Text_fts) VALUES('optimize');""")
 
 do_sql(u"""VACUUM;""")

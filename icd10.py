@@ -22,18 +22,28 @@
 pymedtermino.icd10
 ******************
 
-PyMedtermino module for ICD10. Currently supports English and French version of ICD10.
+PyMedtermino module for ICD10. Currently supports English and (ATIH) French version of ICD10.
 
 .. class:: ICD10
    
    The ICD10 terminology. See :class:`pymedtermino.Terminology` for common terminology members; only ICD10-specific members are described here.
    
+.. data:: ATIH_EXTENSION
+
+   If set to True, include ATIH extension to ICD10 (available only in French).
+   Defaults to false.
+   Must be set **before** loading ICD10 concepts.
+
+
 """
 
 __all__ = ["ICD10"]
 
 import os, os.path, sqlite3 as sql_module
 import pymedtermino
+
+ATIH_EXTENSION = False
+
 
 db        = sql_module.connect(os.path.join(pymedtermino.DATA_DIR, "icd10.sqlite3"))
 db_cursor = db.cursor()
@@ -46,7 +56,7 @@ _SEARCH2 = {}
 _TEXT1   = {}
 _TEXT2   = {}
 _CONCEPT = {}
-for lang in ["en", "fr", "de"]:
+for lang in ["en", "fr"]:
   #_SEARCH1[lang] = "SELECT code FROM Concept WHERE term_%s LIKE ?"         % lang
   #_SEARCH2[lang] = "SELECT DISTINCT code FROM Text WHERE text_%s LIKE ?"   % lang
   _SEARCH1[lang] = "SELECT Concept.code FROM Concept, Concept_fts WHERE Concept_fts.term_%s MATCH ? AND Concept.id = Concept_fts.docid" % lang
@@ -54,6 +64,7 @@ for lang in ["en", "fr", "de"]:
   _TEXT1  [lang] = "SELECT text_%s FROM Text WHERE id=?"                   % lang
   _TEXT2  [lang] = "SELECT id, text_%s, text_en, dagger, reference FROM Text WHERE code=? AND relation=?" % lang
   _CONCEPT[lang] = "SELECT parent_code, term_%s FROM Concept WHERE code=?" % lang
+_ATIH = " AND atih_extension = 0"
   
 class ICD10(pymedtermino.Terminology):
   def __init__(self):
@@ -65,11 +76,13 @@ class ICD10(pymedtermino.Terminology):
     return [self[code] for code in ["I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII", "XIII", "XIV", "XV", "XVI", "XVII", "XVIII", "XIX", "XX", "XXI", "XXII"]]
   
   def search(self, text):
+    if ATIH_EXTENSION: atih = ""
+    else:              atih = _ATIH
     #db_cursor.execute(_SEARCH1[pymedtermino.LANGUAGE], ("%%%s%%" % text,))
-    db_cursor.execute(_SEARCH1[pymedtermino.LANGUAGE], (text,))
+    db_cursor.execute(_SEARCH1[pymedtermino.LANGUAGE] + atih, (text,))
     r1 = db_cursor.fetchall()
     #db_cursor.execute(_SEARCH2[pymedtermino.LANGUAGE], ("%%%s%%" % text,))
-    db_cursor.execute(_SEARCH2[pymedtermino.LANGUAGE], (text,))
+    db_cursor.execute(_SEARCH2[pymedtermino.LANGUAGE] + atih, (text,))
     r2 = db_cursor.fetchall()
     return [self[code] for (code,) in set(r1 + r2)]
   
@@ -112,6 +125,14 @@ class ICD10Concept(pymedtermino.MonoaxialConcept, pymedtermino._StringCodeConcep
 
 .. attribute:: mortality4
 
+.. attribute:: atih_extension
+
+   True if the concept is an ATIH extension.
+
+.. attribute:: pmsi_restriction
+
+   Restriction of use of this concept for PMSI coding in France.
+
 Additional attributes can be available, and are listed in the :attr:`relations <pymedtermino.Concept.relations>` attribute.
 
 """
@@ -135,7 +156,9 @@ Additional attributes can be available, and are listed in the :attr:`relations <
       return self.parents
     
     elif attr == "children":
-      db_cursor.execute("SELECT code FROM Concept WHERE parent_code=?", (self.code,))
+      if ATIH_EXTENSION: atih = ""
+      else:              atih = _ATIH
+      db_cursor.execute("SELECT code FROM Concept WHERE parent_code=?" + atih, (self.code,))
       self.children = [self.terminology[code] for (code,) in db_cursor.fetchall()]
       return self.children
     
@@ -154,6 +177,17 @@ Additional attributes can be available, and are listed in the :attr:`relations <
       self.morbidity, self.mortality1, self.mortality2, self.mortality3, self.mortality4 = db_cursor.fetchall()
       return getattr(self, attr)
     
+    elif attr == "atih_extension":
+      db_cursor.execute("SELECT atih_extension FROM Concept WHERE code=?", (self.code,))
+      self.atih_extension = bool(db_cursor.fetchall())
+      return self.atih_extension
+    
+    elif attr == "pmsi_restriction":
+      db_cursor.execute("SELECT pmsi_restriction FROM Concept WHERE code=?", (self.code,))
+      self.pmsi_restriction = db_cursor.fetchall()
+      return self.pmsi_restriction
+      
+      
     else:
       db_cursor.execute(_TEXT2[pymedtermino.LANGUAGE], (self.code, attr))
       l = [Text(id, self, attr, text, text_en, dagger, reference) for (id, text, text_en, dagger, reference) in db_cursor.fetchall()]

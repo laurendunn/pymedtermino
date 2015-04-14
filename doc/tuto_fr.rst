@@ -110,9 +110,9 @@ Installation
 
    (télécharger la CIM10 au format “ ClaML ” et la dézipper)
 
- - http://www.icd10.ch/
+ - http://www.atih.sante.fr/plateformes-de-transmission-et-logiciels/logiciels-espace-de-telechargement/id_lot/456
 
-   (optionnel, pour les traductions françaises et allemandes ; télécharger la CIM10 au format XML et la dézipper)
+   (optionnel, pour la traduction française ; télécharger la CIM10 et la dézipper)
 
 #. Éditer le fichier setup.py et renseigner les 4 chemins où vous avez décompressés les données, par exemple ::
 
@@ -487,6 +487,10 @@ diabète sucré insulino-dépendant
 Insulin-dependent diabetes mellitus
 
 La langue utilisée par défaut est défini par pymedtermino.LANGUAGE (qui doit être défini **avant** de charger les concepts).
+
+Les extensions de l'ATIH (disponibles uniquement en français) peuvent être activée de la manière suivante (à réaliser **avant** de charger les concepts !):
+
+>>> pymedtermino.icd10.ATIH_EXTENSION = True
 
 Relations
 ---------

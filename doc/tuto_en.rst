@@ -109,9 +109,9 @@ Installation
 
      (download ICD10 - “ClaML” format and unzip)
 
-   - http://www.icd10.ch/
+   - http://www.atih.sante.fr/plateformes-de-transmission-et-logiciels/logiciels-espace-de-telechargement/id_lot/456
 
-     (optional, for French and Deutch translations; download the XML format and unzip)
+     (optional, for French translations; download and unzip)
 
 #. Edit the setup.py file and indicate the 4 paths where you have uncompressed the data, for example::
 
@@ -472,7 +472,11 @@ diabète sucré insulino-dépendant
 Insulin-dependent diabetes mellitus
 
 The default language is defined by the pymedtermino.LANGUAGE global parameter (this parameter MUST be set
-BEFORE loading concepts). Currently, English and French are supported.
+**before** loading concepts). Currently, English and French are supported.
+
+ATIH extensions (available only in French) can be activated as following (**before** loading concepts!):
+
+>>> pymedtermino.icd10.ATIH_EXTENSION = True
 
 Relations
 ---------
