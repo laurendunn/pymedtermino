@@ -24,7 +24,7 @@
 ICD10_DIR = "/home/jiba/telechargements/base_med/icd10"
 
 # Get CIM10 French and German translation from (NB choose "XML" format) :
-# http://www.icd10.ch/
+# http://www.icd10.ch/telechargement/Exp_XML.zip
 
 CIM10_DIR = "/home/jiba/telechargements/base_med/cim10"
 
