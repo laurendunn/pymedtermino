@@ -126,11 +126,9 @@ Additional attributes are available for relations, and are listed in the :attr:`
         self.children = [self.terminology["%s_%s" % (self.cdf_numero, code)] for (code,) in db_cursor.fetchall()] + self.children
       return self.children
     
-    elif attr == "relations":
-      return []
+    elif attr == "relations": return []
       
-    elif attr == "terms":
-      return [self.term]
+    elif attr == "terms": return [self.term]
       
     raise AttributeError(attr)
 
@@ -412,7 +410,7 @@ class Theriaque_Mapping(pymedtermino.Mapping):
     self.attr2   = attr2
     self.request = "SELECT %s FROM %s WHERE %s = %%s" % (attr2, table, attr1)
     
-  def _create_reverse_mapping(self): return CCH_2_SAC_Mapping()
+  def _create_reverse_mapping(self): return Theriaque_Mapping(self.table, self.terminology2, self.attr2, self.terminology1, self.attr1)
   
   def map_concepts(self, concepts):
     r = pymedtermino.Concepts()
