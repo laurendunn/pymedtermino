@@ -26,7 +26,7 @@
 
 SNOMEDCT_DIR       = "/home/jiba/telechargements/base_med/SnomedCT_RF2Release_INT_20150131"
 SNOMEDCT_CORE_FILE = "/home/jiba/telechargements/base_med/SNOMEDCT_CORE_SUBSET_201502.txt"
-#SNOMEDCT_DIR       = "/home/jiba/telechargements/base_med/SnomedCT_Release_INT_20140731"
+#SNOMEDCT_DIR       = "/home/jiba/telechargements/base_med/SnomedCT_Release_INT_20140731/RF2Release"
 #SNOMEDCT_CORE_FILE = "/home/jiba/telechargements/base_med/SNOMEDCT_CORE_SUBSET_201408.txt"
 
 #ONLY_ACTIVE_CONCEPT = 1
