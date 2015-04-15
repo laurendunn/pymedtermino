@@ -24,10 +24,10 @@
 # Get SNOMED CT CORE Problem list from :
 # http://www.nlm.nih.gov/research/umls/Snomed/core_subset.html
 
-#SNOMEDCT_DIR       = "/home/jiba/telechargements/base_med/SnomedCT_Release_INT_20140131"
-#SNOMEDCT_CORE_FILE = "/home/jiba/telechargements/base_med/SNOMEDCT_CORE_SUBSET_201311.txt"
-SNOMEDCT_DIR       = "/home/jiba/telechargements/base_med/SnomedCT_Release_INT_20140731"
-SNOMEDCT_CORE_FILE = "/home/jiba/telechargements/base_med/SNOMEDCT_CORE_SUBSET_201408.txt"
+SNOMEDCT_DIR       = "/home/jiba/telechargements/base_med/SnomedCT_RF2Release_INT_20150131"
+SNOMEDCT_CORE_FILE = "/home/jiba/telechargements/base_med/SNOMEDCT_CORE_SUBSET_201502.txt"
+#SNOMEDCT_DIR       = "/home/jiba/telechargements/base_med/SnomedCT_Release_INT_20140731"
+#SNOMEDCT_CORE_FILE = "/home/jiba/telechargements/base_med/SNOMEDCT_CORE_SUBSET_201408.txt"
 
 #ONLY_ACTIVE_CONCEPT = 1
 ONLY_ACTIVE_CONCEPT = 0
@@ -134,9 +134,9 @@ for table in [
   "Description",
   "Relationship",
   ]:
-  filename = os.path.join(SNOMEDCT_DIR, "RF2Release", "Snapshot", "Terminology", "sct2_%s_Snapshot_INT_%s.txt" % (table, NB))
+  filename = os.path.join(SNOMEDCT_DIR, "Snapshot", "Terminology", "sct2_%s_Snapshot_INT_%s.txt" % (table, NB))
   if not os.path.exists(filename):
-    filename = os.path.join(SNOMEDCT_DIR, "RF2Release", "Snapshot", "Terminology", "sct2_%s_Snapshot-%s_INT_%s.txt" % (table, LANGUAGE, NB))
+    filename = os.path.join(SNOMEDCT_DIR, "Snapshot", "Terminology", "sct2_%s_Snapshot-%s_INT_%s.txt" % (table, LANGUAGE, NB))
 
   sys.stderr.write("Importing %s ...\n" % filename)
   

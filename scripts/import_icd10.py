@@ -29,7 +29,6 @@ ICD10_DIR = "/home/jiba/telechargements/base_med/icd10"
 CIM10_DIR = "/home/jiba/telechargements/base_med/cim10"
 
 
-
 CODE_2_CHAPTER = {
   "A00-B99" : "I",
   "C00-D48" : "II",
