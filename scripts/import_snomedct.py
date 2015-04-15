@@ -18,7 +18,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
-# Get SNOMED CT from :
+# Get SNOMED CT from (choose RF2 format) :
 # http://www.nlm.nih.gov/research/umls/licensedcontent/snomedctfiles.html
 
 # Get SNOMED CT CORE Problem list from :

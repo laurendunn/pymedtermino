@@ -19,7 +19,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
-# Get SNOMED CT from:
+# Get SNOMED CT from (RF2 release):
 # http://www.nlm.nih.gov/research/umls/licensedcontent/snomedctfiles.html
 
 # Example: SNOMEDCT_DIR = "/home/jiba/telechargements/base_med/SnomedCT_Release_INT_20140131"
@@ -37,8 +37,8 @@ SNOMEDCT_CORE_FILE = ""
 # Example: ICD10_DIR = "/home/jiba/telechargements/base_med/icd10"
 ICD10_DIR = ""
 
-# Get CIM10 French and German translation from (NB choose "XML" format):
-# http://www.icd10.ch/
+# Get ICD10 French translation from ATIH:
+# http://www.atih.sante.fr/plateformes-de-transmission-et-logiciels/logiciels-espace-de-telechargement/id_lot/456
 
 # Example: CIM10_DIR = "/home/jiba/telechargements/base_med/cim10"
 CIM10_DIR = ""

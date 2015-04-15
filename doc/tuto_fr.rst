@@ -98,7 +98,7 @@ Installation
 
  - http://www.nlm.nih.gov/research/umls/licensedcontent/snomedctfiles.html
    
-   (télécharger “ SnomedCT_Release_INT_<date>.zip ” et le décompresser)
+   (télécharger “ RF2 release / SnomedCT_RF2Release_INT_<date>.zip ” et le décompresser)
 
  - http://www.nlm.nih.gov/research/umls/Snomed/core_subset.html
 
