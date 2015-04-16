@@ -48,10 +48,10 @@ SQLITE_FILE = os.path.join(HERE, "..", "meddra.sqlite3")
 db = create_db(SQLITE_FILE)
 db_cursor = db.cursor()
 
-r = open("/tmp/log.sql", "w")
+#r = open("/tmp/log.sql", "w")
 def do_sql(sql):
-  r.write(sql)
-  r.write(";\n")
+  #r.write(sql)
+  #r.write(";\n")
   db_cursor.execute(sql)
   
 def sql_escape(s):
