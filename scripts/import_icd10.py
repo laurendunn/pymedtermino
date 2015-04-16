@@ -78,10 +78,10 @@ SQLITE_FILE = os.path.join(HERE, "..", "icd10.sqlite3")
 db = create_db(SQLITE_FILE)
 db_cursor = db.cursor()
 
-r = open("/tmp/log.sql", "w")
+#r = open("/tmp/log.sql", "w")
 def do_sql(sql, *args):
-  r.write(sql)
-  r.write(";\n")
+  #r.write(sql)
+  #r.write(";\n")
   db_cursor.execute(sql, *args)
   
 def sql_escape(s): return s.replace(u'"', u'""').replace(u'\r', u'').replace(u'\x92', u"'")
