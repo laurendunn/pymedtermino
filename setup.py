@@ -48,7 +48,7 @@ CIM10_DIR = ""
 # https://www.meddra.org/software-packages
 
 # Example:
-# MEDDRA_DIRS =  {
+# MEDDRA_DIRS = {
 #  "en" : "/home/jiba/telechargements/base_med/meddra/en/MedAscii",
 #  "fr" : "/home/jiba/telechargements/base_med/meddra/fr/ascii-171",
 # }

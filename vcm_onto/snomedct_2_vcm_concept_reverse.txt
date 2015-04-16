@@ -223,7 +223,7 @@
 78 ~= 22253000 279001004   # Douleur ~~ Pain (finding)
 192 ~~ 409774005   # Inflammation ~~ Inflammatory morphology (morphologic abnormality)
 198 ~~    # Lésion_anatomique ~~ 
-200 ~~ 110407002 107656002   # Malformation ~~ Exstrophy (morphologic abnormality) Congenital anomaly (morphologic abnormality)
+200 ~~ 110407002 107656002 66091009  # Malformation ~~ Exstrophy (morphologic abnormality) Congenital anomaly (morphologic abnormality) Congenital disease (disorder)
 206 ~~ 26036001 439127006 414086009 56381008 234059001 68109007 55641003   # Obstruction ~~ Obstruction (morphologic abnormality) Thrombosis (disorder) Embolism (disorder) Calculus (morphologic abnormality) Venous stenosis (disorder) Stricture of artery (disorder) Infarct (morphologic abnormality)
 84 ~~ 17672001   # Entrée_de_liquide ~~ Accumulation of fluid (morphologic abnormality)
 184 ~~ 50960005 240523007   # Hémorragie ~~ Hemorrhage (morphologic abnormality) Viral hemorrhagic fever (disorder)
