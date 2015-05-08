@@ -82,7 +82,7 @@ class ICD10(pymedtermino.Terminology):
     db_cursor.execute(_SEARCH1[pymedtermino.LANGUAGE] + atih, (text,))
     r1 = db_cursor.fetchall()
     #db_cursor.execute(_SEARCH2[pymedtermino.LANGUAGE], ("%%%s%%" % text,))
-    db_cursor.execute(_SEARCH2[pymedtermino.LANGUAGE] + atih, (text,))
+    db_cursor.execute(_SEARCH2[pymedtermino.LANGUAGE], (text,))
     r2 = db_cursor.fetchall()
     return [self[code] for (code,) in set(r1 + r2)]
   
