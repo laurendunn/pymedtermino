@@ -42,6 +42,7 @@ PyMedtermino module for VCM icons.
 """
 
 from __future__ import print_function
+from functools import reduce
 
 
 __all__ = ["VCM_CONCEPT", "VCM_CONCEPT_MONOAXIAL", "VCM_LEXICON", "VCM", "VCMIcon",
@@ -1011,24 +1012,24 @@ def generalize_icons(icons, on_del = None, fail_if_too_much_information_is_lost 
     
   if None in etiologies: etiology = None
   else:
-    etiology = generalize_lexs(filter(None, etiologies))
+    etiology = generalize_lexs([i for i in etiologies if i])
     if etiology.code is VCM_LEXICON.PATHO_MODIFIER: etiology = None
     
   if None in quantitatives: quantitative = None
   else:
-    quantitative = generalize_lexs(filter(None, quantitatives))
+    quantitative = generalize_lexs([i for i in quantitatives if i])
     if quantitative.code is VCM_LEXICON.PATHO_MODIFIER: quantitative = None
     
   if None in processes: process = None
   else:
-    process = generalize_lexs(filter(None, processes))
+    process = generalize_lexs([i for i in processes if i])
     if process.code is VCM_LEXICON.PATHO_MODIFIER: process = None
     
   if None in transverses: transverse = None
   else:
-    transverse = generalize_lexs(filter(None, transverses))
+    transverse = generalize_lexs([i for i in transverses if i])
     if (transverse is VCM_LEXICON.PATHO_MODIFIER) or (transverse is VCM_LEXICON.EMPTY_MODIFIER): transverse = None
-    
+
   # Le quantitatif porte sur le pictogramme central, donc perdre le pictogramme central => perdre le quantitatif
   if set([icon.central_pictogram for icon in icons]) != set([central_pictogram]):
     quantitative = None
@@ -1036,10 +1037,10 @@ def generalize_icons(icons, on_del = None, fail_if_too_much_information_is_lost 
   # Le quantitatif porte sur l'étiologie / le processus / la localisation
   # secondaire, donc perdre l'étiologie / le processus / la loca II
   # => perdre le quantitatif
-  if filter(None, etiologies) and not etiology: quantitative = None
-  if filter(None, processes ) and not process : quantitative = None
+  if [i for i in etiologies if i] and not etiology: quantitative = None
+  if [i for i in processes  if i] and not process : quantitative = None
   
-  modifiers = filter(None, [etiology, quantitative, process, transverse])
+  modifiers = [i for i in [etiology, quantitative, process, transverse] if i]
   if not modifiers:
     if physio: modifiers = [VCM_LEXICON.PHYSIO_MODIFIER]
     else:      modifiers = [VCM_LEXICON.PATHO_MODIFIER ]
@@ -1130,6 +1131,6 @@ def remove_duplicate_icons(icons, on_del = None, add_shadow = 1):
             icons[j] = None
             
             
-  return filter(None, icons)
+  return [i for i in icons if i]
 
 
