@@ -60,7 +60,7 @@ for lang in ["en", "fr"]:
   #_SEARCH1[lang] = "SELECT code FROM Concept WHERE term_%s LIKE ?"         % lang
   #_SEARCH2[lang] = "SELECT DISTINCT code FROM Text WHERE text_%s LIKE ?"   % lang
   _SEARCH1[lang] = "SELECT Concept.code FROM Concept, Concept_fts WHERE Concept_fts.term_%s MATCH ? AND Concept.id = Concept_fts.docid" % lang
-  _SEARCH2[lang] = "SELECT DISTINCT Text.code FROM Text, Text_fts WHERE Text_fts.text_%s MATCH ? AND Text.id = Text_fts.docid"          % lang
+  _SEARCH2[lang] = "SELECT DISTINCT Text.code FROM Text, Text_fts WHERE Text_fts.text_en MATCH ? AND Text.id = Text_fts.docid"
   _TEXT1  [lang] = "SELECT text_%s FROM Text WHERE id=?"                   % lang
   _TEXT2  [lang] = "SELECT id, text_%s, text_en, dagger, reference FROM Text WHERE code=? AND relation=?" % lang
   _CONCEPT[lang] = "SELECT parent_code, term_%s FROM Concept WHERE code=?" % lang

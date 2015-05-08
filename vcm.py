@@ -184,6 +184,10 @@ class VCMLexiconConcept(_BaseVCMConcept):
 
 VCM lexicon defines "graphical is a" relation in addition to standard "is a". A concept A is considered as "graphically being" a concept B if (and only if) the pictogram associated to A include the pictogram associated to B.
 
+.. attribute:: category
+   
+   The category of lexicon (0: central color, 1: modifier, etc).
+
 .. attribute:: graphical_parents
    
    The list of concepts that are graphically more general than this one.
