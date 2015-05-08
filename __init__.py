@@ -126,7 +126,10 @@ class Terminology(object):
   _use_weakref = 1
   def __init__(self, name):
     self.name = name
-    self.dict = {}
+    if self._use_weakref:
+      self.dict = weakref.WeakValueDictionary()
+    else:
+      self.dict = {}
     self.Concept = self._create_Concept()
     self.Concept.terminology = self
     self.canonize_code = self.Concept.canonize_code
@@ -166,11 +169,11 @@ class Terminology(object):
     """Retuns the concept of the given code, or None if no such concept."""
     code = self.canonize_code(code)
     concept = self.dict.get(code)
-    if concept:
-      if self._use_weakref:
-        concept = concept()
-        if concept: return concept
-      else: return concept
+    if concept: return concept
+      #if self._use_weakref:
+      #  concept = concept()
+      #  if concept: return concept
+      #else: return concept
       
     try:               concept = self.Concept(code)
     except ValueError: return None
@@ -187,11 +190,11 @@ class Terminology(object):
 Also available as Terminology[code] (i.e. Terminology.__getitem__)."""
     code = self.canonize_code(code)
     concept = self.dict.get(code)
-    if concept:
-      if self._use_weakref:
-        concept = concept()
-        if concept: return concept
-      else: return concept
+    if concept: return concept
+      #if self._use_weakref:
+      #  concept = concept()
+      #  if concept: return concept
+      #else: return concept
       
     try: concept = self.Concept(code)
     except ValueError:
@@ -265,8 +268,9 @@ class Concept(object):
   def __init__(self, code, term):
     self.code = code #: the code of the concept
     if not term is None: self.term = term #: the preferred term (i.e. label) of the concept
-    if self.terminology._use_weakref: self.terminology.dict[code] = weakref.ref(self)
-    else:                             self.terminology.dict[code] = self
+    #if self.terminology._use_weakref: self.terminology.dict[code] = weakref.ref(self)
+    #else:                             self.terminology.dict[code] = self
+    self.terminology.dict[code] = self
     cache(self)
     
   def full_code(self):

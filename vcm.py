@@ -596,7 +596,7 @@ class VCMIcon(pymedtermino.MultiaxialConcept, pymedtermino._StringCodeConcept):
     self.lexs = pymedtermino.Concepts([self.central_color, self.central_pictogram, self.top_right_color, self.top_right_pictogram, self.second_top_right_pictogram, self.shadow])
     self.lexs.update(self.modifiers)
     
-    VCM.dict[code] = weakref.ref(self)
+    VCM.dict[code] = self
     pymedtermino.cache(self)
     
   def __getattr__(self, attr):
