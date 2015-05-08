@@ -300,13 +300,19 @@ do_sql(u"""CREATE INDEX Text_code_index          ON Text(code)""")
 do_sql(u"""CREATE INDEX Text_code_relation_index ON Text(code, relation)""")
 
 
-do_sql(u"""CREATE VIRTUAL TABLE Concept_fts USING fts4(content="Concept", term_en, term_fr);""")
-do_sql(u"""INSERT INTO Concept_fts(docid, term_en, term_fr) SELECT id, term_en, term_fr FROM Concept;""")
-do_sql(u"""INSERT INTO Concept_fts(Concept_fts) VALUES('optimize');""")
+#do_sql(u"""CREATE VIRTUAL TABLE Concept_fts USING fts4(content="Concept", term_en, term_fr);""")
+#do_sql(u"""INSERT INTO Concept_fts(docid, term_en, term_fr) SELECT id, term_en, term_fr FROM Concept;""")
+#do_sql(u"""INSERT INTO Concept_fts(Concept_fts) VALUES('optimize');""")
+#
+#do_sql(u"""CREATE VIRTUAL TABLE Text_fts USING fts4(content="Text", text_en);""")
+#do_sql(u"""INSERT INTO Text_fts(docid, text_en) SELECT id, text_en FROM Text;""")
+#do_sql(u"""INSERT INTO Text_fts(Text_fts) VALUES('optimize');""")
 
-do_sql(u"""CREATE VIRTUAL TABLE Text_fts USING fts4(content="Text", text_en);""")
-do_sql(u"""INSERT INTO Text_fts(docid, text_en) SELECT id, text_en FROM Text;""")
-do_sql(u"""INSERT INTO Text_fts(Text_fts) VALUES('optimize');""")
+do_sql(u"""CREATE VIRTUAL TABLE Concept_fts USING fts4(content="Concept", term);""")
+do_sql(u"""INSERT INTO Concept_fts(docid, term) SELECT id, term_en FROM Concept;""")
+do_sql(u"""INSERT INTO Concept_fts(docid, term) SELECT id, term_fr FROM Concept;""")
+do_sql(u"""INSERT INTO Concept_fts(docid, term) SELECT Concept.id, Text.text_en FROM Text, Concept WHERE Concept.code = Text.code;""")
+do_sql(u"""INSERT INTO Concept_fts(Concept_fts) VALUES('optimize');""")
 
 do_sql(u"""VACUUM;""")
 
