@@ -34,6 +34,19 @@ from pymedtermino.scripts.build_snomedct_2_vcm import snomedct_2_icons
 class TestVCM(unittest.TestCase):
   def setUp(self): pass
   
+  def test_icd10(self):
+    pymedtermino.LANGUAGE = "fr"
+    assert ICD10["I10"].parents == [ICD10[u"I10-I15"]  # Hypertensive diseases
+    ]
+    print()
+    print(ICD10.search("portal hypertension"))
+    print()
+    assert ICD10.search("portal hypertension") == [ICD10[u"K76.6"]  # Portal hypertension
+    ]
+    pymedtermino.LANGUAGE = "fr"
+    
+
+  
   def test_1(self): assert VCM.canonize_code(u"en_cours--patho--coeur--rien--rien--rien--rien") == u"en_cours--patho--coeur"
   def test_2(self): assert VCM.canonize_code(u"en_cours--patho--coeur--rien--rien--rien") == u"en_cours--patho--coeur"
   def test_3(self): assert VCM.canonize_code(u"en_cours--hypo--coeur--rien--rien--rien") == u"en_cours--hypo--coeur"

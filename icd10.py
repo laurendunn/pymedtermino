@@ -56,11 +56,12 @@ _SEARCH2 = {}
 _TEXT1   = {}
 _TEXT2   = {}
 _CONCEPT = {}
+_SEARCH0 = "SELECT Concept.code FROM Concept, Concept_fts WHERE Concept_fts.term_en MATCH ? AND Concept.id = Concept_fts.docid"
+_SEARCH1 = "SELECT Concept.code FROM Concept, Concept_fts WHERE Concept_fts.term_fr MATCH ? AND Concept.id = Concept_fts.docid"
+_SEARCH2 = "SELECT DISTINCT Text.code FROM Text, Text_fts WHERE Text_fts.text_en MATCH ? AND Text.id = Text_fts.docid"
 for lang in ["en", "fr"]:
   #_SEARCH1[lang] = "SELECT code FROM Concept WHERE term_%s LIKE ?"         % lang
   #_SEARCH2[lang] = "SELECT DISTINCT code FROM Text WHERE text_%s LIKE ?"   % lang
-  _SEARCH1[lang] = "SELECT Concept.code FROM Concept, Concept_fts WHERE Concept_fts.term_%s MATCH ? AND Concept.id = Concept_fts.docid" % lang
-  _SEARCH2[lang] = "SELECT DISTINCT Text.code FROM Text, Text_fts WHERE Text_fts.text_en MATCH ? AND Text.id = Text_fts.docid"
   _TEXT1  [lang] = "SELECT text_%s FROM Text WHERE id=?"                   % lang
   _TEXT2  [lang] = "SELECT id, text_%s, text_en, dagger, reference FROM Text WHERE code=? AND relation=?" % lang
   _CONCEPT[lang] = "SELECT parent_code, term_%s FROM Concept WHERE code=?" % lang
@@ -79,12 +80,14 @@ class ICD10(pymedtermino.Terminology):
     if ATIH_EXTENSION: atih = ""
     else:              atih = _ATIH
     #db_cursor.execute(_SEARCH1[pymedtermino.LANGUAGE], ("%%%s%%" % text,))
-    db_cursor.execute(_SEARCH1[pymedtermino.LANGUAGE] + atih, (text,))
+    db_cursor.execute(_SEARCH0, (text,))
+    r0 = db_cursor.fetchall()
+    db_cursor.execute(_SEARCH1 + atih, (text,))
     r1 = db_cursor.fetchall()
     #db_cursor.execute(_SEARCH2[pymedtermino.LANGUAGE], ("%%%s%%" % text,))
-    db_cursor.execute(_SEARCH2[pymedtermino.LANGUAGE], (text,))
+    db_cursor.execute(_SEARCH2, (text,))
     r2 = db_cursor.fetchall()
-    return [self[code] for (code,) in set(r1 + r2)]
+    return [self[code] for (code,) in set(r0 + r1 + r2)]
   
 
 class Text(object):
