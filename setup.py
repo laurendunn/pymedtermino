@@ -159,7 +159,7 @@ if ("upload_docs" in sys.argv) or ("build_sphinx" in sys.argv): import setuptool
 
 distutils.core.setup(
   name         = "PyMedTermino",
-  version      = "0.3.1",
+  version      = "0.3.2",
   license      = "LGPLv3+",
   description  = "Medical Terminologies for Python: SNOMED CT, ICD10, MedDRA, CDF, UMLS and VCM icons",
   long_description = open(os.path.join(HERE, "README.rst")).read(),

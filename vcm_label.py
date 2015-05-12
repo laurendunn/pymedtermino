@@ -22,8 +22,8 @@ from __future__ import print_function
 import sys, os, os.path, csv
 from collections import defaultdict
 
-import pymedtermino
-from pymedtermino.all import *
+from pymedtermino     import *
+from pymedtermino.vcm import *
 
 class Label(object):
   def __init__(self, **langs):
@@ -866,10 +866,11 @@ def concepts_2_parts(concepts, orig = None):
       split_part = data.get(split)
       if (split == cons("Inflammation")) and (cons("Allergy").issubset(orig)):
         return parts # Do not say "allergic inflammatory disorder"
-      if split_part: return [split_part] + parts
+      if split_part and parts: return [split_part] + parts
       return parts
-  
-  raise ValueError(concepts)
+    
+  #raise ValueError(concepts)
+  print("* PyMedTermino * Warning: no label for VCM concept set %s." % list(concepts))
 
 def concepts_2_label(concepts):
   try:
@@ -884,6 +885,7 @@ def concepts_2_label(concepts):
       concepts.add(VCM_CONCEPT[192])  # Inflammation
     #print("  ", ", ".join(c.term for c in concepts))
     parts = concepts_2_parts(frozenset(concepts))
+    if parts is None: return Label(en = "xxx", fr = "xxx")
     return combine(parts, concepts)
   except:
     sys.excepthook(*sys.exc_info())

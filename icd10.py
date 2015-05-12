@@ -51,17 +51,11 @@ db_cursor = db.cursor()
 #db_cursor.execute("PRAGMA journal_mode = OFF;")
 db_cursor.execute("PRAGMA query_only = TRUE;")
 
-_SEARCH1 = {}
-_SEARCH2 = {}
-_TEXT1   = {}
-_TEXT2   = {}
 _CONCEPT = {}
 _SEARCH  = "SELECT Concept.code FROM Concept, Concept_fts WHERE Concept_fts.term MATCH ? AND Concept.id = Concept_fts.docid"
+_TEXT1 = "SELECT text_en FROM Text WHERE id=?"
+_TEXT2 = "SELECT id, text_en, text_en, dagger, reference FROM Text WHERE code=? AND relation=?"
 for lang in ["en", "fr"]:
-  #_SEARCH1[lang] = "SELECT code FROM Concept WHERE term_%s LIKE ?"         % lang
-  #_SEARCH2[lang] = "SELECT DISTINCT code FROM Text WHERE text_%s LIKE ?"   % lang
-  _TEXT1  [lang] = "SELECT text_%s FROM Text WHERE id=?"                   % lang
-  _TEXT2  [lang] = "SELECT id, text_%s, text_en, dagger, reference FROM Text WHERE code=? AND relation=?" % lang
   _CONCEPT[lang] = "SELECT parent_code, term_%s FROM Concept WHERE code=?" % lang
 _ATIH = " AND atih_extension = 0"
   
@@ -100,7 +94,7 @@ class Text(object):
     
   def get_translation(self, language):
     """Translates this text in the given language."""
-    db_cursor.execute(_TEXT1[language], (self.id,))
+    db_cursor.execute(_TEXT1, (self.id,))
     return db_cursor.fetchone()[0]
     
   def __repr__(self):
@@ -140,7 +134,7 @@ Additional attributes can be available, and are listed in the :attr:`relations <
     db_cursor.execute(_CONCEPT[pymedtermino.LANGUAGE], (code,))
     r = db_cursor.fetchone()
     if not r:
-      raise ValueError()
+      raise ValueError(code)
     self.parent_code = r[0]
     term             = r[1]
     if not term:
@@ -188,7 +182,7 @@ Additional attributes can be available, and are listed in the :attr:`relations <
       
       
     else:
-      db_cursor.execute(_TEXT2[pymedtermino.LANGUAGE], (self.code, attr))
+      db_cursor.execute(_TEXT2, (self.code, attr))
       l = [Text(id, self, attr, text, text_en, dagger, reference) for (id, text, text_en, dagger, reference) in db_cursor.fetchall()]
       setattr(self, attr, l)
       return l

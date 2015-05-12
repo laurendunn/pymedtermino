@@ -174,7 +174,8 @@ class Terminology(object):
       #  concept = concept()
       #  if concept: return concept
       #else: return concept
-      
+
+    concept = self.Concept(code)
     try:               concept = self.Concept(code)
     except ValueError: return None
     return concept
