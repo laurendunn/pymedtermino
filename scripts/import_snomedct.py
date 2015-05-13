@@ -26,7 +26,7 @@
 
 SNOMEDCT_DIR       = "/home/jiba/telechargements/base_med/SnomedCT_RF2Release_INT_20150131"
 SNOMEDCT_CORE_FILE = "/home/jiba/telechargements/base_med/SNOMEDCT_CORE_SUBSET_201502.txt"
-#SNOMEDCT_DIR       = "/home/jiba/telechargements/base_med/SnomedCT_Release_INT_20140731/RF2Release"
+#SNOMEDCT_DIR       = "/home/jiba/telechargements/base_med/SnomedCT_Release_INT_20140131/RF2Release"
 #SNOMEDCT_CORE_FILE = "/home/jiba/telechargements/base_med/SNOMEDCT_CORE_SUBSET_201408.txt"
 
 #ONLY_ACTIVE_CONCEPT = 1
@@ -45,8 +45,9 @@ if len(sys.argv) >= 3:
   SNOMEDCT_DIR       = sys.argv[1]
   SNOMEDCT_CORE_FILE = sys.argv[2]
 
-NB          = SNOMEDCT_DIR.split("_")[-1]
 LANGUAGE    = "en"
+NB          = SNOMEDCT_DIR.split("_")[-1]
+if NB.endswith("/RF2Release"): NB = NB.replace("/RF2Release", "")
 
 SQLITE_FILE = os.path.join(HERE, "..", "snomedct.sqlite3")
 
@@ -128,16 +129,17 @@ sys.stderr.write("%s SNOMED CT terms in CORE Problem list.\n" %  len(CORE_IDS))
 
 ACTIVE_CONCEPTS = set()
 
-for table in [
-  "Concept",
-  "TextDefinition",
-  "Description",
-  "Relationship",
+for table, language_dependent in [
+    ("Concept"       , False),
+    ("TextDefinition", True),
+    ("Description"   , True),
+    ("Relationship"  , False),
   ]:
-  filename = os.path.join(SNOMEDCT_DIR, "Snapshot", "Terminology", "sct2_%s_Snapshot_INT_%s.txt" % (table, NB))
-  if not os.path.exists(filename):
+  if language_dependent:
     filename = os.path.join(SNOMEDCT_DIR, "Snapshot", "Terminology", "sct2_%s_Snapshot-%s_INT_%s.txt" % (table, LANGUAGE, NB))
-
+  else:
+    filename = os.path.join(SNOMEDCT_DIR, "Snapshot", "Terminology", "sct2_%s_Snapshot_INT_%s.txt" % (table, NB))
+    
   sys.stderr.write("Importing %s ...\n" % filename)
   
   for line in read_file(filename).split(u"\n")[1:]:
