@@ -169,15 +169,9 @@ class Terminology(object):
     """Retuns the concept of the given code, or None if no such concept."""
     code = self.canonize_code(code)
     concept = self.dict.get(code)
-    if concept: return concept
-      #if self._use_weakref:
-      #  concept = concept()
-      #  if concept: return concept
-      #else: return concept
-
-    concept = self.Concept(code)
-    try:               concept = self.Concept(code)
-    except ValueError: return None
+    if not concept:
+      try:                            concept = self.Concept(code)
+      except (ValueError, TypeError): return None
     return concept
   
   def has_concept(self, code):

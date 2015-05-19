@@ -87,7 +87,8 @@ def combine(parts, orig_concepts):
   return r
 
 
-CONCEPTS = { concept.get_translation("en") : concept for concept in VCM_CONCEPT.all_concepts() }
+#CONCEPTS = { concept.get_translation("en") : concept for concept in VCM_CONCEPT.all_concepts() }
+CONCEPTS = dict((concept.get_translation("en"), concept) for concept in VCM_CONCEPT.all_concepts() )
 def cons(*ss): return frozenset(CONCEPTS[s] for s in ss)
 
 data = {

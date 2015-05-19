@@ -22,8 +22,8 @@
 # Get SNOMED CT from (RF2 release):
 # http://www.nlm.nih.gov/research/umls/licensedcontent/snomedctfiles.html
 
-# Example (2015 release): SNOMEDCT_DIR = "/home/jiba/telechargements/base_med/SnomedCT_RF2Release_INT_20150131"
-# Example (2014 release): SNOMEDCT_DIR = "/home/jiba/telechargements/base_med/SnomedCT_Release_INT_20140731/RF2Release"
+# Example: SNOMEDCT_DIR = "/home/jiba/telechargements/base_med/SnomedCT_RF2Release_INT_20150131"
+# Example ( ** OLD ** 2014 release): SNOMEDCT_DIR = "/home/jiba/telechargements/base_med/SnomedCT_Release_INT_20140731/RF2Release"
 SNOMEDCT_DIR = ""
 
 # Get SNOMED CT CORE Problem list from:
