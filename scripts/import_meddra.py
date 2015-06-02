@@ -117,9 +117,9 @@ def get_concept(code):
   if not code in CONCEPTS: return Concept(code)
   return CONCEPTS[code]
 
-ISA = []
+ISA = set()
 def assert_isa(child_code, parent_code):
-  ISA.append((child_code, parent_code))
+  ISA.add((child_code, parent_code))
 
 
 def open_meddra_file(filename, lang):

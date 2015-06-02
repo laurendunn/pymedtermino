@@ -155,6 +155,8 @@ Additional attributes can be available, and are listed in the :attr:`relations <
       self.children = [self.terminology[code] for (code,) in db_cursor.fetchall()]
       return self.children
     
+    elif attr == "terms": return [self.term]
+    
     elif attr == "relations":
       db_cursor.execute("SELECT DISTINCT relation FROM Text WHERE code=?", (self.code,))
       self.relations = set(i for (i,) in db_cursor.fetchall())
