@@ -95,7 +95,7 @@ class UMLSBase(pymedtermino.Terminology):
         self._GET_UI_QUERY = "SELECT AUI FROM MRCONSO WHERE CODE=%s AND SAB='" + original_terminology_name + "' AND (SUPPRESS in ('', 'N'))"
       else:
         self._GET_UI_QUERY = "SELECT AUI FROM MRCONSO WHERE CODE=%s AND SAB='" + original_terminology_name + "'"
-      self._SEARCH_QUERY   = "SELECT DISTINCT CODE FROM MRCONSO WHERE SAB='" + original_terminology_name + "' AND STR LIKE %s"
+      self._SEARCH_QUERY   = "SELECT DISTINCT AUI FROM MRCONSO WHERE SAB='" + original_terminology_name + "' AND STR LIKE %s"
       self._SUPPRESS_QUERY = "SELECT DISTINCT SUPPRESS FROM MRCONSO WHERE SAB='" + original_terminology_name + "' AND AUI=%s"
       self._GET_CODE_QUERY = "SELECT DISTINCT CODE FROM MRCONSO WHERE SAB='" + original_terminology_name + "' AND AUI=%s"
       self._GET_CODE2_QUERY= "SELECT DISTINCT CODE FROM MRCONSO WHERE SAB='" + original_terminology_name + "' AND CUI=%s"
