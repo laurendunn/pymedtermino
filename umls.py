@@ -70,6 +70,7 @@ class UMLSBase(pymedtermino.Terminology):
     pymedtermino.Terminology.__init__(self, name)
     
     if not original_terminology_name: # Whole MetaThesaurus
+      self._SEARCH_QUERY   = "SELECT DISTINCT " + umls_code_attr + " FROM MRCONSO WHERE STR LIKE %s"
       self._SUPPRESS_QUERY = "SELECT DISTINCT SUPPRESS FROM MRCONSO WHERE " + umls_code_attr + "=%s"
       self._GET_STR_QUERY  = "SELECT STR FROM MRCONSO WHERE " + umls_code_attr + "=%s"
       self._PARENT_QUERY   = "SELECT DISTINCT " + umls_code_attr + "1 FROM MRREL WHERE " + umls_code_attr + "2='%s' AND REL='CHD'"
@@ -94,6 +95,7 @@ class UMLSBase(pymedtermino.Terminology):
         self._GET_UI_QUERY = "SELECT AUI FROM MRCONSO WHERE CODE=%s AND SAB='" + original_terminology_name + "' AND (SUPPRESS in ('', 'N'))"
       else:
         self._GET_UI_QUERY = "SELECT AUI FROM MRCONSO WHERE CODE=%s AND SAB='" + original_terminology_name + "'"
+      self._SEARCH_QUERY   = "SELECT DISTINCT CODE FROM MRCONSO WHERE SAB='" + original_terminology_name + "' AND STR LIKE %s"
       self._SUPPRESS_QUERY = "SELECT DISTINCT SUPPRESS FROM MRCONSO WHERE SAB='" + original_terminology_name + "' AND AUI=%s"
       self._GET_CODE_QUERY = "SELECT DISTINCT CODE FROM MRCONSO WHERE SAB='" + original_terminology_name + "' AND AUI=%s"
       self._GET_CODE2_QUERY= "SELECT DISTINCT CODE FROM MRCONSO WHERE SAB='" + original_terminology_name + "' AND CUI=%s"
@@ -134,8 +136,13 @@ class UMLSBase(pymedtermino.Terminology):
           if concept: l.append(concept)
     return l
   
-  def search(self, text): raise NotImplementedError()
-
+  def search(self, text):
+    text = text.replace("*", "%")
+    #raise NotImplementedError()
+    db_cursor.execute(self._SEARCH_QUERY, (text,))
+    #return [self[code] for (code,) in db_cursor.fetchall()]
+    return self._concepts_from_uis(db_cursor.fetchall())
+  
 
 class UMLS_CUI(UMLSBase):
   def __init__(self): UMLSBase.__init__(self, "UMLS_CUI", "CUI", u"", 0)
@@ -359,8 +366,9 @@ Additional attributes are available for relations, and are listed in the :attr:`
   
   def get_translation(self, language):
     db_cursor.execute(self.terminology._TRANS_QUERY, (str(self.code), _iso2umls_lang[language]))
-    return db_cursor.fetchone()[0]
-  
+    r = db_cursor.fetchone()
+    if r: return r[0]
+    
   def get_translations(self, language):
     db_cursor.execute(self.terminology._TRANS2_QUERY, (str(self.code), _iso2umls_lang[language]))
     return [e[0] for e in db_cursor.fetchall()]
