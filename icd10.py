@@ -63,7 +63,7 @@ class ICD10(pymedtermino.Terminology):
   def __init__(self):
     pymedtermino.Terminology.__init__(self, "ICD10")
     
-  def _create_Concept(self): return ICD10Concept
+  def _create_Concept(self): return BaseICD10Concept
   
   def first_levels(self):
     return [self[code] for code in ["I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII", "XIII", "XIV", "XV", "XVI", "XVII", "XVIII", "XIX", "XX", "XXI", "XXII"]]
@@ -99,8 +99,15 @@ class Text(object):
     
   def __repr__(self):
     return """Text(%s, %s, %s, %s, %s)""" % (repr(self.concept), repr(self.relation), repr(self.text), repr(self.dagger), repr(self.reference), )
+
   
-  
+class BaseICD10Concept(pymedtermino.MonoaxialConcept, pymedtermino._StringCodeConcept):
+  def __init__(self, code):
+    if "+" in code: self.__class__ = ICD10DaggerStarConcept
+    else:           self.__class__ = ICD10Concept
+    self.__class__.__init__(self, code)
+    
+      
 class ICD10Concept(pymedtermino.MonoaxialConcept, pymedtermino._StringCodeConcept):
   """An ICD10 concept. See :class:`pymedtermino.Concept` for common terminology members; only ICD10-specific members are described here.
 
@@ -196,4 +203,37 @@ Additional attributes can be available, and are listed in the :attr:`relations <
     return db_cursor.fetchone()[0]
 
   
+class ICD10DaggerStarConcept(pymedtermino.MonoaxialConcept, pymedtermino._StringCodeConcept):
+  def __init__(self, code):
+    dagger, star = code.split("+")
+    self.dagger = ICD10[dagger]
+    self.star   = ICD10[star]
+    self.code   = "%s+%s" % (self.dagger.code, self.star.code)
+    
+  def __getattr__(self, attr):
+    if   attr == "term":
+      return "%s + %s" % (self.dagger.term, self.star.term)
+    
+    elif attr == "terms":
+      return ["%s + %s" % (t1, t2) for t1 in self.dagger.terms for t2 in self.star.terms]
+      
+    elif attr == "parents":
+      self.parents = [self.dagger, self.star]
+      return self.parents
+    
+    elif attr == "children":  return []
+    elif attr == "relations": return []
+    
+    elif attr == "atih_extension":
+      return self.dagger.atih_extension or self.star.atih_extension
+    
+    elif attr == "pmsi_restriction":
+      return self.dagger.pmsi_restriction or self.star.pmsi_restriction
+    
+  def get_translation(self, language):
+    return "%s + %s" % (self.dagger.get_translation(language), self.star.get_translation(language))
+
+
 ICD10 = ICD10()
+
+ICD10Concept.terminology = ICD10DaggerStarConcept.terminology = ICD10
