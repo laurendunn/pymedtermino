@@ -429,8 +429,8 @@ inherits from Python's :class:`set` the methods for computing intersection, unio
       for ca in self:
         if ca.imply(cb): break
       else:
-        return 0
-    return 1
+        return False
+    return True
   
   def is_semantic_subset(self, other):
     """returns true if all concepts in this set are descendants of (at least) one of the concept in the OTHER set."""
@@ -438,8 +438,16 @@ inherits from Python's :class:`set` the methods for computing intersection, unio
       for c2 in other:
         if c1.is_a(c2): break
       else:
-        return 0
-    return 1
+        return False
+    return True
+  
+  def is_semantic_disjoint(self, other):
+    """returns true if all concepts in this set are disjoint from all concepts in the OTHER set."""
+    for c1 in self:
+      for c2 in other:
+        if c1.is_a(c2): return False
+        if c2.is_a(c1): return False
+    return True
   
   def keep_most_specific(self, more_specific_than = None):
     """keeps only the most specific concepts, i.e. remove all concepts that are more general that another concept in the set."""
