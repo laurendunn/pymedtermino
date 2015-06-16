@@ -28,37 +28,35 @@ In case of trouble, please contact Jean-Baptiste Lamy <jean-baptiste.lamy *@* un
 What can I do with PyMedTermino?
 --------------------------------
 
-  >>> SNOMEDCT.search("tachycardia*")
-  [SNOMEDCT[3424008]  # Tachycardia (finding)
-  , SNOMEDCT[4006006]  # Fetal tachycardia affecting management of mother (disorder)
-  , SNOMEDCT[6456007]  # Supraventricular tachycardia (disorder)
-  ...]
-  >>> SNOMEDCT[3424008].parents
-  [SNOMEDCT[301113001]  # Finding of heart rate (finding)
+  >>> ICD10.search("tachycardia")
+  [ ICD10[u"I49.5"]  # Sick sinus syndrome
+  , ICD10[u"I47.2"]  # Ventricular tachycardia
+  , ICD10[u"F43.0"]  # Acute stress reaction
+  , ICD10[u"I47"]  # Paroxysmal tachycardia
+  , ICD10[u"I47.1"]  # Supraventricular tachycardia
+  , ICD10[u"I47.9"]  # Paroxysmal tachycardia, unspecified
+  , ICD10[u"R00.0"]  # Tachycardia, unspecified
+  , ICD10[u"O68.0"]  # Labour and delivery complicated by fetal heart rate anomaly
   ]
-  >>> SNOMEDCT[3424008].children
-  [SNOMEDCT[11092001]  # Sinus tachycardia (finding)
-  , SNOMEDCT[278086000]  # Baseline tachycardia (finding)
-  , SNOMEDCT[162992001]  # On examination - pulse rate tachycardia (finding)
-  ...]
-  >>> list(SNOMEDCT[3424008].ancestors_no_double())
-  [SNOMEDCT[301113001]  # Finding of heart rate (finding)
-  , SNOMEDCT[106066004]  # Cardiac rhythm AND/OR rate finding (finding)
-  , SNOMEDCT[250171008]  # Clinical history and observation findings (finding)
-  , SNOMEDCT[404684003]  # Clinical finding (finding)
-  , SNOMEDCT[138875005]  # SNOMED CT Concept (SNOMED RT+CTV3)
-  ...]
-  >>> SNOMEDCT[3424008].relations
-  set(['INVERSE_has_definitional_manifestation', 'finding_site', 'interprets', 'has_interpretation', 'INVERSE_associated_with'])
-  >>> SNOMEDCT[3424008].finding_site
-  [SNOMEDCT[24964005]  # Cardiac conducting system structure (body structure)
+  >>> ICD10[u"I47"].parents
+  [ICD10[u"I30-I52"]  # Other forms of heart disease
   ]
-  >>> SNOMEDCT[3424008] >> VCM   # Maps the SNOMED CT concept to VCM icon
+  >>> ICD10[u"I47"].children
+  [ ICD10[u"I47.0"]  # Re-entry ventricular arrhythmia
+  , ICD10[u"I47.2"]  # Ventricular tachycardia
+  , ICD10[u"I47.1"]  # Supraventricular tachycardia
+  , ICD10[u"I47.9"]  # Paroxysmal tachycardia, unspecified
+  ]
+  >>> list(ICD10[u"I47"].ancestors_no_double())
+  [ ICD10[u"I30-I52"]  # Other forms of heart disease
+  , ICD10[u"IX"]  # Diseases of the circulatory system
+  ]
+  >>> ICD10[u"I47"] >> VCM   # Maps the ICD10 concept to VCM icon
   Concepts([
-    VCM[u"current--hyper--heart_rhythm"]  # 
+    VCM[u"current--hyper--heart_rhythm"]  # tachycardia
   ])
 
-PyMedTermino can also be used without Python, just for converting SNOMED CT and ICD10 XML data into SQL databases.
+PyMedTermino can also be used without Python, just for converting terminology contents into Sqlite3 databases.
 
 
 Links
