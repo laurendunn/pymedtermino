@@ -5,7 +5,7 @@ Introduction
 ************
 
 PyMedTermino (Medical Terminologies for Python) is a Python module for easy access to the main medical
-terminologies in Python. The following terminologies are available:
+terminologies in Python. The following terminologies are supported:
 
  - SNOMED CT
  - ICD10
@@ -26,8 +26,8 @@ PyMedTermino has been designed for "batch" access to terminologies; it is *not* 
 (althought it can be used to write a terminology browser in Python).
 
 For SNOMED CT and ICD10, the data are not included (because they are not freely redistribuable) but they
-can be downloaded for free in XML format, for research / academic purpose  (see `Installation`_ for
-links). PyMedTermino includes scripts for exporting these data into SQLite3 databases.
+can be downloaded in XML format  (see `Installation`_ for links).
+PyMedTermino includes scripts for exporting these data into SQLite3 databases.
 
 For UMLS, data are not included (for the same reasons, and because they are voluminous). Thus,
 PyMedTermino need to be connected to a MySQL server including UMLS data, as provided by the NLM.
@@ -93,7 +93,7 @@ Installation
 
 #. Uncompress PyMedTermino-X.Y.tar.bz2
 
-#. After registration with NLM, download SNOMED CT data:
+#. After registration with NLM, download SNOMED CT data (Warning: some restriction may apply depending on country; see UMLS licence and its SNOMED CT appendix):
 
    - http://www.nlm.nih.gov/research/umls/licensedcontent/snomedctfiles.html
     

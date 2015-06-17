@@ -11,7 +11,13 @@ contents (excepted for VCM); terminology contents should be obtained separately
 
 PyMedTermino has been created at the LIMICS reseach lab,
 University Paris 13, Sorbonne Paris Cité, INSERM UMRS 1142, Paris 6 University, by
-Jean-Baptiste Lamy. PyMedTermino is available under the GNU LGPL licence.
+Jean-Baptiste Lamy. PyMedTermino is available under the GNU LGPL licence and has been
+described in the following scientific article (please cite it if you use PyMedTermino !):
+
+Lamy JB, Venot A, Duclos C.
+`PyMedTermino: an open-source generic API for advanced terminology services. <http://ebooks.iospress.nl/volumearticle/39485>`_
+Stud Health Technol Inform 2015;210:924-928
+
 
 In case of trouble, please contact Jean-Baptiste Lamy <jean-baptiste.lamy *@* univ-paris13 *.* fr>
 
@@ -65,3 +71,5 @@ Links
 PyMedTermino on BitBucket (development repository): https://bitbucket.org/jibalamy/pymedtermino
 
 PyMedTermino on PyPI (Python Package Index, stable release): https://pypi.python.org/pypi/PyMedTermino
+
+Documentation: http://pythonhosted.org/PyMedTermino
