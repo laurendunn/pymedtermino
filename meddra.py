@@ -172,6 +172,9 @@ Additional attributes are available for relations, and are listed in the :attr:`
       self.primary_soc = self.terminology[db_cursor.fetchone()[0]]
       return self.primary_soc
     
+    elif (attr == "primary_soc") and (self.depth == 4):
+      return self.parents[0].primary_soc
+    
     elif attr == "terms":
       return [self.term]
       

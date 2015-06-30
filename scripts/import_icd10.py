@@ -237,9 +237,11 @@ parser.parse(xml)
 
 if CIM10_DIR: # Optional French translation
   GROUP_CODES = []
-  for line in open(os.path.join(HERE, "icd10_french_group_name.txt")).read().split("\n"):
-    if line and not line.startswith("#"):
-      code, term = line.split(" ", 1)
+  if sys.version[0] == "2": s = open(os.path.join(HERE, "icd10_french_group_name.txt")).read().decode("utf8")
+  else:                     s = open(os.path.join(HERE, "icd10_french_group_name.txt")).read()
+  for line in s.split("\n"):
+    if line and not line.startswith(u"#"):
+      code, term = line.split(u" ", 1)
       GROUP_CODES.append(code)
       
   def get_concept(code):
@@ -268,21 +270,25 @@ if CIM10_DIR: # Optional French translation
       concept.parent_code = best
     return concept
   
-  for line in open(os.path.join(HERE, "icd10_french_group_name.txt")).read().split("\n"):
-    if line and not line.startswith("#"):
-      code, term = line.split(" ", 1)
+  if sys.version[0] == "2": s = open(os.path.join(HERE, "icd10_french_group_name.txt")).read().decode("utf8")
+  else:                     s = open(os.path.join(HERE, "icd10_french_group_name.txt")).read()
+  for line in s.split(u"\n"):
+    if line and not line.startswith(u"#"):
+      code, term = line.split(u" ", 1)
       if code in CODE_2_CHAPTER: code = CODE_2_CHAPTER[code]
       concept = get_concept(code)
-      concept.term_fr = term
+      concept.term_fr = term.strip()
       concept.pmsi_restriction = 3
       
-  for line in open(os.path.join(CIM10_DIR, "LIBCIM10.TXT"), encoding = "latin1").read().split("\n"):
+  if sys.version[0] == "2": s = open(os.path.join(CIM10_DIR, "LIBCIM10.TXT")).read().decode("latin1")
+  else:                     s = open(os.path.join(CIM10_DIR, "LIBCIM10.TXT"), encoding = "latin1").read()
+  for line in s.split(u"\n"):
     if line:
-      code, pmsi_restriction, short_term, long_term = line.split("|", 3)
+      code, pmsi_restriction, short_term, long_term = line.split(u"|", 3)
       code = code.strip()
-      if len(code) > 3: code = "%s.%s" % (code[:3], code[3:])
+      if len(code) > 3: code = u"%s.%s" % (code[:3], code[3:])
       concept = get_concept(code)
-      concept.term_fr = long_term
+      concept.term_fr = long_term.strip()
       concept.pmsi_restriction = int(pmsi_restriction)
       
       

@@ -23,7 +23,7 @@
 
 MEDDRA_DIRS = {
   "en" : "/home/jiba/telechargements/base_med/meddra/en/MedAscii",
-  "fr" : "/home/jiba/telechargements/base_med/meddra/fr/ascii-171",
+  "fr" : "/home/jiba/telechargements/base_med/meddra/fr/ascii-180",
   # Add / remove languages as desired
 }
 
@@ -121,12 +121,18 @@ ISA = set()
 def assert_isa(child_code, parent_code):
   ISA.add((child_code, parent_code))
 
-
-def open_meddra_file(filename, lang):
-  filename = os.path.join(MEDDRA_DIRS[lang], "%s.asc" % filename)
-  if lang in ["cs", "hu", "zh"]: encoding = "utf8" # Czech, Hungarian, and Chinese
-  else:                          encoding = "latin1"
-  return open(filename, encoding = encoding).read()
+if sys.version[0] == "2":
+  def open_meddra_file(filename, lang):
+    filename = os.path.join(MEDDRA_DIRS[lang], "%s.asc" % filename)
+    if lang in ["cs", "hu", "zh"]: encoding = "utf8" # Czech, Hungarian, and Chinese
+    else:                          encoding = "latin1"
+    return open(filename).read().decode(encoding)
+else:
+  def open_meddra_file(filename, lang):
+    filename = os.path.join(MEDDRA_DIRS[lang], "%s.asc" % filename)
+    if lang in ["cs", "hu", "zh"]: encoding = "utf8" # Czech, Hungarian, and Chinese
+    else:                          encoding = "latin1"
+    return open(filename, encoding = encoding).read()
   
 
 for lang in LANGS:
