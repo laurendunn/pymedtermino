@@ -95,42 +95,42 @@ Installation
 #. Extraire l'archive PyMedTermino-X.Y.tar.bz2
 
 #. Après inscription auprès de la NLM, télécharger les données de la SNOMED CT (Attention des restrictions existent selon les pays, voir la licence d'UMLS et l'appendice concernant la SNOMED CT) :
-
- - http://www.nlm.nih.gov/research/umls/licensedcontent/snomedctfiles.html
    
-   (télécharger “ RF2 release / SnomedCT_RF2Release_INT_<date>.zip ” et le décompresser)
-
- - http://www.nlm.nih.gov/research/umls/Snomed/core_subset.html
-
-   (télécharger “ SNOMEDCT_CORE_SUBSET_<date> ” et le décompresser)
-
+   - http://www.nlm.nih.gov/research/umls/licensedcontent/snomedctfiles.html
+     
+     (télécharger “ RF2 release / SnomedCT_RF2Release_INT_<date>.zip ” et le décompresser)
+   
+   - http://www.nlm.nih.gov/research/umls/Snomed/core_subset.html
+     
+     (télécharger “ SNOMEDCT_CORE_SUBSET_<date> ” et le décompresser)
+   
 #. Après inscription, télécharger les données de la CIM10 ainsi que les traductions :
-
- - http://apps.who.int/classifications/apps/icd/ClassificationDownload/DLArea/Download.aspx
-
-   (télécharger la CIM10 au format “ ClaML ” et la dézipper)
-
- - http://www.atih.sante.fr/plateformes-de-transmission-et-logiciels/logiciels-espace-de-telechargement/id_lot/456
-
-   (optionnel, pour la traduction française ; télécharger la CIM10 et la dézipper)
-
+   
+   - http://apps.who.int/classifications/apps/icd/ClassificationDownload/DLArea/Download.aspx
+     
+     (télécharger la CIM10 au format “ ClaML ” et la dézipper)
+   
+   - http://www.atih.sante.fr/plateformes-de-transmission-et-logiciels/logiciels-espace-de-telechargement/id_lot/456
+     
+     (optionnel, pour la traduction française ; télécharger la CIM10 et la dézipper)
+   
 #. Éditer le fichier setup.py et renseigner les 4 chemins où vous avez décompressés les données, par exemple ::
-
+     
      SNOMEDCT_DIR = "/home/jiba/telechargements/base_med/SnomedCT_Release_INT_20130731"
      SNOMEDCT_CORE_FILE = "/home/jiba/telechargements/base_med/SNOMEDCT_CORE_SUBSET_201308.txt"
      ICD10_DIR = "/home/jiba/telechargements/base_med/icd10"
      CIM10_DIR = "/home/jiba/telechargements/base_med/cim10"
-
-  .. note:: vous pouvez laisser vide les chemins si vous ne souhaitez pas installer les terminologies correspondantes.
-
+     
+   .. note:: vous pouvez laisser vide les chemins si vous ne souhaitez pas installer les terminologies correspondantes.
+     
 #. Compiler PyMedTermino et convertir les données télécharger en bases de données SQL SQLite3 ::
-
+     
      python setup.py build
-
-  .. warning:: la création des bases de données nécessite un espace disque important (~1-2 Go).
-
+     
+   .. warning:: la création des bases de données nécessite un espace disque important (~1-2 Go).
+     
 #. Obtenir les droits administrateurs. Sous Linux, selon votre distribution, utilisez l'une d'une commande suivante ::
-
+     
      su # Mageia,...
      sudo -i # Ubuntu, Linux Mint,...
 
