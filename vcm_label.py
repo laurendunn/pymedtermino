@@ -643,6 +643,8 @@ data = {
   cons("Pregnancy", "Drug_therapy", "Absence_of_pathological_alteration", "Future") : LabelPart(en_base = "contraceptive drug", fr_base_m = "médicament contraceptif"),
   cons("Pregnancy", "Ectomy", "Absence_of_pathological_alteration") : LabelPart(en_base = "elective abortion", fr_base_m = "interruption volontaire de grossesse"),
   cons("Pregnancy", "Ectomy", "Pathological_alteration") : LabelPart(en_base = "elective abortion", fr_base_m = "interruption volontaire de grossesse"),
+  
+  cons("Age_class") : LabelPart(en_base = "age class", fr_base_m = "classe d'âge"),
 }
 print(len(data), "labels prédéfinis.")
 
@@ -800,7 +802,7 @@ splits = ([
   
   cons("Malformation", "Pathological_alteration"),
   cons("Malformation"),
-
+    
   cons("Health_professional"),
   cons("Medical_document"),
 

@@ -256,7 +256,7 @@
 168 ~~ 23986001   # Glaucome ~~ Glaucoma (disorder)
 183 ~~ 53298000 34436003   # Hématurie ~~ Hematuria syndrome (disorder) Blood in urine (finding)
 195 ~~ 275741008   # Leucocyturie ~~ Leukocytes in urine (finding)
-197 ~~ 429040005   # Lésion ~~ Ulcer (disorder)
+197 ~~ 429040005 36191001  # Lésion ~~ Ulcer (disorder) Perforation (morphologic abnormality)
 210 ~~ 22649008 238547001   # Photosensibilisation ~~ Photodermatitis (disorder) Photosensitive atopic dermatitis (disorder)
 220 ~~ 9014002   # Psoriasis ~~ Psoriasis (disorder)
 222 ~~ 235595009   # Reflux_gastro_oesophagien ~~ Gastroesophageal reflux disease (disorder)

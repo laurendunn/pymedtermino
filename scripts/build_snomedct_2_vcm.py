@@ -437,7 +437,7 @@ if __name__ == "__main__":
     
     #t = SNOMEDCT[792004] # Creutzfeldt-Jakob
     
-    t = SNOMEDCT[111549004]
+    t = SNOMEDCT[60442001]
     
     #t = SNOMEDCT[87666009]
     
