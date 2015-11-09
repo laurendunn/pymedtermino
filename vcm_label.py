@@ -646,7 +646,7 @@ data = {
   
   cons("Age_class") : LabelPart(en_base = "age class", fr_base_m = "classe d'âge"),
 }
-print(len(data), "labels prédéfinis.")
+#print(len(data), "labels prédéfinis.")
 
 splits = ([
   # These are useless since they dupplicate other concepts (e.g. Female_genital_structure)
