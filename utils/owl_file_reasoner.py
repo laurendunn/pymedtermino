@@ -20,7 +20,10 @@
 from __future__ import print_function
 
 import sys, os, fcntl, time, subprocess
-import ontopy
+try:
+  import ontopy
+except ImportError:
+  import owlready as ontopy
 
 from pymedtermino.utils.db import *
 
