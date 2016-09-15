@@ -39,17 +39,16 @@ PyMedtermino module for ICD10. Currently supports English and (ATIH) French vers
 
 __all__ = ["ICD10"]
 
-import os, os.path, sqlite3 as sql_module
+import os, os.path
 import pymedtermino
 
 ATIH_EXTENSION = False
 
 
-db        = sql_module.connect(os.path.join(pymedtermino.DATA_DIR, "icd10.sqlite3"))
+db        = pymedtermino.connect_sqlite3("icd10")
 db_cursor = db.cursor()
 #db_cursor.execute("PRAGMA synchronous  = OFF;")
 #db_cursor.execute("PRAGMA journal_mode = OFF;")
-db_cursor.execute("PRAGMA query_only = TRUE;")
 
 _CONCEPT = {}
 _SEARCH  = "SELECT Concept.code FROM Concept, Concept_fts WHERE Concept_fts.term MATCH ? AND Concept.id = Concept_fts.docid"

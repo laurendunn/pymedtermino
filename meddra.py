@@ -44,13 +44,12 @@ but associates the term's level with the code to obtain a unique code, for examp
 
 __all__ = ["MEDDRA"]
 
-import sys, os, os.path, sqlite3 as sql_module
+import sys, os, os.path
 import pymedtermino
 
 
-db        = sql_module.connect(os.path.join(pymedtermino.DATA_DIR, "meddra.sqlite3"))
+db        = pymedtermino.connect_sqlite3("meddra")
 db_cursor = db.cursor()
-db_cursor.execute("PRAGMA query_only   = TRUE;")
 db_cursor.execute("PRAGMA synchronous  = OFF;")
 db_cursor.execute("PRAGMA journal_mode = OFF;")
 

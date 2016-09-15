@@ -33,13 +33,12 @@ PyMedtermino module for SNOMEDCT.
 
 __all__ = ["SNOMEDCT", "Group"]
 
-import sys, os, os.path, sqlite3 as sql_module
+import sys, os, os.path
 import pymedtermino
 
 
-db        = sql_module.connect(os.path.join(pymedtermino.DATA_DIR, "snomedct.sqlite3"))
+db        = pymedtermino.connect_sqlite3("snomedct")
 db_cursor = db.cursor()
-db_cursor.execute("PRAGMA query_only   = TRUE;")
 db_cursor.execute("PRAGMA synchronous  = OFF;")
 db_cursor.execute("PRAGMA journal_mode = OFF;")
 

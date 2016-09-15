@@ -770,3 +770,14 @@ class SameCodeMapping(Mapping):
     return r
 
   
+def connect_sqlite3(base_filename, read_only=True):
+    """Open existing DB in DATA_DIR as sqlite3 DB
+    Connection will be read-only if read_only and READ_ONLY_DATABASE
+    """
+    path = '%s.sqlite3' % os.path.join(DATA_DIR, base_filename)
+    if not os.path.exists(path):
+      raise IOError('Database %s not available. Please build, or set pymedtermino.DATA_DIR correctly' % path)
+    db = sql_module.connect(path)
+    if READ_ONLY_DATABASE and read_only:
+      db.cursor().execute("PRAGMA query_only = TRUE;")
+    return db

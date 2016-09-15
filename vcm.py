@@ -126,9 +126,8 @@ class VCM_CONCEPT(_BaseVCMTerminology):
   _use_weakref = 0
   def __init__(self):
     pymedtermino.Terminology.__init__(self, "VCM_CONCEPT")
-    self.db        = sql_module.connect(os.path.join(pymedtermino.DATA_DIR, "vcm_concept.sqlite3"))
+    self.db        = pymedtermino.connect_sqlite3("vcm_concept")
     self.db_cursor = self.db.cursor()
-    self.db_cursor.execute("PRAGMA query_only = TRUE;")
     self.Concept.db_cursor = self.db_cursor
     
   def _create_Concept(self): return VCMConceptConcept
@@ -147,9 +146,8 @@ class VCM_CONCEPT_MONOAXIAL(_BaseVCMTerminology):
   _use_weakref = 0
   def __init__(self):
     pymedtermino.Terminology.__init__(self, "VCM_CONCEPT_MONOAXIAL")
-    self.db        = sql_module.connect(os.path.join(pymedtermino.DATA_DIR, "vcm_concept_monoaxial.sqlite3"))
+    self.db        = pymedtermino.connect_sqlite3("vcm_concept_monoaxial")
     self.db_cursor = self.db.cursor()
-    self.db_cursor.execute("PRAGMA query_only = TRUE;")
     self.Concept.db_cursor = self.db_cursor
     
   def _create_Concept(self): return VCMConceptConceptMonoaxial
@@ -171,9 +169,9 @@ class VCM_LEXICON(_BaseVCMTerminology):
   _use_weakref = 0
   def __init__(self):
     pymedtermino.Terminology.__init__(self, "VCM_LEXICON")
-    self.db        = sql_module.connect(os.path.join(pymedtermino.DATA_DIR, "vcm_lexicon.sqlite3"))
+    # read_only=False because import_vcm.py update the database.
+    self.db        = pymedtermino.connect_sqlite3("vcm_lexicon", read_only=False)
     self.db_cursor = self.db.cursor()
-    #self.db_cursor.execute("PRAGMA query_only = TRUE;") # Should not be set because import_vcm.py update the database.
     self.Concept.db_cursor = self.db_cursor
     
   def _create_Concept(self): return VCMLexiconConcept
@@ -846,15 +844,11 @@ class VCMIcon(pymedtermino.MultiaxialConcept, pymedtermino._StringCodeConcept):
 VCM = VCM()
 
 
-db_consistency        = sql_module.connect(os.path.join(pymedtermino.DATA_DIR, "vcm_consistency.sqlite3"))
+db_consistency        = pymedtermino.connect_sqlite3("vcm_consistency")
 db_consistency_cursor = db_consistency.cursor()
 
-db_label              = sql_module.connect(os.path.join(pymedtermino.DATA_DIR, "vcm_label.sqlite3"))
+db_label              = pymedtermino.connect_sqlite3("vcm_label")
 db_label_cursor       = db_label.cursor()
-if pymedtermino.READ_ONLY_DATABASE:
-  db_consistency_cursor.execute("PRAGMA query_only = TRUE;")
-  db_label_cursor      .execute("PRAGMA query_only = TRUE;")
-  
 
 class VCM_LEXICON_2_VCMMapping(pymedtermino.Mapping):
   def __init__(self): pymedtermino.Mapping.__init__(self, VCM_LEXICON, VCM)
@@ -868,6 +862,8 @@ class VCMLexiconIndex(object):
   def __init__(self, terminology, db_filename):
     self.terminology = terminology
     if isinstance(db_filename, str):
+      if not os.path.isfile(db_filename):
+        raise IOError('File not found: %s' % db_filename)
       self.db                 = sql_module.connect(db_filename)
       self.db_cursor          = self.db.cursor()
     else:

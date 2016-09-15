@@ -29,7 +29,7 @@ def create_db(sql_filename, new_db = 1):
 def do_sql(db_cursor, sql, arg = ()):
   #print(sql)
   db_cursor.execute(sql, arg)
-  
+
 def close_db(db, sql_filename = u"", close = 1, set_readonly = 1):
   if close:
     db.commit()

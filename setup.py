@@ -63,7 +63,7 @@ MEDDRA_DIRS = {
 # However, VCM is *not* pre-built in Mercurial sources. You may want to disable it if you build
 # from Mercurial repository and you don't need VCM.
 
-BUILD_VCM = True
+BUILD_VCM = False
 
 # NB The build_vcm_consistency script requires about one day to run, has plenty of dependency,
 # and is Linux-only. Therefore, it is *not* run when building PyMedTermino!
