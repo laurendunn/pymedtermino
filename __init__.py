@@ -76,15 +76,26 @@ from collections import defaultdict
 
 if sys.version[0] != "2": unicode = str
 
+def _get_env(var, default):
+    return os.environ.get("PYMEDTERMINO_" + var, default)
+
+
+def _get_bool_env(var, default=True):
+    val = _get_env(var, default)
+    if val is not default:
+        if not val or val == "0":
+            return False
+        return True
+
 #: the default language used for terms, when several translations are available. If the desired language is not available, it defaults to English.
 #:
 #: .. warning:: this parameter must be set BEFORE loading terminologies. Default : "en" (English).
-LANGUAGE                      = "en"
-DATA_DIR                      = os.path.dirname(__file__) #: the directory where SQLite3 database files containing terminologies are located. Default : PyMedTermino directory.
-REMOVE_SUPPRESSED_CONCEPTS    = True #: if True, concepts tagged as suppressed or depreciated in terminologies are skipped.
-REMOVE_SUPPRESSED_TERMS       = True #: if True, terms (=translations) tagged as suppressed or depreciated in terminologies are skipped.
-REMOVE_SUPPRESSED_RELATIONS   = True #: if True, relations tagged as suppressed or depreciated in terminologies are skipped.
-READ_ONLY_DATABASE            = True
+LANGUAGE                      = _get_env("LANGUAGE", "en")
+DATA_DIR                      = _get_env("DATA_DIR", os.path.dirname(__file__)) #: the directory where SQLite3 database files containing terminologies are located. Default : PyMedTermino directory.
+REMOVE_SUPPRESSED_CONCEPTS    = _get_bool_env("REMOVE_SUPPRESSED_CONCEPTS", True) #: if True, concepts tagged as suppressed or depreciated in terminologies are skipped.
+REMOVE_SUPPRESSED_TERMS       = _get_bool_env("REMOVE_SUPPRESSED_TERMS", True) #: if True, terms (=translations) tagged as suppressed or depreciated in terminologies are skipped.
+REMOVE_SUPPRESSED_RELATIONS   = _get_bool_env("REMOVE_SUPPRESSED_RELATIONS", True) #: if True, relations tagged as suppressed or depreciated in terminologies are skipped.
+READ_ONLY_DATABASE            = _get_bool_env("READ_ONLY_DATABASE", True)
 
 TERMINOLOGIES                 = {}
 MISSING_CONCEPTS              = set()

@@ -181,6 +181,10 @@ The following global parameters are available :
 .. autodata:: pymedtermino.REMOVE_SUPPRESSED_RELATIONS 
    :noindex:
 
+These may be set as environment variables with a ``PYMEDTERMINO_`` prefix, i.e.::
+
+    export PYMEDTERMINO_DATA_DIR=/path/to/pymedtermino/data/
+
 
 **After** setting these global parameters, you are ready for importing the various terminologies. The
 following shortcut can be use to load all available terminologies (short but not very efficient!):
