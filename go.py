@@ -37,6 +37,8 @@ import pymedtermino
 import os, os.path, cymysql as sql_module
 
 
+# Connexion in command-line :
+# mysql -h mysql.ebi.ac.uk -u go_select -pamigo -P 4085 -D go_latest
 
 db        = sql_module.connect(host="mysql.ebi.ac.uk", user="go_select",db="go_latest", passwd="amigo", port=4085)
 db_cursor = db.cursor()
@@ -62,17 +64,12 @@ class GeneOntologyConcept(pymedtermino.MultiaxialConcept, pymedtermino._StringCo
 
 
 """
-  def __init__(self, code):     
-    db_cursor.execute("SELECT child.acc AS child_acc,  child.name AS child_name,  parent.acc AS parent_acc,  parent.name AS parent_name FROM  term AS child  INNER JOIN term2term ON (child.id=term2_id)  INNER JOIN term AS parent ON (parent.id=term1_id) WHERE parent.acc=%s or child.acc=%s", (code, code))
+  def __init__(self, code):
+#    db_cursor.execute("SELECT child.acc AS child_acc,  child.name AS child_name,  parent.acc AS parent_acc,  parent.name AS parent_name FROM  term AS child  INNER JOIN term2term ON (child.id=term2_id)  INNER JOIN term AS parent ON (parent.id=term1_id) WHERE parent.acc=%s or child.acc=%s", (code, code))
+    db_cursor.execute("SELECT name FROM term WHERE acc=%s", (code,))
     r = db_cursor.fetchone()
-    if not r:
-      raise ValueError(code)
-    self.parents_code = r[0]
-    termChild         = r[1]
-    if not termChild:
-      db_cursor.execute("SELECT name FROM term WHERE code=%s", (code,))
-      termParent = db_cursor.fetchone()[2]
-    pymedtermino.MultiaxialConcept.__init__(self, code, termChild)
+    if not r: raise ValueError(code)
+    pymedtermino.MultiaxialConcept.__init__(self, code, r[0])
     
   def __getattr__(self, attr):
     if (attr == "children"): 
@@ -85,8 +82,7 @@ class GeneOntologyConcept(pymedtermino.MultiaxialConcept, pymedtermino._StringCo
       self.parents = [GO[code_tuple[0]] for code_tuple in db_cursor.fetchall()]
       return self.parents
 
-    else:
-        raise AttributeError(attr)
+    else: raise AttributeError(attr)
 
 
 GO = GO()
