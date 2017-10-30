@@ -167,7 +167,7 @@ distutils.core.setup(
   zip_safe = False,
 
   author       = "Lamy Jean-Baptiste (Jiba)",
-  author_email = "<jean-baptiste.lamy *@* univ-paris13 *.* fr>",
+  author_email = "jean-baptiste.lamy@univ-paris13.fr",
   url          = "http://www.lesfleursdunormal.fr/static/informatique/pymedtermino/index_en.html",
   classifiers  = [
     "Development Status :: 5 - Production/Stable",
