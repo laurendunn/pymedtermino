@@ -83,7 +83,11 @@ def combine(parts, orig_concepts):
     sufs  = [suf [lang, "suffix",    genre] for suf  in sufs]
     comps.reverse()
     if   lang == "en": r[lang] = " ".join(ppres + pres + adjs + bases + comps + sufs)
-    elif lang == "fr": r[lang] = " ".join(ppres + pres + bases + adjs + comps + sufs)
+    elif lang == "fr":
+      fr = " ".join(ppres + pres + bases + adjs + comps + sufs)
+      fr = fr.replace(" de risque", " du risque")
+      fr = fr.replace(" de h", " d'h").replace(" de a", " d'a").replace(" de i", " d'i").replace(" de o", " d'o").replace(" de u", " d'u").replace(" de e", " d'e").replace(" de é", " d'é")
+      r[lang] = fr
   return r
 
 
@@ -93,7 +97,7 @@ def cons(*ss): return frozenset(CONCEPTS[s] for s in ss)
 
 data = {
   cons("Therapy") : LabelPart(en_preprefix = "treatment of", fr_preprefix = "traitement de"),
-  cons("Drug_therapy") : LabelPart(en_preprefix = "drug for", fr_preprefix = "médicament de"),
+  cons("Drug_therapy") : LabelPart(en_preprefix = "drug treatment for", fr_preprefix = "traitement médicamenteux de"),
   cons("Topical_drug_therapy") : LabelPart(en_preprefix = "topic drug for", fr_preprefix = "médicament topique de"),
   cons("Injectable_systemic_drug_therapy") : LabelPart(en_preprefix = "injectable drug for", fr_preprefix = "médicament injectable de"),
   cons("Oral_systemic_drug_therapy") : LabelPart(en_preprefix = "oral drug for", fr_preprefix = "médicament oral de"),
@@ -574,8 +578,8 @@ data = {
   cons("Respiratory_function", "Respiratory_structure", "Allergy", "Pathological_alteration") : LabelPart(en_base = "respiratory system allergy", fr_base_f = "allergie respiratoire"),
   cons("Respiratory_structure", "Blood_pressure_regulation_function", "Hyperfunctionning", "Pathological_alteration") : LabelPart(en_base = "pulmonary hypertension", fr_base_f = "hypertension pulmonaire"),
   
-  cons("Upper_respiratory_tract_structure") : LabelPart(en_comp = "of upper respiratory tract", fr_comp = "des voies respiratoires suppérieures"),
-  cons("Upper_respiratory_tract_structure", "Allergy", "Pathological_alteration") : LabelPart(en_base = "upper respiratory tract allergy", fr_base_f = "allergie respiratoire suppérieure"),
+  cons("Upper_respiratory_tract_structure") : LabelPart(en_comp = "of upper respiratory tract", fr_comp = "des voies respiratoires supérieures"),
+  cons("Upper_respiratory_tract_structure", "Allergy", "Pathological_alteration") : LabelPart(en_base = "upper respiratory tract allergy", fr_base_f = "allergie respiratoire supérieure"),
   
   cons("Lower_respiratory_tract_structure", "Bronchial_function") : LabelPart(en_comp = "of bronchus", fr_comp = "des bronches"),
   cons("Lower_respiratory_tract_structure") : LabelPart(en_comp = "of bronchus", fr_comp = "des bronches"),

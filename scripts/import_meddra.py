@@ -23,7 +23,7 @@
 
 MEDDRA_DIRS = {
   "en" : "/home/jiba/telechargements/base_med/meddra/en/MedAscii",
-  "fr" : "/home/jiba/telechargements/base_med/meddra/fr/ascii-180",
+  "fr" : "/home/jiba/telechargements/base_med/meddra/fr/ascii-191",
   # Add / remove languages as desired
 }
 

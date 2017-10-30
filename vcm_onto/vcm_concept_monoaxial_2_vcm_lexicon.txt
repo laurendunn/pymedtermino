@@ -382,6 +382,7 @@
 283 == 652   # Structure_de_la_coiffe_des_rotateurs == Pictogramme_muscle
 268 == 546   # Structure_cartilagineuse_des_voies_respiratoires == Pictogramme_poumon
 262 == 651   # Structure_articulaire_vertébrale == Pictogramme_articulation
+546 == 544   # Généralisé == Aucun_pictogramme_central
 
 #493 == 546 # Poumon
 #492 == 549 # Coeur
