@@ -17,6 +17,7 @@ include ./icd10_vcm_lexicon_index.sqlite3
 
 
 
+global-exclude *.save
 global-exclude *.pyc
 global-exclude *.pyo
 global-exclude catalog-v001.xml

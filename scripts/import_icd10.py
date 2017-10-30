@@ -320,7 +320,7 @@ do_sql(u"""INSERT INTO Concept_fts(docid, term) SELECT id, term_fr FROM Concept;
 do_sql(u"""INSERT INTO Concept_fts(docid, term) SELECT Concept.id, Text.text_en FROM Text, Concept WHERE Concept.code = Text.code;""")
 do_sql(u"""INSERT INTO Concept_fts(Concept_fts) VALUES('optimize');""")
 
-do_sql(u"""VACUUM;""")
+#do_sql(u"""VACUUM;""")
 
 close_db(db, SQLITE_FILE)
 

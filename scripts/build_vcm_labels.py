@@ -82,6 +82,6 @@ for icon in get_all_useful_icons():
   do_sql(u"INSERT INTO Label VALUES (NULL, ?, ?, ?)", (icon.code, label["en"], label["fr"]))
 
 
-do_sql(u"""VACUUM;""")
+#do_sql(u"""VACUUM;""")
 close_db(db, SQLITE_FILE)
 

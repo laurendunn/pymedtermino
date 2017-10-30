@@ -198,7 +198,7 @@ do_sql(u"""INSERT INTO TextDefinition_fts(TextDefinition_fts) VALUES('optimize')
 
 db.commit()
 
-do_sql(u"""VACUUM;""")
+#do_sql(u"""VACUUM;""")
 
 db.commit()
 

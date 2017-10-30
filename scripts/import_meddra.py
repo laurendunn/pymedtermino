@@ -222,7 +222,7 @@ do_sql(u"""INSERT INTO Concept_fts(Concept_fts) VALUES('optimize');""")
 
 db.commit()
 
-do_sql(u"""VACUUM;""")
+#do_sql(u"""VACUUM;""")
 
 db.commit()
 
