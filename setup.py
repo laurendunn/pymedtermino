@@ -22,14 +22,15 @@
 # Get SNOMED CT from (RF2 release):
 # http://www.nlm.nih.gov/research/umls/licensedcontent/snomedctfiles.html
 
-# Example: SNOMEDCT_DIR = "/home/jiba/telechargements/base_med/SnomedCT_RF2Release_INT_20150131"
+# Example: SNOMEDCT_DIR = "/home/jiba/telechargements/base_med/SnomedCT_InternationalRF2_PRODUCTION_20170731T150000Z"
+# Example ( ** OLD ** 2015 release): SNOMEDCT_DIR = "/home/jiba/telechargements/base_med/SnomedCT_RF2Release_INT_20150131"
 # Example ( ** OLD ** 2014 release): SNOMEDCT_DIR = "/home/jiba/telechargements/base_med/SnomedCT_Release_INT_20140731/RF2Release"
 SNOMEDCT_DIR = ""
 
 # Get SNOMED CT CORE Problem list from:
 # http://www.nlm.nih.gov/research/umls/Snomed/core_subset.html
 
-# Example: SNOMEDCT_CORE_FILE = "/home/jiba/telechargements/base_med/SNOMEDCT_CORE_SUBSET_201502.txt"
+# Example: SNOMEDCT_CORE_FILE = "/home/jiba/telechargements/base_med/SNOMEDCT_CORE_SUBSET_201708.txt"
 SNOMEDCT_CORE_FILE = ""
 
 # Get ICD10 from (NB choose "ClaML" format):

@@ -258,7 +258,7 @@ Additional attributes are available for relations, and are listed in the :attr:`
     if self is concept: return True
     if already is None: already = set([self])
     if u"part_of" in self.relations: parents = set(self.parents + self.part_of)
-    else:                           parents =     self.parents
+    else:                            parents =     self.parents
     for parent in parents:
       if not parent in already:
         already.add(parent)

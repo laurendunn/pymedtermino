@@ -166,6 +166,8 @@ Chargement des modules et paramètres globaux
 >>> import pymedtermino
 >>> pymedtermino.LANGUAGE = "fr"
 >>> pymedtermino.REMOVE_SUPPRESSED_CONCEPTS = True
+>>> pymedtermino.REMOVE_SUPPRESSED_TERMS = True
+>>> pymedtermino.REMOVE_SUPPRESSED_RELATIONS = True
 
 Les paramètres globaux suivants sont disponibles :
 

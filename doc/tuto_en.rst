@@ -167,6 +167,8 @@ Loading modules and setting global parameters
 >>> import pymedtermino
 >>> pymedtermino.LANGUAGE = "en"
 >>> pymedtermino.REMOVE_SUPPRESSED_CONCEPTS = True
+>>> pymedtermino.REMOVE_SUPPRESSED_TERMS = True
+>>> pymedtermino.REMOVE_SUPPRESSED_RELATIONS = True
 
 The following global parameters are available :
 

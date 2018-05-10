@@ -24,8 +24,10 @@
 # Get SNOMED CT CORE Problem list from :
 # http://www.nlm.nih.gov/research/umls/Snomed/core_subset.html
 
-SNOMEDCT_DIR       = "/home/jiba/telechargements/base_med/SnomedCT_RF2Release_INT_20150131"
-SNOMEDCT_CORE_FILE = "/home/jiba/telechargements/base_med/SNOMEDCT_CORE_SUBSET_201502.txt"
+SNOMEDCT_DIR       = "/home/jiba/telechargements/base_med/SnomedCT_InternationalRF2_PRODUCTION_20170731T150000Z"
+SNOMEDCT_CORE_FILE = "/home/jiba/telechargements/base_med/SNOMEDCT_CORE_SUBSET_201708.txt"
+#SNOMEDCT_DIR       = "/home/jiba/telechargements/base_med/SnomedCT_RF2Release_INT_20150131"
+#SNOMEDCT_CORE_FILE = "/home/jiba/telechargements/base_med/SNOMEDCT_CORE_SUBSET_201502.txt"
 #SNOMEDCT_DIR       = "/home/jiba/telechargements/base_med/SnomedCT_Release_INT_20140131/RF2Release"
 #SNOMEDCT_CORE_FILE = "/home/jiba/telechargements/base_med/SNOMEDCT_CORE_SUBSET_201408.txt"
 
@@ -48,6 +50,7 @@ if len(sys.argv) >= 3:
 LANGUAGE    = "en"
 NB          = SNOMEDCT_DIR.split("_")[-1]
 if NB.endswith("/RF2Release"): NB = NB.replace("/RF2Release", "")
+NB = NB[:8]
 
 SQLITE_FILE = os.path.join(HERE, "..", "snomedct.sqlite3")
 
