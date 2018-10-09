@@ -452,13 +452,29 @@ inherits from Python's :class:`set` the methods for computing intersection, unio
         return False
     return True
   
-  def is_semantic_disjoint(self, other):
-    """returns true if all concepts in this set are disjoint from all concepts in the OTHER set."""
+  def is_semantic_superset(self, other):
+    """returns true if all concepts in this set are ancestors of (at least) one of the concept in the OTHER set."""
     for c1 in self:
       for c2 in other:
-        if c1.is_a(c2): return False
-        if c2.is_a(c1): return False
+        if c2.is_a(c1): break
+      else:
+        return False
     return True
+  
+  def is_semantic_disjoint(self, other):
+    """returns true if all concepts in this set are semantically disjoint from all concepts in the OTHER set."""
+    for c1 in self:
+      for c2 in other:
+        if c1.is_a(c2) or c2.is_a(c1): return False
+    return True
+  
+  def semantic_intersection(self, other):
+    r = Concepts()
+    for c1 in self:
+      for c2 in other:
+        if   c1.is_a(c2): r.add(c1)
+        elif c2.is_a(c1): r.add(c2)
+    return r
   
   def keep_most_specific(self, more_specific_than = None):
     """keeps only the most specific concepts, i.e. remove all concepts that are more general that another concept in the set."""

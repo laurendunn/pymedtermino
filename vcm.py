@@ -495,31 +495,38 @@ class VCM(pymedtermino.Terminology):
 
     #print(prioritary_associations)
     #for i in icones: print("++", i)
+
+    #print("ICONES", icones)
     if prioritary_associations:
-      for lex, associated_with in prioritary_associations.items():
-        # Verify that there is really one priioritized association.
-        for icon in list(icones):
-          icon_lexs = pymedtermino.Concepts(icon.lexs)
-          if icon_lexs.find(lex) and (not icon_lexs.is_semantic_disjoint(associated_with)):
-            break
-        else:
-          break
+      for lex, associated_withs in prioritary_associations.items():
+        # Verify that there is really one prioritized association.
+        #for icon in list(icones):
+        #  icon_lexs = pymedtermino.Concepts(icon.lexs)
+        #  if icon_lexs.find(lex) and (not icon_lexs.is_semantic_disjoint(associated_with)):
+        #    break
+        #else:
+        #  break
+        #for icon in list(icones):
+        #  icon_lexs = pymedtermino.Concepts(icon.lexs)
+        #  if icon_lexs.find(lex):
+        #    if icon_lexs.is_semantic_disjoint(associated_with):
+        #      icones.remove(icon)
+        #    elif icon.central_pictogram != VCM_LEXICON.EMPTY_CENTRAL_PICTOGRAM:
+        #      for i in associated_with:
+        #        if icon.central_pictogram.is_a(i): break
+        #      else:
+        #        icones.remove(icon)
         
         for icon in list(icones):
           icon_lexs = pymedtermino.Concepts(icon.lexs)
-          #if icon_lexs.find(lex) and icon_lexs.is_semantic_disjoint(associated_with):
           if icon_lexs.find(lex):
-            if icon_lexs.is_semantic_disjoint(associated_with):
+            for associated_with in associated_withs:
+              #print("FIND G:", icon_lexs, associated_with, [a for a in associated_with if icon_lexs.find_graphically(a)])
+              association_found = len([a for a in associated_with if icon_lexs.find_graphically(a)]) == len(associated_with)
+              if association_found: break
+            else:
               icones.remove(icon)
-              #print("supprime", icon, "car", lex)
-            elif icon.central_pictogram != VCM_LEXICON.EMPTY_CENTRAL_PICTOGRAM:
-              #icon_lexs.substract_update(lex)
-              #for i in associated_with: icon_lexs.substract_update(i)
-              for i in associated_with:
-                if icon.central_pictogram.is_a(i): break
-              else:
-                icones.remove(icon)
-                #print("supprime2", icon)
+              #print("ENLEVE", icon, "car manque", associated_with, "pour", lex)
                 
     if debug:
       print()
