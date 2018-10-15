@@ -126,7 +126,7 @@ class VCM_CONCEPT(_BaseVCMTerminology):
   _use_weakref = 0
   def __init__(self):
     pymedtermino.Terminology.__init__(self, "VCM_CONCEPT")
-    self.db        = pymedtermino.connect_sqlite3("vcm_concept")
+    self.db        = pymedtermino.connect_sqlite3("vcm_concept", check_same_thread=False)
     self.db_cursor = self.db.cursor()
     self.Concept.db_cursor = self.db_cursor
     
@@ -146,7 +146,7 @@ class VCM_CONCEPT_MONOAXIAL(_BaseVCMTerminology):
   _use_weakref = 0
   def __init__(self):
     pymedtermino.Terminology.__init__(self, "VCM_CONCEPT_MONOAXIAL")
-    self.db        = pymedtermino.connect_sqlite3("vcm_concept_monoaxial")
+    self.db        = pymedtermino.connect_sqlite3("vcm_concept_monoaxial", check_same_thread=False)
     self.db_cursor = self.db.cursor()
     self.Concept.db_cursor = self.db_cursor
     
@@ -170,7 +170,7 @@ class VCM_LEXICON(_BaseVCMTerminology):
   def __init__(self):
     pymedtermino.Terminology.__init__(self, "VCM_LEXICON")
     # read_only=False because import_vcm.py update the database.
-    self.db        = pymedtermino.connect_sqlite3("vcm_lexicon", read_only=False)
+    self.db        = pymedtermino.connect_sqlite3("vcm_lexicon", read_only=False, check_same_thread=False)
     self.db_cursor = self.db.cursor()
     self.Concept.db_cursor = self.db_cursor
     
@@ -884,10 +884,10 @@ class VCMIcon(pymedtermino.MultiaxialConcept, pymedtermino._StringCodeConcept):
 VCM = VCM()
 
 
-db_consistency        = pymedtermino.connect_sqlite3("vcm_consistency")
+db_consistency        = pymedtermino.connect_sqlite3("vcm_consistency", check_same_thread=False)
 db_consistency_cursor = db_consistency.cursor()
 
-db_label              = pymedtermino.connect_sqlite3("vcm_label")
+db_label              = pymedtermino.connect_sqlite3("vcm_label", check_same_thread=False)
 db_label_cursor       = db_label.cursor()
 
 class VCM_LEXICON_2_VCMMapping(pymedtermino.Mapping):
@@ -904,7 +904,7 @@ class VCMLexiconIndex(object):
     if isinstance(db_filename, str):
       if not os.path.isfile(db_filename):
         raise IOError('File not found: %s' % db_filename)
-      self.db                 = sql_module.connect(db_filename)
+      self.db                 = sql_module.connect(db_filename, check_same_thread=False)
       self.db_cursor          = self.db.cursor()
     else:
       self.db_cursor          = db_filename

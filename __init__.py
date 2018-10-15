@@ -708,7 +708,7 @@ class SQLMapping(Mapping):
   def __init__(self, terminology1, terminology2, db_filename, has_and = 1, reversed = 0, get_concept_parents = None):
     Mapping.__init__(self, terminology1, terminology2)
     if isinstance(db_filename, str):
-      self.db                 = sql_module.connect(db_filename)
+      self.db                 = sql_module.connect(db_filename, check_same_thread=False)
       self.db_cursor          = self.db.cursor()
     else:
       self.db_cursor          = db_filename
@@ -797,14 +797,14 @@ class SameCodeMapping(Mapping):
     return r
 
   
-def connect_sqlite3(base_filename, read_only=True):
+def connect_sqlite3(base_filename, read_only=True, **kargs):
     """Open existing DB in DATA_DIR as sqlite3 DB
     Connection will be read-only if read_only and READ_ONLY_DATABASE
     """
     path = '%s.sqlite3' % os.path.join(DATA_DIR, base_filename)
     if not os.path.exists(path):
       raise IOError('Database %s not available. Please build, or set pymedtermino.DATA_DIR correctly' % path)
-    db = sql_module.connect(path)
+    db = sql_module.connect(path, **kargs)
     if READ_ONLY_DATABASE and read_only:
       db.cursor().execute("PRAGMA query_only = TRUE;")
     return db

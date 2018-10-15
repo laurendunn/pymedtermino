@@ -45,7 +45,7 @@ import pymedtermino
 ATIH_EXTENSION = False
 
 
-db        = pymedtermino.connect_sqlite3("icd10")
+db        = pymedtermino.connect_sqlite3("icd10", check_same_thread=False)
 db_cursor = db.cursor()
 #db_cursor.execute("PRAGMA synchronous  = OFF;")
 #db_cursor.execute("PRAGMA journal_mode = OFF;")

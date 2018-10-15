@@ -37,7 +37,7 @@ import sys, os, os.path
 import pymedtermino
 
 
-db        = pymedtermino.connect_sqlite3("snomedct")
+db        = pymedtermino.connect_sqlite3("snomedct", check_same_thread=False)
 db_cursor = db.cursor()
 db_cursor.execute("PRAGMA synchronous  = OFF;")
 db_cursor.execute("PRAGMA journal_mode = OFF;")
